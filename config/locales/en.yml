@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  site_name: "Clinic"
+  page_about: 'About Us'
+  page_home: 'Home'
