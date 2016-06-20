@@ -38,6 +38,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'spork-rails'
+  gem 'spork', github: 'sporkrb/spork'
+  gem 'guard-spork'
+  gem 'childprocess'
 end
 
 # group :test do
