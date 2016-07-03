@@ -13,5 +13,30 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootswatch/cerulean/variables";
+@import "bootstrap";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+$footer-space: 60px;
+
+body {
+  margin-bottom: $footer-space;
+  padding-top: $navbar-height;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $footer-space;
+  background-color: $navbar-inverse-bg;
+}
+
+// And finally bootswatch style itself
+@import "bootswatch/cerulean/bootswatch";
+

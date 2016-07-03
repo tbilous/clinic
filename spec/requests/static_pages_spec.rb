@@ -1,31 +1,41 @@
 require 'rails_helper'
 
 describe "Static pages" do
-
-  # describe "Home page" do
-
-  #   it "should have the content 'Home'" do
-  #     visit '/static_pages/home'
-  #     expect(page).to have_content('Home') | have_content('Домівка')
-  #   end
-  # end
-  # describe "About page" do
-
-  #   it "should have the content 'About Us'" do
-  #     visit '/static_pages/about'
-  #     expect(page).to have_content('About Us') | have_content('Про нас')
-  #   end
-  # end
+  subject { page }
+  let(:heading)    { 'Clinic' }
+  
   describe "Home page" do
-
-    it "Do not changed the locale of content 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Home')
-    end
+    before { visit root_path }
+    let(:page_title) { 'Home' }
     
-    it "Do not changed the locale of title" do
-      visit '/static_pages/home'
-      expect(page).to have_title("Clinic")
-    end
+    it { should have_selector('h1', text: page_title) }
+    it { should have_title(heading) }
+  end
+  describe "About page" do
+    before { visit about_path }
+    let(:page_title) { 'About Us' }
+    
+    it { should have_selector('h1', text: page_title) }
+    it { should have_title(heading) }
+  end
+    # Test routes links
+  describe "Right links" do
+    it "should have the right links on the layout" do
+      visit root_path
+      page.find("#logo")
+      expect(page).to have_title(heading)
+      expect(page).to have_selector('h1', text: 'Home')
+      
+      click_link "About Us"
+      expect(page).to have_title(heading)
+      expect(page).to have_selector('h1', text: 'About Us')
+      
+      click_link "Home"
+      expect(page).to have_title(heading)
+      expect(page).to  have_selector('h1', text: 'Home')
+      
+      # click_link "Sign up now!"
+      # expect(page).to have_title('Sign up')
+  end
   end
 end
