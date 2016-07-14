@@ -23,3 +23,10 @@ en:
   site_name: "Clinic"
   page_about: 'About Us'
   page_home: 'Home'
+  page_user: "User\'s Profile"
+  label:
+    user:
+      name: 'Your Name'
+  appointments: "Appointments"
+  pfarmacy: "Medicines and pharmacy"
+  contacts: "Contacts"

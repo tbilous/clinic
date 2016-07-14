@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
-  # get 'static_pages/home'
-  # get 'static_pages/about'
-  # root to: "static_pages#home"
+
+  devise_for :users
+  # resources :users
+  # get 'users/new'
+
+  get 'users/show', as: 'user_root'
   
   root  'static_pages#home'
-  # match '/signup',  to: 'users#new',            via: 'get'
-  # match '/help', to: 'static_pages#help', via: 'get'
+  match '/signup',  to: 'users#new',            via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
-  # match '/contact', to: 'static_pages#contact', via: 'get'
+  # match 'user_root' => 'users#show',          via: 'get'
   
   # scope "/:locale" do
   #   resources :static_pages
   # end
-  scope "(:locale)", locale: /en|uk/ do
-    resources :static_pages
-  end
+  # scope "(:locale)", locale: /en|uk/ do
+  #   resources :static_pages
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

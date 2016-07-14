@@ -3,6 +3,18 @@ uk:
   site_name: "Клініка"
   page_about: "Про Нас"
   page_home: "Домівка"
+  page_user: 'Профіль користувача'
+  appointments: "Призначення"
+  pfarmacy: "Ліки та аптека"
+  contacts: "Контакти"
+  
+  
+  
+  sign_up: "Зареєструватись"
+  sign_in: "Увійти"
+  sign_out: "Вийти"
+  sign_name: "Ім\'я"
+ 
   activerecord:
     errors:
       messages:

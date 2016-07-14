@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bootswatch-rails'
 gem 'autoprefixer-rails'
+gem 'rails-i18n'
+gem 'devise'
+gem 'devise-i18n'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,18 +40,18 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
-  gem 'capybara'
   gem 'spork-rails'
   gem 'spork', github: 'sporkrb/spork'
   gem 'guard-spork'
   gem 'childprocess'
+  gem 'factory_girl_rails'
 end
 
-# group :test do
-#   gem 'selenium-webdriver'
-#   gem 'capybara'
-# end
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

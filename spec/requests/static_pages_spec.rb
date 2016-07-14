@@ -10,7 +10,16 @@ describe "Static pages" do
     
     it { should have_selector('h1', text: page_title) }
     it { should have_title(heading) }
+    it { should have_link("Sign") }
+
   end
+  
+  describe "Devise locale" do
+    before { visit root_path }
+    
+    it { should have_link("Sign") }
+  end
+  
   describe "About page" do
     before { visit about_path }
     let(:page_title) { 'About Us' }

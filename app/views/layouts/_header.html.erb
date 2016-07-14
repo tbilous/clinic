@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -14,7 +14,6 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <%= nav_bar do %>
           <li><%= nav_link t(:page_home), root_path %></li>
-          <li><%= nav_link t(:page_about), about_path %></li>
           <li><a href="#">Link</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -36,7 +35,14 @@
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <%= nav_bar_right do %>
-          <li><a href="#">Link</a></li>
+          <% if user_signed_in? %>
+            <li><%= nav_link t(:page_user), user_root_path %></li>
+            <li><%= link_to t(:sign_out) , destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <!--<li><%= link_to t(:sign_in), new_user_session_path %></li>-->
+            <!--<li><%= link_to t(:sign_up), new_user_registration_path %></li>-->
+            <li><%= nav_link t(:page_about), about_path %></li>
+          <% end %>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,14 @@
+<% provide(:title, t(:page_user)) %>
+
+<% if user_signed_in? %>
+  <div class="jumbotron jumbotron__title">
+    <div class="container">
+      <h1><%= gravatar_for current_user %> <%=current_user.name %></h1>
+    </div>
+  </div>
+<% end %>
+	
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<% end %>
+

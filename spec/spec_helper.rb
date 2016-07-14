@@ -1,19 +1,51 @@
 require 'rubygems'
 require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
+require 'database_cleaner'
 
-Spork.prefork do
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 # require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+#uncomment the following line to use spork with the debugger
+#require 'spork/ext/ruby-debug'
+
+
+Spork.prefork do
+
 
 RSpec.configure do |config|
   config.before(:each) do
     page.driver.header 'Accept-Language', 'de'
   end
+  
+  config.before(:suite) do
+    if config.use_transactional_fixtures?
+      raise(<<-MSG)
+      MSG
+    end
+    DatabaseCleaner.clean_with(:truncation)
+  end 
+   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    if !driver_shares_db_connection_with_specs
+      DatabaseCleaner.strategy = :truncation
+    end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+  
   # NAMED ROUTES ISSUE
   config.include Rails.application.routes.url_helpers
   # rspec-expectations config goes here. You can use an alternate
