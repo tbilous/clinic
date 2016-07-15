@@ -28,8 +28,8 @@ gem 'devise'
 gem 'devise-i18n'
 # gem 'mailgun_rails'
 # gem 'mailgunner', '~> 2.4'
-gem 'omniauth'
-gem 'omniauth-facebook'
+# gem 'omniauth'
+# gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
