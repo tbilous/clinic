@@ -95,17 +95,34 @@ Rails.application.configure do
   #   user_name: ENV["GMAIL_USERNAME"],
   #   password: ENV["GMAIL_PASSWORD"] 
   # }
-
-  # Devise includes its ow
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: 'gmail.com',
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: 'tbilous@gmail.com',
-    password: 'stanislav2011'
+  # heroku mailgun
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => ENV['MAILGUN_SMTP_PORT'],
+  #   :address        => ENV['MAILGUN_SMTP_SERVER'],
+  #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+  #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  #   :domain         => 'clinic-stas.herokuapp.com',
+  #   :authentication => :plain,
+  # }
+  ActionMailer::Base.smtp_settings = {
+    :port           => '587',
+    :address        => 'smtp.mailgun.org',
+    :user_name      => 'postmaster@sandboxe803909b154849c68e32200903d718f7.mailgun.org',
+    :password       => '735fb2ef759f4713f4fd2040058093f8',
+    :domain         => 'clinic-stas.herokuapp.com',
+    :authentication => :plain,
   }
+  ActionMailer::Base.delivery_method = :smtp
+  # Devise includes its ow
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: 'gmail.com',
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: 'tbilous@gmail.com',
+  #   password: 'stanislav2011'
+  # }
     
   # config.action_mailer.smtp_settings = {
   #   :address   => "smtp.mandrillapp.com",
