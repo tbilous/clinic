@@ -111,6 +111,8 @@ Rails.application.configure do
     :password       => '735fb2ef759f4713f4fd2040058093f8',
     :domain         => 'clinic-stas.herokuapp.com',
     :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl =>false
   }
   ActionMailer::Base.delivery_method = :smtp
   # Devise includes its ow
@@ -124,10 +126,4 @@ Rails.application.configure do
   #   password: 'stanislav2011'
   # }
     
-  # config.action_mailer.smtp_settings = {
-  #   :address   => "smtp.mandrillapp.com",
-  #   :port      => 25,
-  #   :user_name => ENV["MANDRILL_USERNAME"],
-  #   :password  => ENV["MANDRILL_API_KEY"]
-  # }
 end

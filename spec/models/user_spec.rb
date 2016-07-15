@@ -18,5 +18,7 @@ describe User do
     end
 
   Warden.test_reset! 
+  # TODO! make test i18
+  # <span class="translation_missing" title="translation missing: uk.users.passwords.edit.confirm_new_password">Confirm New Password</span>
   
 end

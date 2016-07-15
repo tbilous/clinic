@@ -34,8 +34,14 @@ uk:
         message: "Ваш обліковий запис був заблокований через велику кількості невдалих спроб входу."
         subject: "Інструкції щодо розблокування облікового запису"
     passwords:
+      edit:
+        change_my_password: "Змінити мій пароль"
+        change_your_password: "Змінити ваш пароль"
+        confirm_new_password: "Підтвердіть новий пароль"
+        new_password: "Новий пароль"
       new:
-        send_me_reset_password_instructions: "Нагадати пароль"
+        forgot_your_password: "Забули пароль?"
+        send_me_reset_password_instructions: "Надіслати інструкцію"
   activerecord:
     attributes:
       user:
