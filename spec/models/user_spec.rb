@@ -17,5 +17,6 @@ describe User do
       page.should have_title(title) 
     end
 
-  # Warden.test_reset! 
+  Warden.test_reset! 
+  
 end
