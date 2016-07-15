@@ -26,6 +26,10 @@ gem 'autoprefixer-rails'
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
+# gem 'mailgun_rails'
+# gem 'mailgunner', '~> 2.4'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -45,10 +49,10 @@ group :development, :test do
   gem 'guard-spork'
   gem 'childprocess'
   gem 'factory_girl_rails'
+  # gem 'foreman'
 end
 
 group :test do
-  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'database_cleaner'
 end

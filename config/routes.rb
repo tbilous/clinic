@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  # resources :users
-  # get 'users/new'
 
+  devise_for :users
   get 'users/show', as: 'user_root'
   
   root  'static_pages#home'
