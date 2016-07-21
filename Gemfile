@@ -50,6 +50,9 @@ group :development, :test do
   gem 'childprocess'
   gem 'factory_girl_rails'
   # gem 'foreman'
+  gem 'faker'
+  gem 'will_paginate'
+  gem 'bootstrap-will_paginate'
 end
 
 group :test do

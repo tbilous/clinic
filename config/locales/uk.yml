@@ -7,6 +7,13 @@ uk:
   appointments: "Призначення"
   pfarmacy: "Ліки та аптека"
   contacts: "Контакти"
+  edit:
+    delete: "Видалити"
+    edit: "Редагувати"
+    create: "Створити"
+    new: "Новий"
+  patients: 
+    choose: "Вибрати"
   
   
   

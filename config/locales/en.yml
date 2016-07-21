@@ -30,3 +30,11 @@ en:
   appointments: "Appointments"
   pfarmacy: "Medicines and pharmacy"
   contacts: "Contacts"
+  edit:
+    delete: "Delete"
+    edit: "Edit"
+    create: "Create"
+    new: "New"
+  patients: 
+    choose: "Вибрати"
+  
