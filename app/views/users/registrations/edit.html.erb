@@ -1,4 +1,4 @@
-<% provide(:title, t(:page_user)) %>
+<% provide(:title, t('page_user_edit')) %>
 
 <div class="jumbotron jumbotron__title">
   <div class="container">
@@ -7,51 +7,52 @@
   </div>
 </div>
 
-
-<div class="row">
-  <div class="col-lg-6 col-lg-offset-3">
-    <div class="well bs-component">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-        <%= devise_error_messages! %>
-      <fieldset>
-        <div class="form-group">
-          <%= f.label :name, class: 'control-label' %><br />
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-      
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>
-            <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
-          </p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="well bs-component">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
+          <%= devise_error_messages! %>
+        <fieldset>
+          <div class="form-group">
+            <%= f.label :name, class: 'control-label' %><br />
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>
+              <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+            </p>
+          <% end %>
+        
+          <div class="form-group">
+            <%= f.label :password, class: 'control-label' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :password_confirmation, class: 'control-label' %><br />
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        
+          <div class="form-group">
+            <%= f.label :current_password, class: 'control-label' %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+            <%= f.password_field :current_password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <div><%= f.submit t('.update'), class: "btn btn-large btn-primary pull-right" %></div>
+          </div>
+          </fieldset>
         <% end %>
-      
-        <div class="form-group">
-          <%= f.label :password, class: 'control-label' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-        </div>
-      
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: 'control-label' %><br />
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
-      
-        <div class="form-group">
-          <%= f.label :current_password, class: 'control-label' %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-          <%= f.password_field :current_password, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <div><%= f.submit t('.update'), class: "btn btn-large btn-primary pull-right" %></div>
-        </div>
-        </fieldset>
-      <% end %>
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank"><%= t("edit.change") %></a>
-      
-      <h3><%= t('.cancel_my_account') %></h3>
-      
-      <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, method: :delete %>.</p>
-      
-      <%= link_to t('devise.shared.links.back'), user_root_path %>
-    </div> <!--end well-->
-  </div> <!--end col-->
-</div> <!--end row-->
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank"><%= t("edit.change") %></a>
+        
+        <h3><%= t('.cancel_my_account') %></h3>
+        
+        <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, method: :delete %>.</p>
+        
+        <%= link_to t('devise.shared.links.back'), user_root_path %>
+      </div> <!--end well-->
+    </div> <!--end col-->
+  </div> <!--end row-->
+</div> <!--end container-->

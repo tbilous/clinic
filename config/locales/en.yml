@@ -44,6 +44,7 @@ en:
     create: "Create"
     new: "New"
     change: "Change"
+    save: "Save"
   patients: 
     choose: "Вибрати"
   modal:

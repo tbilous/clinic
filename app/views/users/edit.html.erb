@@ -1,35 +1,40 @@
-<% provide(:title, 'Edit user') %>
-<h1>Update your profile</h1>
-<div class="row">
-  <div class="col-lg-6 col-lg-offset-3">
-      <div class="well bs-component">
-        <%= form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
-        
-            <fieldset>
-                <div class="form-group">
-                  <%= f.label :name, :class => 'col-xs-3 control-label' %>
-                  <div class="col-xs-9">
-                      <%= f.text_field :name, :class => 'form-control' %>
-                  </div>
-                </div>
-                <div class="form-group">
-                    <%= f.label :password, :class => 'col-xs-3 control-label' %>
-                    <div class="col-xs-9">
-                        <%= f.password_field :password, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <%= f.label :password_confirmation,  :class => 'col-xs-3 control-label' %>
-                    <div class="col-xs-9">
-                        <%= f.password_field :password_confirmation, :class => 'form-control' %>
-                    </div>
-                </div>
-                
-                <%= f.submit class: "btn btn-large btn-primary pull-right" %>
-            </fieldset>
-        <% end %>
-        <%= gravatar_for @user %>
-        <a href="http://gravatar.com/emails" target="_blank">change</a>
-    </div>
+<% provide(:title, t('page_user_edit')) %>
+
+<div class="jumbotron jumbotron__title">
+  <div class="container">
+    <h3><%= t('activerecord.attributes.user.name') + ' ' + @user.name %> </h3>
+    <h1><small><%= yield(:title) %></small></h1>
   </div>
 </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+          <div class="well bs-component">
+            <%= form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
+                <fieldset>
+                    <div class="form-group">
+                      <%= f.label :name, :class => 'col-xs-3 control-label' %>
+                      <div class="col-xs-9">
+                          <%= f.text_field :name, :class => 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :password, :class => 'col-xs-3 control-label' %>
+                        <div class="col-xs-9">
+                            <%= f.password_field :password, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :password_confirmation,  :class => 'col-xs-3 control-label' %>
+                        <div class="col-xs-9">
+                            <%= f.password_field :password_confirmation, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <%= f.submit t('edit.save'), class: "btn btn-large btn-primary pull-right" %>
+                </fieldset>
+            <% end %>
+        </div>
+      </div> <!--end col-->
+    </div> <!--end row-->
+</div> <!--end container-->

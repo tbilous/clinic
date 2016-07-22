@@ -25,6 +25,7 @@ uk:
     create: "Створити"
     new:    "Новий"
     change: "Змінити"
+    save: "Зберегти"
   patients: 
     choose: "Вибрати"
   

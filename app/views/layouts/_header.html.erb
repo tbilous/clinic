@@ -36,7 +36,7 @@
         </form>
         <%= nav_bar_right do %>
           <% if user_signed_in? %>
-            <li><%= nav_link t(:page_user), user_root_path %></li>
+            <li><%= nav_link t(:page_user), current_user %></li>
             <li><%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %></li>
             <li><%= link_to "Users", users_path %></li>
             <li class="dropdown">
@@ -45,7 +45,7 @@
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to  t('page.user.edit'), edit_user_registration_path %></li>
-                <li><%= link_to t('page.user.view'), user_root_path %></li>
+                <li><%= link_to t('page.user.view'), current_user %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %></li>
               </ul>

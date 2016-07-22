@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   root  'static_pages#home'
   # match '/users/:id',     to: 'users#show',     via: 'get'
+  match '/edit', to: 'users#edit', via: 'get'
   match '/index',     to: 'users#index',        via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
