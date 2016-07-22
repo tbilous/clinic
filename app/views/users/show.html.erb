@@ -7,8 +7,13 @@
     </div>
   </div>
 <% end %>
-	
-<% if user_signed_in? %>
-  <div>Signed in as... <%= current_user.email %></div>
-<% end %>
+<div class="container">
+  <div class="well">
+    <ul class="list-unstyled">
+      <li><%= t("activerecord.models.name")+ ': ' + current_user.name %></li>
+      <li>Email: <%= current_user.email %></li>
+      <li><%= link_to t("edit.change"), edit_user_registration_path %></li>
+    </ul>
+  </div>
+</div>
 

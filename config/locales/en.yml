@@ -24,6 +24,14 @@ en:
   page_about: 'About Us'
   page_home: 'Home'
   page_user: "User\'s Profile"
+  page_user_edit: "Edit User\'s Profile"
+  page:
+    user:
+      title:  "Your Profile"
+      edit:   "Edit your Profile"
+      view:   "View your Profile"
+      index:  "All users"
+      name:   "User Name"
   label:
     user:
       name: 'Your Name'
@@ -35,6 +43,11 @@ en:
     edit: "Edit"
     create: "Create"
     new: "New"
+    change: "Change"
   patients: 
     choose: "Вибрати"
+  modal:
+    commit: "Yes"
+    cancel: "No!"
+ 
   

@@ -13,11 +13,12 @@ class ApplicationController < ActionController::Base
   # end
   def set_locale
     # logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-    if extract_locale_from_accept_language_header == "uk"
-      I18n.locale = extract_locale_from_accept_language_header
-    else
-      I18n.locale = "en"
-    end
+    # if extract_locale_from_accept_language_header == "uk"
+    #   I18n.locale = extract_locale_from_accept_language_header
+    # else
+    #   I18n.locale = "en"
+    # end
+    I18n.locale = (extract_locale_from_accept_language_header == "uk" ? "uk" : "en" )
     # logger.debug "* Locale set to '#{I18n.locale}'"
   end
   # def after_sign_in_path_for(resource)

@@ -1,0 +1,32 @@
+<% provide(:title, t('page.user.index')) %>
+<div class="jumbotron jumbotron__title">
+  <div class="container">
+    <h1><%= yield(:title) %></h1>
+  </div>
+</div>
+<div class="container">
+  <%= will_paginate %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th><%= t('page.user.name') %></th>
+        <th>Email</th>
+        <th><%= t('edit.delete') %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each_with_index do |user, i| %>
+          <tr>
+            <td>
+              <%= i += 1 %>
+            </td>
+            <td><%= link_to user.name, user %></td>
+            <td><%= link_to user.email, user %></td>
+            <td><%= link_to t('edit.delete'), '#', class: 'btn btn-warning' %></td>
+          </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</div>

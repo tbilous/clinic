@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'users/show', as: 'user_root'
-  
+  resources :users
   root  'static_pages#home'
+  # match '/users/:id',     to: 'users#show',     via: 'get'
+  match '/index',     to: 'users#index',        via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   # match 'user_root' => 'users#show',          via: 'get'
