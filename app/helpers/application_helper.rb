@@ -29,4 +29,10 @@ module ApplicationHelper
       link_to text, path
     end
   end
+  
+  def bootstrap_class_for flash_type
+    hash = HashWithIndifferentAccess.new({ success: "alert-success", error: "alert-warning", alert: "alert-danger", notice: "alert-info" })
+    hash[flash_type] || flash_type.to_s
+  end
+  
 end

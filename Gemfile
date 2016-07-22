@@ -26,6 +26,9 @@ gem 'autoprefixer-rails'
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # gem 'mailgun_rails'
 # gem 'mailgunner', '~> 2.4'
 # gem 'omniauth'
@@ -50,9 +53,7 @@ group :development, :test do
   gem 'childprocess'
   gem 'factory_girl_rails'
   # gem 'foreman'
-  gem 'faker'
-  gem 'will_paginate'
-  gem 'bootstrap-will_paginate'
+  # gem 'data-confirm-modal'
 end
 
 group :test do

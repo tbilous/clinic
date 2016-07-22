@@ -4,14 +4,27 @@ uk:
   page_about: "Про Нас"
   page_home: "Домівка"
   page_user: 'Профіль користувача'
+  page_user_edit: "Редагувати Профіль користувача"
+  page:
+    user:
+      title:  "Ваш Профіль"
+      edit:   "Редагувати Профіль"
+      view:   "Переглянути Профіль"
+      index:  "Список користувачів"
+      name:   "Ім\'я"
+  will_paginate:
+    previous_label: "&#8592; Попередній"
+    next_label: "Слідуючий &#8594;"
+    page_gap: "&hellip;"
   appointments: "Призначення"
-  pfarmacy: "Ліки та аптека"
-  contacts: "Контакти"
+  pfarmacy:     "Ліки та аптека"
+  contacts:     "Контакти"
   edit:
     delete: "Видалити"
-    edit: "Редагувати"
+    edit:   "Редагувати"
     create: "Створити"
-    new: "Новий"
+    new:    "Новий"
+    change: "Змінити"
   patients: 
     choose: "Вибрати"
   
@@ -21,8 +34,15 @@ uk:
   sign_in: "Увійти"
   sign_out: "Вийти"
   sign_name: "Ім\'я"
+  
+  modal:
+    commit: "Так"
+    cancel: "Ні!"
  
   activerecord:
+    user:
+      models:
+        name: "Користувач"
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'
