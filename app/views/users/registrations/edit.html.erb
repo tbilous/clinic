@@ -51,7 +51,7 @@
         
         <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, method: :delete %>.</p>
         
-        <%= link_to t('devise.shared.links.back'), user_root_path %>
+        <%= link_to t('devise.shared.links.back'), current_user %>
       </div> <!--end well-->
     </div> <!--end col-->
   </div> <!--end row-->

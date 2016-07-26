@@ -28,13 +28,12 @@ uk:
     save: "Зберегти"
   patients: 
     choose: "Вибрати"
-  
-  
-  
   sign_up: "Зареєструватись"
   sign_in: "Увійти"
   sign_out: "Вийти"
   sign_name: "Ім\'я"
+  are_you_sure: "Ви впевнені?"
+  cancel_my_account: "Скасувати мій обліковий запис"
   
   modal:
     commit: "Так"

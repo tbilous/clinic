@@ -45,6 +45,7 @@ RSpec.configure do |config|
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
+  config.include AbstractController::Translation
   
   # NAMED ROUTES ISSUE
   config.include Rails.application.routes.url_helpers
