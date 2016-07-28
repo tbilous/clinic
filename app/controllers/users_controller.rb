@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  include Devise::Controllers::Helpers
   # before_action :signed_in_user, only: [:edit, :update, :update, :destroy]
   # before_action :correct_user,   only: [:edit, :update]
   # before_action :admin_user,     only: :destroy
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :index, :show]
+  before_action  :admin_user, only: [:index]
   require 'will_paginate'
   def new
     @user = User.new
@@ -9,15 +12,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @user = User.find_by_name(params[:id])
   end
   
   def index
 
   # @user = User.find_by_name(params[:id])
-
-    # User.paginate(page: params[:page])
-    @users = User.paginate(:page => params[:page], :per_page => 15).order('created_at DESC')
-    # @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 15).order('id')
   end
   
   def edit
@@ -40,8 +41,11 @@ class UsersController < ApplicationController
   
   private
 
-    # def user_params
-    #   params.require(:user).permit(:email, :password, :password_confirmation)
-    # end
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 
 end

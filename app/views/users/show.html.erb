@@ -12,10 +12,11 @@
     <ul class="list-unstyled">
       <li><%= t("activerecord.models.name")+ ': ' + @user.name %></li>
       <li>Email: <%= @user.email %></li>
-
-      <li><%= link_to t("edit.change"), edit_user_path(@user) %></li>
-      
+      <li>
+        <li></li>
+      </li>
     </ul>
   </div>
+  <%= link_to t("edit.change"), edit_user_path(@user), class: 'btn btn-info' %>
 </div>
 

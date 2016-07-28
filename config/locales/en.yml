@@ -50,5 +50,12 @@ en:
   modal:
     commit: "Yes"
     cancel: "No!"
- 
-  
+  sign_up: "Sign Up"
+  sign_in: "Sign In"
+  sign_out: "Sign Out"
+  sign_name: "Name"
+  are_you_sure: "Are you sure?"
+  cancel_my_account: "Cancel my accaunt"
+  activerecord:
+      models:
+        name: "User"

@@ -44,7 +44,6 @@ class ApplicationController < ActionController::Base
       request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     end
 
-
   protected
 
   def configure_permitted_parameters
