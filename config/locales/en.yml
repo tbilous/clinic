@@ -23,8 +23,8 @@ en:
   site_name: "Clinic"
   page_about: 'About Us'
   page_home: 'Home'
-  page_user: "User\'s Profile"
-  page_user_edit: "Edit User\'s Profile"
+  page_user: "Profile"
+  page_user_edit: "Edit Profile"
   page:
     user:
       title:  "Your Profile"
