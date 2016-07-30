@@ -45,7 +45,9 @@ en:
     new: "New"
     change: "Change"
     save: "Save"
-  patients: 
+    delete_succes: "User was deleted succesfull"
+    delete_active: "Here do not allow for delete yourself"
+  patients:
     choose: "Вибрати"
   modal:
     commit: "Yes"

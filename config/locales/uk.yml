@@ -26,7 +26,9 @@ uk:
     new:    "Новий"
     change: "Змінити"
     save: "Зберегти"
-  patients: 
+    delete_succes: "Користувача видалено"
+    delete_active: "Тут не можна видаляти себе"
+  patients:
     choose: "Вибрати"
   sign_up: "Зареєструватись"
   sign_in: "Увійти"
@@ -34,11 +36,11 @@ uk:
   sign_name: "Ім\'я"
   are_you_sure: "Ви впевнені?"
   cancel_my_account: "Скасувати мій обліковий запис"
-  
+
   modal:
     commit: "Так"
     cancel: "Ні!"
- 
+
   activerecord:
     user:
       models:
