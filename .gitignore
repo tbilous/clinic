@@ -13,3 +13,6 @@
 /tmp
 .env
 Procfile
+Gemfile.lock
+.rbenv-gemsets
+.rspec

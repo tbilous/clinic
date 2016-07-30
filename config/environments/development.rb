@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -39,54 +39,22 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '127.0.0.1:3000' }
+  # config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => "1025" }
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address: "smtp.gmail.com",
-  #   port: 587,
-  #   domain: ENV["GMAIL_DOMAIN"],
-  #   authentication: "plain",
-  #   enable_starttls_auto: true,
-  #   user_name: ENV["GMAIL_USERNAME"],
-  #   password: ENV["GMAIL_PASSWORD"]
-  # }
-  config.action_mailer.raise_delivery_errors = true
-  # for mailgunner
-  # config.action_mailer.delivery_method = :mailgun
-  # config.action_mailer.mailgun_settings = {
-  #     api_key: 'key-05586096e088b9097d0d5fc82ebabcbc',
-  #     domain: 'sandboxe803909b154849c68e32200903d718f7.mailgun.org'
-  # }
-#   config.action_mailer.delivery_method = :smtp
-# # SMTP settings for mailgun
-  # ActionMailer::Base.smtp_settings = {
-  #   :port           => '587',
-  #   :address        => 'smtp.mailgun.org',
-  #   :user_name      => 'postmaster@sandboxe803909b154849c68e32200903d718f7.mailgun.org',
-  #   :password       => '735fb2ef759f4713f4fd2040058093f8',
-  #   :domain         => 'clinic-stas.herokuapp.com',
-  #   :authentication => :plain,
-  #   :enable_starttls_auto => true,
-  #   :ssl =>false
-  # }
-  # ActionMailer::Base.delivery_method = :smtp
-  # # for mailgun_rails
-  # config.action_mailer.delivery_method = :mailgun
-  # config.action_mailer.mailgun_settings = {
-  #       api_key: 'key-05586096e088b9097d0d5fc82ebabcbc',
-  #       domain: 'sandboxe803909b154849c68e32200903d718f7.mailgun.org'
-  # }
-
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+  }
   # change to true to allow email to be sent during development
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
   # i18 config
   config.i18n.available_locales = [:uk, :en]
-  config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
-    :port      => '587',
-    :user_name => ENV["MANDRILL_USERNAME"],
-    :password  => ENV["MANDRILL_API_KEY"]
-  }
 end

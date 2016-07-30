@@ -46,14 +46,12 @@ gem 'bootstrap-will_paginate'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
+  gem 'rspec-rails', require: false
   gem 'spork-rails'
   gem 'spork', github: 'sporkrb/spork'
   gem 'guard-spork'
   gem 'childprocess'
   gem 'factory_girl_rails'
-  # gem 'foreman'
-  # gem 'data-confirm-modal'
 end
 
 group :test do
@@ -75,4 +73,3 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
