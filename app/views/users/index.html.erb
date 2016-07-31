@@ -24,7 +24,7 @@
             </td>
             <td><%= link_to user.name, user %></td>
             <td><%= link_to user.email, user %></td>
-            <td><%= link_to t('edit.delete'),  user, method: :delete, data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, class: 'btn btn-warning' %></td>
+            <td><%= link_to t('edit.delete'),  user, title: t('are_you_sure'),  method: :delete, data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, class: 'btn btn-warning' %></td>
           </tr>
     <% end %>
     </tbody>

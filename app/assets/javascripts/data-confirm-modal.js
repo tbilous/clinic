@@ -29,7 +29,7 @@
  */
 
 var defaults = {
-  title: 'Ви впевнені?',
+  title: 'Are you sure?',
   commit: 'Confirm',
   commitClass: 'btn-danger',
   cancel: 'Cancel',
