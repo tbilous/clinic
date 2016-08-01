@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'spork'
 require 'database_cleaner'
+require 'capybara/poltergeist'
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -15,10 +16,36 @@ Spork.prefork do
 
 
 RSpec.configure do |config|
+  Capybara.javascript_driver = :poltergeist
   config.before(:each) do
-    page.driver.header 'Accept-Language', 'de'
+    # page.driver.header('Accept-Language', 'de')
   end
-  
+  config.before(:each) do
+    if Capybara.current_driver == :poltergeist
+      # page.driver.agent.request_headers['Accept-Language'] = 'fr'
+      page.driver.headers = { 'Accept-Language' => "en-IE" }
+      # page.driver.headers = { 'ACCEPT-LANGUAGE' => 'pt-BR' }
+    end
+  end
+# Capybara.current_session.driver.headers = { 'Accept-Language' => 'de' }
+  # Capybara.current_session.driver.header('Accept-Language', 'de')
+  # Capybara.register_driver :selenium do |app|
+  #   # Using a custom http client for performance reasons
+  #   http_client = Selenium::WebDriver::Remote::Http::Default.new
+  #   http_client.timeout = 120
+  #   http_client['intl.accept_languages'] = "de"
+
+  #   # Create a new driver object
+  #   HookedSelenium::Driver.new(app, :http_client => http_client)
+  # end
+  # Capybara.register_driver :selenium_de do |app|
+  #   require 'selenium/webdriver'
+  #   profile = Selenium::WebDriver::Remote::Http::Default.new
+  #   profile['intl.accept_languages'] = "de"
+
+  #   Capybara::Selenium::Driver.new(app, :profile => profile)
+  # end
+  # Capybara.javascript_driver = :selenium_de
   config.include AbstractController::Translation
   config.include ControllerMacros
   

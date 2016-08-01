@@ -1,6 +1,9 @@
 require 'rails_helper'
 
   describe "Spec for Sign Up" do  
+  before(:all) do
+     Capybara.current_driver = :poltergeist
+  end
     before { visit new_user_registration_path }
 
     it { expect(page).to have_title t(:sign_up) }
@@ -103,11 +106,12 @@ require 'rails_helper'
           expect(page).to have_selector('td', text: user.name, between: 1..15)
         end
       end
-      # describe "delete user", :js => true do
-      #   before { click_link( t('edit.delete'), match: :first ) }
-      #   # puts page.body
-      #   it { expect(page).to have_css 'dev.modal-body' }
-      # end
+      describe "delete user", :js => true do
+        before { click_link( t('edit.delete'), match: :first  ) }
+         it { expect(page).to have_css('.modal.in') }
+        it { puts page.html }
+        # it { expect(page).to have_css 'dev.modal-body' }
+      end
     end
     # describe "delete admin" do
     #   let(:admin) { FactoryGirl.create(:admin) }
