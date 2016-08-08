@@ -54,6 +54,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'simple_form'
 end
 
 group :test do

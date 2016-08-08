@@ -106,22 +106,12 @@ require 'rails_helper'
           expect(page).to have_selector('td', text: user.name, between: 1..15)
         end
       end
-      describe "delete user", :js => true do
+      describe "confirm delete user", :js => true do
         before { click_link( t('edit.delete'), match: :first  ) }
-         it { expect(page).to have_css('.modal.in') }
-        it { puts page.html }
-        # it { expect(page).to have_css 'dev.modal-body' }
+        it { expect(page).to have_css('.modal.in') }
+        # it { puts page.html }
       end
     end
-    # describe "delete admin" do
-    #   let(:admin) { FactoryGirl.create(:admin) }
-    #   before do 
-    #     login_as admin, scope: :user
-    #     visit users_path
-    #   end
-    #   click_link( t('edit.delete'), match: :first )
-    #   it { expect(page).to have_content t('page.user.index') }
-    # end
     describe "ordinary users shoul not have access index" do 
       before do 
         login_as user, scope: :user
