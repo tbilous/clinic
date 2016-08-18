@@ -1,10 +1,12 @@
 class UsersControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers 
-  include Devise::Test::IntegrationHelpers
-  def setup
-    @request.env["devise.mapping"] = Devise.mappings[:admin]
-    sign_in FactoryGirl.create(:admin)
-  end
+  # include Devise::Test::ControllerHelpers 
+  # before :each do
+  #     @request.env["devise.mapping"] = Devise.mappings[:admin]
+  #     @request.env["devise.mapping"] = Devise.mappings[:user]
+  #     @admin = FactoryGirl.create :admin
+  #     @user = FactoryGirl.create :user
+  #     # sign_in @admin
+  # end
   
   # describe UsersController do
 

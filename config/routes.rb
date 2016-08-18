@@ -5,7 +5,15 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/show', as: 'user_root'
   resources :users
+  resources :characters, only: [:new, :create, :destroy, :update, :edit, :show]
+  
   root  'static_pages#home'
+  # get "/characters/new" => 'characters#new', as: 'character_new'
+  # get "/characters/index" => 'characters#index', as: 'character_index'
+  # get "/characters/edit" => 'characters#update', as: 'update_character'
+  # get "/characters/:id" => 'characters#show', as: 'character_show'
+  
+ match '/characters/:id',   to: 'characters#show',         via: 'get'
   match '/users/:id',   to: 'users#show',         via: 'get'
   match '/edit',        to: 'users#edit',         via: 'get'
   match '/index',       to: 'users#index',        via: 'get'

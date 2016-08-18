@@ -1,0 +1,18 @@
+<% provide(:title, t('page.character.edit')) %>
+<div class="jumbotron jumbotron__title">
+  <div class="container">
+    <h1><%= yield(:title) + ' ' + @character.name %></h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render 'characters/shared/form_edit' %>
+  </div>
+  <hr>
+  <%= link_to :back, :class => "btn", :title => t('back') do %>
+    <span class="glyphicon glyphicon-triangle-left"></span>
+  <% end %>
+  <br>
+  <hr>
+</div>

@@ -2,9 +2,11 @@ FactoryGirl.define do
   sequence :email do |n|
     "privat#{n}@example.com"
   end
+  
   name = "Taras Bilous"
   password = "foobar"
-  # Devise User Class
+ 
+ 
   factory :user do
     name name
     email 
@@ -13,15 +15,28 @@ FactoryGirl.define do
   end
 
  # Admin
- factory :admin, class: User do
+  factory :admin, class: User do
     name name
     email 
     password password 
     password_confirmation password 
     admin true
   end
-end
+  
 
+end
+FactoryGirl.define do
+  bdate = Time.new(1973, 10, 15)
+  factory :character, class: Character do
+    name  "Character Patient"
+    comment "Patient"
+    birthday bdate
+    sex true
+    usd true
+    active true
+    user
+  end
+end
 # FactoryGirl.define do
 #   name = "Taras Bilous"
 #   password = "foobar"

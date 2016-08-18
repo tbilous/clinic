@@ -32,9 +32,14 @@ en:
       view:   "View your Profile"
       index:  "All users"
       name:   "User Name"
+    character:
+      new: 'New patient'
+      edit: 'Edit patient'
   label:
     user:
       name: 'Your Name'
+  back: 'Back'
+  top: 'Top'
   appointments: "Appointments"
   pfarmacy: "Medicines and pharmacy"
   contacts: "Contacts"
@@ -48,10 +53,16 @@ en:
     delete_succes: "User was deleted succesfull"
     delete_active: "Here do not allow for delete yourself"
   patients:
-    choose: "Вибрати"
+    choose: "Choose"
+    name: 'Name'
+    new: 'New'
+    create: 'Add'
   modal:
     commit: "Yes"
     cancel: "No!"
+  age: 'Age'
+  years:
+    many: 'Years'
   sign_up: "Sign Up"
   sign_in: "Sign In"
   sign_out: "Sign Out"
@@ -59,5 +70,16 @@ en:
   are_you_sure: "Are you sure?"
   cancel_my_account: "Cancel my accaunt"
   activerecord:
-      models:
+    models:
         name: "User"
+    successful:
+      messages:
+        character:
+          created: "Patient was added"
+          deleted: 'Patient was deleted'
+          updated: "Patient was changed"
+    model:
+      character:
+        one: 'Patient'
+        few: 'Patients'
+        many: 'Patients'

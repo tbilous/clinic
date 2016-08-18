@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # before_action :signed_in_user, only: [:edit, :update, :update, :destroy]
   # before_action :correct_user,   only: [:edit, :update]
   # before_action :admin_user,     only: :destroy
+  
   before_action :authenticate_user!, only: [ :edit, :show, :update, :index, :destroy
    ]
   before_action :current_user_admin, only:  :index 

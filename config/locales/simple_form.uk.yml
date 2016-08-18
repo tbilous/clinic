@@ -1,0 +1,26 @@
+uk:
+  simple_form:
+    "yes": 'Так'
+    "no": 'Ні'
+    required:
+      text: 'обов`язково'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    labels:
+      character:
+        name: 'Пацієнт'
+        comment: 'Опис'
+        birthday: 'Дата народження'
+        sex: 'Стать'
+        active: 'Активний'
+        usd: 'Використовується'
+    options:
+      character:
+        sex:
+          "true": "Чоловіча"
+          "false": "Жіноча"
+
+    error_notification:
+      default_message: "Х`юстон у нас проблеми!"

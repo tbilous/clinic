@@ -2,7 +2,9 @@ module ControllerMacros
   def login_admin
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
-      sign_in FactoryGirl.create(:admin)
+      # sign_in FactoryGirl.create(:admin)
+      admin = FactoryGirl.create(:admin)
+      sign_in :user, admin # sign_in(scope, resource)
     end
   end
 
@@ -13,15 +15,11 @@ module ControllerMacros
       sign_in user
     end
   end
-  
-  def login_with(user = double('user'), scope = :user)
-    current_user = "current_#{scope}".to_sym
-    if user.nil?
-      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => scope})
-      allow(controller).to receive(current_user).and_return(nil)
-    else
-      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-      allow(controller).to receive(current_user).and_return(user)
-    end
+  def login(u)
+    visit new_user_session_path
+  	fill_in 'user_email', with: u.email
+  	fill_in 'user_password', with: u.password
+  	click_button t(:sign_in)
   end
+
 end

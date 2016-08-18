@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bootswatch-rails'
 gem 'autoprefixer-rails'
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'devise'
 gem 'devise-i18n'
 gem 'faker'
@@ -55,6 +55,7 @@ group :development, :test do
   # gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'simple_form'
+  gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 end
 
 group :test do

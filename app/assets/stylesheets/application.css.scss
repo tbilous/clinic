@@ -54,6 +54,11 @@ body {
     margin-top: -2rem;
   }
 }
+.table.my-table {
+  td {
+    vertical-align: middle;
+  }
+}
 
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";

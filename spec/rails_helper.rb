@@ -7,8 +7,9 @@ require 'spec_helper'
 require 'capybara/rspec'
 require 'rspec/rails'
 require 'devise'
-# require 'support/devise'
-# require 'support/controller_macros'
+require 'support/devise'
+require 'support/controller_macros'
+require 'support/utilites'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -84,7 +85,7 @@ RSpec.configure do |config|
   
   # config.include ControllerMacros, :type => :controller
   # config.include Devise::Test::ControllerHelpers, type: :controller
-  # config.include Devise::Test::ControllerHelpers, type: :view
+  # config.include Devise::Tests::ControllerHelpers, type: :view
   # config.include Devise::Test::IntegrationHelpers, type: :feature
 
   # RSpec Rails can automatically mix in different behaviours to your tests

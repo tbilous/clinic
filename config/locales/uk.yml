@@ -11,11 +11,16 @@ uk:
       edit:   "Редагувати Профіль"
       view:   "Переглянути Профіль"
       index:  "Список користувачів"
-      name:   "Ім\'я"
+      name:   "Ім`я"
+    character:
+      new: 'Новий Пацієнт'
+      edit: 'Редагувати Пацієнта'
   will_paginate:
     previous_label: "&#8592; Попередній"
     next_label: "Слідуючий &#8594;"
     page_gap: "&hellip;"
+  back: 'Назад'
+  top: 'Вгору'
   appointments: "Призначення"
   pfarmacy:     "Ліки та аптека"
   contacts:     "Контакти"
@@ -30,18 +35,40 @@ uk:
     delete_active: "Тут не можна видаляти себе"
   patients:
     choose: "Вибрати"
+    name: 'Пацієнт'
+    new: 'Новий'
+    create: 'Додати Пацієнта'
   sign_up: "Зареєструватись"
   sign_in: "Увійти"
   sign_out: "Вийти"
-  sign_name: "Ім\'я"
+  sign_name: "Ім`я"
   are_you_sure: "Ви впевнені?"
   cancel_my_account: "Скасувати мій обліковий запис"
-
   modal:
     commit: "Так"
     cancel: "Ні!"
-
+  sex:
+    male: 'Чоловіча'
+    female: 'Жіноча'
+  age: 'Вік'
+  active:
+    yes: 'Активний'
+    no: 'Не Активний'
+  used:
+    true: 'Використовується'
+    false: 'Не Використовується'
   activerecord:
+    successful:
+      messages:
+        character:
+          created: "Пацієнта додано"
+          deleted: 'Пацієнта видалено'
+          updated: "Дані Пацієнта оновлено"
+    model:
+      character:
+        one: 'Пацієнт'
+        few: 'Пацієнти'
+        many: 'Пацієнтів'
     user:
       models:
         name: "Користувач"
@@ -51,6 +78,18 @@ uk:
         restrict_dependent_destroy:
           has_one: 'Неможливо видалити запис, так як існує залежність: %{record}'
           has_many: 'Неможливо видалити запис, так як існують залежності: %{record}'
+  years:
+    one: 'рік'
+    few: 'роки'
+    many: 'років'
+  months:
+    one: 'місяць'
+    few: 'місяці'
+    many: 'місяців'
+  days:
+    one: 'день'
+    few: 'дні'
+    many: 'днів'
   date:
     abbr_day_names:
     - нд.
