@@ -29,6 +29,7 @@ gem 'devise-i18n'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'simple_form'
 gem 'dragonfly', '~> 1.0.11'
 gem 'avatar_magick', '~> 1.0.1'
 # gem 'mailgun_rails'
@@ -56,7 +57,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   # gem 'selenium-webdriver'
   gem 'poltergeist'
-  gem 'simple_form'
   gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 end
 
