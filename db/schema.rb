@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808085004) do
+ActiveRecord::Schema.define(version: 20160821180233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 20160808085004) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "antropometric", force: :cascade do |t|
+    t.datetime "date",         default: '2016-08-19 06:44:45', null: false
+    t.text     "comment"
+    t.float    "weight"
+    t.float    "height"
+    t.float    "cranium"
+    t.float    "chest"
+    t.integer  "character_id",                                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "antropometric", ["created_at", "character_id"], name: "index_antropometric_on_created_at_and_character_id", using: :btree
+
   create_table "characters", force: :cascade do |t|
     t.string   "name",                       null: false
     t.string   "comment",    default: ""
@@ -47,6 +61,23 @@ ActiveRecord::Schema.define(version: 20160808085004) do
   end
 
   add_index "characters", ["user_id", "created_at"], name: "index_characters_on_user_id_and_created_at", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
+    t.text     "comment",    null: false
+    t.text     "address",    null: false
+    t.string   "phone",      null: false
+    t.string   "email",      null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "photo_uid"
+  end
+
+  add_index "contacts", ["user_id", "created_at"], name: "index_contacts_on_user_id_and_created_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

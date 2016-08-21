@@ -26,6 +26,7 @@ en:
   page_user: "Profile"
   page_user_edit: "Edit Profile"
   page:
+    empty: "No records"
     user:
       title:  "Your Profile"
       edit:   "Edit your Profile"

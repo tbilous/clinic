@@ -16,6 +16,12 @@ uk:
         sex: 'Стать'
         active: 'Активний'
         usd: 'Використовується'
+      contact:
+        name: 'Ім`я'
+        comment: 'Коментар'
+        address: 'Адреса'
+        phone: 'Телефон'
+        photo:  'Фото'
     options:
       character:
         sex:

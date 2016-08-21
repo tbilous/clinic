@@ -1,0 +1,46 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  
+  <h1>Listing Contacts</h1>
+
+  <div class="list-group">
+
+    <% @contacts.each do |contact| %>
+      <%= link_to contact_path(contact), class: 'list-group-item' do %>
+        <div class="media">
+          <div class="media-left padding-3x media-middle">
+            <%= contact_avatar(contact, class: 'media-object img-circle', style: 'width:48px;height:48px;') %>
+          </div>
+          <div class="media-body media-middle contact-name">
+            <span><strong><%= contact.name %></strong></span>
+          </div>
+          <div class="media-body media-middle contact-email hidden-xs">
+            <span><%= contact.comment %></span>
+          </div>
+          <div class="media-body media-middle contact-phone hidden-xs">
+            <span><%= contact.phone %></span>
+          </div>
+          <div class="media-body media-middle contact-email hidden-xs">
+            <span><%= contact.email %></span>
+          </div>
+<!--    
+          <td><%= link_to contact.name, contact %></td>
+          <td><%= link_to 'Show', contact %></td>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Destroy', contact, method: :delete, title:'Are you sure?',  data: { confirm: 'Are you sure?' } %></td>
+          <td>  <%= link_to t('edit.delete'), contact, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } %></td>-->
+        </div>
+      <% end %>
+    <% end %>
+
+  
+  <br>
+
+  <%= link_to 'New Contact', new_contact_path %>
+  <hr>
+  <%= link_to :back, :class => "btn", :title => t('back') do %>
+    <span class="glyphicon glyphicon-triangle-left"></span>
+  <% end %>
+  <br>
+  <hr>
+</div>

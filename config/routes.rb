@@ -6,20 +6,21 @@ Rails.application.routes.draw do
   get 'users/show', as: 'user_root'
   resources :users
   resources :characters, only: [:new, :create, :destroy, :update, :edit, :show]
+  resources :contacts, only: [:new, :create, :destroy, :update, :edit, :show, :index]
   
   root  'static_pages#home'
-  # get "/characters/new" => 'characters#new', as: 'character_new'
-  # get "/characters/index" => 'characters#index', as: 'character_index'
-  # get "/characters/edit" => 'characters#update', as: 'update_character'
-  # get "/characters/:id" => 'characters#show', as: 'character_show'
+
   
- match '/characters/:id',   to: 'characters#show',         via: 'get'
+  # match '/characters/:id',   to: 'characters#show',         via: 'get'
   match '/users/:id',   to: 'users#show',         via: 'get'
   match '/edit',        to: 'users#edit',         via: 'get'
   match '/index',       to: 'users#index',        via: 'get'
   match '/signup',      to: 'users#new',          via: 'get'
   match '/about',       to: 'static_pages#about', via: 'get'
-  # match 'user_root' => 'users#show',          via: 'get'
+  
+  get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
+  app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
+}, as: :avatar
   
   # scope "/:locale" do
   #   resources :static_pages

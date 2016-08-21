@@ -2,7 +2,6 @@ FactoryGirl.define do
   sequence :email do |n|
     "privat#{n}@example.com"
   end
-  
   name = "Taras Bilous"
   password = "foobar"
  
@@ -22,9 +21,8 @@ FactoryGirl.define do
     password_confirmation password 
     admin true
   end
-  
-
 end
+
 FactoryGirl.define do
   bdate = Time.new(1973, 10, 15)
   factory :character, class: Character do
@@ -37,16 +35,19 @@ FactoryGirl.define do
     user
   end
 end
-# FactoryGirl.define do
-#   name = "Taras Bilous"
-#   password = "foobar"
-#   factory :user  do
-#     name     name
-#     email    { FactoryGirl.generate(:email) }
-#     password password
-#     password_confirmation
-#   end
-#   factory :admin, class: User do
-#     admin      true
-#   end
-# end
+
+FactoryGirl.define do
+  name = "Taras Bilous"
+  comment = "Lorem ipsum dolor sit amet"
+  email = "contact@email.com"
+  factory :contact  do
+    name    name
+    comment comment
+    phone   "1231231212"
+    email   email
+    address  "Chernivrsi, Nezalezhnosti str"
+    latitude (48.268707)
+    longitude (25.927730)
+    photo   ""
+  end
+end

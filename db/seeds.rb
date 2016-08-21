@@ -19,3 +19,18 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+20.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  comment = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In est nulla, tristique vitae augue eu, pulvinar viverra fusce."
+  geo = "25.625565"
+  address = "Chernivrsi, Nezalezhnosti str"
+  Contact.create!(name:  name,
+               email: email,
+               comment: comment,
+               address: address,
+               phone: '1231231212'
+               latitude: 48.268707,
+               longitude: 25.927730,
+               photo: "")
+end

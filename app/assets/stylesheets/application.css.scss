@@ -60,6 +60,10 @@ body {
   }
 }
 
+textarea {
+  resize: none;
+}
+
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
 

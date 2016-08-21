@@ -54,5 +54,8 @@ module CharactersHelper
   def presence_characters(list)
     list.where(:usd == true).count > 0
   end
+  def active_characters(list)
+    list.where(:active == true).count > 0
+  end
   
 end

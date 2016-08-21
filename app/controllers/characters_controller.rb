@@ -22,8 +22,8 @@ class CharactersController < ApplicationController
       flash[:success] = t('activerecord.successful.messages.character.created')
       redirect_to root_path
     else
-      # render 'new'
-      redirect_to current_user.characters.new
+      render "new"
+      # redirect_to current_user.characters.new
     end
   end
 
@@ -34,7 +34,7 @@ class CharactersController < ApplicationController
   def update
     @character = current_user.characters.find(params[:id])
     if @character.update_attributes(character_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = t('activerecord.successful.messages.character.created')
       redirect_to root_path
     else
       render 'edit'

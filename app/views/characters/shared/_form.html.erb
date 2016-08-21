@@ -3,7 +3,7 @@
     <%= f.error_notification %>
   
     <div class="form-inputs">
-        <%= f.input :name, placeholder: 'user@domain.com'%>
+        <%= f.input :name %>
         <%= f.input :comment %>
         <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
                               end_year: Date.today.year %>

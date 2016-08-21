@@ -20,6 +20,11 @@ RSpec.describe "CharacterPages", type: :view do
     describe "create character" do
       before { click_on(t('patients.create')) }
       it { expect(page).to have_content(t('page.character.new')) }
+      describe "wrong validations" do 
+        before { (find('.btn-sent').click) }
+        it { expect(page).to have_css('.alert.alert-danger') }
+        it { expect(response).to render_template("new") }
+      end
       describe "fill in form" do
         let(:character) { FactoryGirl.create(:character, user: @user) }
         before do
@@ -49,7 +54,7 @@ RSpec.describe "CharacterPages", type: :view do
     end
     it "should view non-empty list characters" do
       expect(page).to have_css('.home-characters-list')
-      expect(page).to have_link( t('patients.create'),  href: new_character_path ) 
+      expect(page).to have_link( t('patients.create'), href: new_character_path ) 
       expect(page).to have_link( '', href: edit_character_path(character) ) 
     end
     describe "edit character" do

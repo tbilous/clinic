@@ -1,0 +1,33 @@
+<div class="container">
+
+
+<div class="page-header">
+  <h3>Contact Details</h3>
+  <div class="actions">
+    <%= link_to 'View All', contacts_path, class: 'btn btn-default btn-transborder' %>
+  </div>
+</div>
+
+<%= render :partial => 'users/shared/error_messages' %>
+
+<div class="media">
+  <div class="media-left padding-4x media-middle">
+    <%= contact_avatar(@contact, class: 'media-object img-circle') %>
+  </div>
+  <div class="media-body media-middle">
+    <h4>Full Name</h4>
+    <%= @contact.name %>
+
+    <h4>Email</h4>
+    <%= @contact.email %>
+
+    <h4>Phone Number</h4>
+    <%= @contact.phone %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= link_to 'Edit Contact', edit_contact_path(@contact), :class => 'btn btn-primary' %>
+  <%= link_to t('edit.delete'), @contact, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } %>
+</div>
+</div>
