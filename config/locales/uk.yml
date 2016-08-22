@@ -16,6 +16,13 @@ uk:
     character:
       new: 'Новий Пацієнт'
       edit: 'Редагувати Пацієнта'
+    contact:
+      new:    "Новий Контакт"
+      title:  "Контакт"
+      edit:   "Редагувати Контакт"
+      view:   "Переглянути Контакт"
+      index:  "Список контактів"
+      name:   "Ім`я"
   will_paginate:
     previous_label: "&#8592; Попередній"
     next_label: "Слідуючий &#8594;"
@@ -74,6 +81,14 @@ uk:
         one: 'Пацієнт'
         few: 'Пацієнти'
         many: 'Пацієнтів'
+      contact:
+        one: 'Контакт'
+        few: 'Контакти'
+        many: 'Контактів'
+        name: 'Ім`я'
+        address: 'Адреса'
+        phone: 'Телефон'
+        comment: 'Опис'
     user:
       models:
         name: "Користувач"

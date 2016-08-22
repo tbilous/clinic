@@ -37,8 +37,8 @@ class ContactsController < ApplicationController
   def update
     @contact = current_user.contacts.find(params[:id])
     if @contact.update_attributes(contacts_params)
-      flash[:success] = "activerecord.successful.messages.contact.deleted"
-      redirect_to root_path
+      flash[:success] = t("activerecord.successful.messages.contact.updated")
+      render 'show'
     else
       render 'edit'
     end

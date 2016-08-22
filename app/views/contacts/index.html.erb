@@ -1,7 +1,18 @@
+<% provide(:title, t('page.contact.index')) %>
 <div class="container">
-  <p id="notice"><%= notice %></p>
   
-  <h1>Listing Contacts</h1>
+  <div class="page-header">
+    <div class="row">
+      <div class="col-xs-5">
+        <h1><%= yield(:title) %></h1>
+      </div>
+      <div class="col-xs-7 text-right">
+        <%= link_to new_contact_path, title: 'new', class: 'btn btn-primary' do%>
+          <span class="glyphicon glyphicon-plus"></span>
+        <% end %>
+      </div>
+    </div>
+  </div
 
   <div class="list-group">
 
@@ -23,22 +34,12 @@
           <div class="media-body media-middle contact-email hidden-xs">
             <span><%= contact.email %></span>
           </div>
-<!--    
-          <td><%= link_to contact.name, contact %></td>
-          <td><%= link_to 'Show', contact %></td>
-          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-          <td><%= link_to 'Destroy', contact, method: :delete, title:'Are you sure?',  data: { confirm: 'Are you sure?' } %></td>
-          <td>  <%= link_to t('edit.delete'), contact, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } %></td>-->
         </div>
       <% end %>
     <% end %>
-
-  
   <br>
-
-  <%= link_to 'New Contact', new_contact_path %>
   <hr>
-  <%= link_to :back, :class => "btn", :title => t('back') do %>
+  <%= link_to root_path, class: "btn", title: t('back') do %>
     <span class="glyphicon glyphicon-triangle-left"></span>
   <% end %>
   <br>

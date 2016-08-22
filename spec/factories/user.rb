@@ -31,7 +31,6 @@ FactoryGirl.define do
     birthday bdate
     sex true
     usd true
-    active true
     user
   end
 end

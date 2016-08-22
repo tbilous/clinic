@@ -1,4 +1,3 @@
-<!--<h2><%= t('activerecord.model.character.one') %></h2>-->
 <% pcount = @characters.count %>
 <% if pcount == 1 %>
   <h2><%= t('activerecord.model.character.one') %></h2>
@@ -9,10 +8,11 @@
 <% end %>
 <table class="table my-table table-hover home-characters-list">
   <% @characters.each do |character| %>
-    <tr <% if character.active %> class="alert alert-success" <% end %> >
+    <tr <% if character.running? %> class="alert alert-success" <% end %> >
       <td><%= character.name %></td>
       <td><%= character.comment %></td>
       <td><%= t('age') + ' ' + age(character) %></td>
+
       <td>
         <%= link_to edit_character_path(character) do %>
           <span class="glyphicon glyphicon-pencil"></span>

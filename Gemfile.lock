@@ -16,6 +16,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.11.0)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -290,6 +291,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   autoprefixer-rails
   avatar_magick (~> 1.0.1)
   bootstrap-sass (~> 3.3.0)

@@ -14,7 +14,7 @@ RSpec.describe Character, type: :model do
   it { should respond_to(:comment) }
   it { should respond_to(:birthday) }
   it { should respond_to(:sex) }
-  it { should respond_to(:active) }
+  # it { should respond_to(:active) }
   it { should respond_to(:usd) }
   it { should respond_to(:user_id) }
   

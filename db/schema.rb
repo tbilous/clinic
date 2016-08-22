@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821180233) do
+ActiveRecord::Schema.define(version: 20160822090547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,15 +49,15 @@ ActiveRecord::Schema.define(version: 20160821180233) do
   add_index "antropometric", ["created_at", "character_id"], name: "index_antropometric_on_created_at_and_character_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                      null: false
     t.string   "comment",    default: ""
-    t.date     "birthday",                   null: false
-    t.boolean  "sex",                        null: false
-    t.boolean  "active",     default: false
+    t.date     "birthday",                  null: false
+    t.boolean  "sex",                       null: false
     t.boolean  "usd",        default: true
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "aasm_state"
   end
 
   add_index "characters", ["user_id", "created_at"], name: "index_characters_on_user_id_and_created_at", using: :btree
