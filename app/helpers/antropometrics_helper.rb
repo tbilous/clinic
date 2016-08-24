@@ -1,2 +1,0 @@
-module AntropometricsHelper
-end

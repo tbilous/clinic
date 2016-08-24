@@ -6,7 +6,7 @@ RSpec.describe Character, type: :model do
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
   
-  before { @character = user.characters.build(name: "Example Character", comment: 'My son', birthday: Time.new(1973, 10, 15),  sex: true, user_id: user.id) }
+  before { @character = user.characters.build(name: 'Example Character', comment: 'My son', birthday: Time.new(1973, 10, 15),  sex: true, user_id: user.id) }
 
   subject { @character }
   
@@ -33,7 +33,7 @@ RSpec.describe Character, type: :model do
     it { should_not be_valid }
   end
   
-  it "should destroy associated characters" do
+  it 'should destroy associated characters' do
     characters = user.characters.to_a
     user.destroy
     expect(characters).not_to be_empty

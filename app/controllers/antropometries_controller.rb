@@ -1,0 +1,3 @@
+class AntropometriesController < ApplicationController
+
+end

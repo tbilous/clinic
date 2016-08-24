@@ -17,7 +17,7 @@ class Character < ActiveRecord::Base
 
   end
   belongs_to  :user
-  # has_many    :antropometric, dependent: :destroy
+  has_many    :anthropometries, dependent: :destroy
   default_scope -> { order('created_at DESC') }
 
   validates :name, presence: true, length: { maximum: 20 }

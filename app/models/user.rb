@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :characters, dependent: :destroy
   has_many :contacts, dependent: :destroy
-  
+  has_many :anthropometries, dependent: :destroy
+  # has_many :antropometric, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          

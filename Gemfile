@@ -59,6 +59,7 @@ group :development, :test do
   # gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+  gem 'spring-commands-rspec', git: 'https://github.com/thewoolleyman/spring-commands-rspec.git'
 end
 
 group :test do

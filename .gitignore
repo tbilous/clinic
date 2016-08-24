@@ -16,3 +16,4 @@ Procfile
 .rbenv-gemsets
 .rspec
 bundler_stubs/
+.idea
