@@ -17,3 +17,6 @@ Procfile
 .rspec
 bundler_stubs/
 .idea
+/public/system/
+/clinic.iml
+/.rvmrc

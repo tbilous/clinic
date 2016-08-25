@@ -37,8 +37,7 @@ admin.save
                   phone: '1231231212',
                   latitude: 48.268707,
                   longitude: 25.927730,
-                  user_id: admin.id,
-                  photo: '')
+                  user_id: admin.id)
 end
 2.times do |n|
   b_date = Time.new((1973 + n+1), 10, 15)

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160824110118) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "anthropometries", force: :cascade do |t|
-    t.datetime "date",         default: '2016-08-24 10:47:00', null: false
+    t.datetime "date",         default: '2016-08-25 06:33:47', null: false
     t.string   "comment"
     t.float    "weight"
     t.float    "height"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 20160824110118) do
   end
 
   add_index "anthropometries", ["user_id", "created_at"], name: "index_anthropometries_on_user_id_and_created_at", using: :btree
+
+  create_table "antropometric", force: :cascade do |t|
+    t.datetime "date",         default: '2016-08-19 06:44:45', null: false
+    t.text     "comment"
+    t.float    "weight"
+    t.float    "height"
+    t.float    "cranium"
+    t.float    "chest"
+    t.integer  "character_id",                                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  add_index "antropometric", ["created_at", "character_id"], name: "index_antropometric_on_created_at_and_character_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",                      null: false
