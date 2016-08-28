@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  # include Devise::Controllers::Helpers
+  include Devise::Controllers::Helpers
   # helper_method :current_user
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :show, :update, :destroy]
@@ -40,14 +40,21 @@ class CharactersController < ApplicationController
       render 'edit'
     end
   end
-  
+
+  def activate
+    @character = current_user.characters.find(params[:id])
+    if current_user.patient != @character.id
+      current_user.update_attribute(:patient, @character.id)
+    end
+      redirect_to root_path
+  end
   def destroy
     @character = current_user.characters.find(params[:id])
     @character.destroy if @character.present?
     flash[:success] = t('activerecord.successful.messages.character.deleted')
     redirect_to root_path
   end
-  
+
   private
     def character_params
       params.require(:character).permit(:name, :comment, :sex, :birthday,  :used)
@@ -58,5 +65,8 @@ class CharactersController < ApplicationController
       if current_user != Character.find(params[:id]).user
         redirect_to root_path
       end
+    end
+    def active_character
+      current_user.patient == @character
     end
 end

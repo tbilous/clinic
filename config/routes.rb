@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/show', as: 'user_root'
   resources :users
+  # match '/characters/:id',   to: 'characters#activate',         via: 'get'
   resources :characters, only: [:new, :create, :destroy, :update, :edit, :show]
   resources :contacts, only: [:new, :create, :destroy, :update, :edit, :show, :index]
   
   root  'static_pages#home'
 
-  
-  # match '/characters/:id',   to: 'characters#show',         via: 'get'
+  post 'characters/activate' => 'characters#activate'
+
   match '/users/:id',   to: 'users#show',         via: 'get'
   match '/edit',        to: 'users#edit',         via: 'get'
   match '/index',       to: 'users#index',        via: 'get'
