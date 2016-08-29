@@ -54,6 +54,7 @@ en:
     delete_succes: "User was deleted succesfull"
     delete_active: "Here do not allow for delete yourself"
   patients:
+    active: 'Main patient'
     choose: "Choose"
     name: 'Name'
     new: 'New'
@@ -71,8 +72,6 @@ en:
   are_you_sure: "Are you sure?"
   cancel_my_account: "Cancel my accaunt"
   activerecord:
-    models:
-        name: "User"
     successful:
       messages:
         character:
@@ -84,3 +83,6 @@ en:
         one: 'Patient'
         few: 'Patients'
         many: 'Patients'
+      user:
+        name: "User"
+        names: 'Users'

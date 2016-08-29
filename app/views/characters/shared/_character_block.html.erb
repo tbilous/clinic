@@ -6,7 +6,7 @@
 <% elsif pcount >= 5  %>
   <h2><%= t('activerecord.model.character.many') %></h2>
 <% end %>
-<div> <%= active_patient.name %> </div>
+<div> <%= t('patients.active') + ': ' + active_patient.name %> </div>
 <table class="table my-table table-hover home-characters-list">
   <% @characters.each do |character| %>
     <tr <% if character.running? || active_character(character.id) %> class="alert alert-success" <% end %> >

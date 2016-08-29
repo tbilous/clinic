@@ -42,6 +42,7 @@ uk:
     delete_succes: "Користувача видалено"
     delete_active: "Тут не можна видаляти себе"
   patients:
+    active: 'Головний пацієнт'
     choose: "Вибрати"
     name: 'Пацієнт'
     new: 'Новий'
@@ -59,9 +60,6 @@ uk:
     male: 'Чоловіча'
     female: 'Жіноча'
   age: 'Вік'
-  active:
-    yes: 'Активний'
-    no: 'Не Активний'
   used:
     true: 'Використовується'
     false: 'Не Використовується'
@@ -89,9 +87,10 @@ uk:
         address: 'Адреса'
         phone: 'Телефон'
         comment: 'Опис'
-    user:
-      models:
+      user:
         name: "Користувач"
+        names: 'Користувачі'
+
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'

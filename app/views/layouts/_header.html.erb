@@ -8,9 +8,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to image_tag("logo_opt.png", alt: "Medicines", class: "navbar-brand"), root_path, :id => "logo"  %>
+        <%= link_to image_tag("logo_opt.png", alt: "Medicines", class: "navbar-brand"), root_path, id: "logo"  %>
       </div>
-  
+
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <%= nav_bar do %>
           <li><%= nav_link t(:page_home), root_path %></li>
@@ -36,8 +36,9 @@
         </form>
         <%= nav_bar_right do %>
           <% if user_signed_in? %>
+            <li><%= nav_link (t('patients.active') + ': ' + active_patient.name), edit_character_path(active_patient.id)  %> </li>
             <% if current_user.admin? %>
-              <li><%= link_to "Users", users_path %></li>
+              <li><%= nav_link t('activerecord.model.user.names'), users_path %></li>
             <% end %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -47,7 +48,7 @@
                 <li><%= link_to  t('page.user.edit'), edit_user_registration_path %></li>
                 <li><%= link_to t('page.user.view'), current_user %></li>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to t(:sign_out), destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to t(:sign_out), destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
           <% else %>

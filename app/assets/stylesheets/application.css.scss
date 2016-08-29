@@ -47,7 +47,7 @@ body {
     position: absolute;
     right: .5rem;
     top: .5rem;
-  } 
+  }
 }
 .jumbotron {
   &__title {
@@ -59,6 +59,10 @@ body {
     vertical-align: middle;
   }
 }
+.translation_missing {
+  font-weight: bold;
+  color: $brand-danger
+}
 
 textarea {
   resize: none;
@@ -66,4 +70,3 @@ textarea {
 
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
-
