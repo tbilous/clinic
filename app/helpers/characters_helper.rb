@@ -62,4 +62,12 @@ module CharactersHelper
     current_user.patient == id
   end
 
+  def active_patient
+    if current_user && current_user.patient?
+      patient = Character.find_by_id(current_user.patient)
+      patient
+    else
+    end
+  end
+  
 end

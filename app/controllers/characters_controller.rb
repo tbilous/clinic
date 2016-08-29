@@ -45,6 +45,7 @@ class CharactersController < ApplicationController
     @character = current_user.characters.find(params[:id])
     if current_user.patient != @character.id
       current_user.update_attribute(:patient, @character.id)
+       flash[:success] = @character.name
     end
       redirect_to root_path
   end
