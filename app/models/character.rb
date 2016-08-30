@@ -18,7 +18,12 @@ class Character < ActiveRecord::Base
   end
   belongs_to  :user
   has_many    :anthropometries, dependent: :destroy
+  accepts_nested_attributes_for :anthropometries
+
   default_scope -> { order('created_at DESC') }
+
+  # scope :patient, lambda { |dir| select('characters.*').WHERE(character_id = #{dir} }
+  # scope :antropos_data, lambda { select('anthropometries.*').WHERE(character_id = #{dir} }
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :comment, length: { maximum: 120 }

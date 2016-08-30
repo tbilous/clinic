@@ -4,21 +4,21 @@ FactoryGirl.define do
   end
   name = "Taras Bilous"
   password = "foobar"
- 
- 
+
+
   factory :user do
     name name
-    email 
-    password password 
-    password_confirmation password 
+    email
+    password password
+    password_confirmation password
   end
 
  # Admin
   factory :admin, class: User do
     name name
-    email 
-    password password 
-    password_confirmation password 
+    email
+    password password
+    password_confirmation password
     admin true
   end
 end
@@ -47,6 +47,17 @@ FactoryGirl.define do
     address  "Chernivrsi, Nezalezhnosti str"
     latitude (48.268707)
     longitude (25.927730)
-    photo   ""
+  end
+end
+FactoryGirl.define do
+  date = Time.now
+  comment = "Lorem ipsum dolor sit amet"
+  factory :antropos  do
+    date    date
+    comment comment
+    height  90
+    weight  12.5
+    cranium 60
+    chest   50
   end
 end

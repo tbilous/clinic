@@ -21,3 +21,4 @@ bundler_stubs/
 /clinic.iml
 /.rvmrc
 /.rake_tasks~
+/db/schema.rb

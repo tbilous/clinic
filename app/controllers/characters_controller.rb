@@ -3,24 +3,25 @@ class CharactersController < ApplicationController
   # helper_method :current_user
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :show, :update, :destroy]
-  
+
   def new
     @character = current_user && current_user.characters.new
   end
-  
-  # def index 
+
+  # def index
   #   @characters = current_user && current_user.characters.all
   # end
-    
+
   def show
     @character = current_user && current_user.characters.find(params[:id])
   end
-  
+
   def create
     @character = current_user.characters.build(character_params)
     if @character.save
       flash[:success] = t('activerecord.successful.messages.character.created')
-      redirect_to root_path
+      # redirect_to root_path
+      redirect_to url_for( :action => :activate)
     else
       render "new"
       # redirect_to current_user.characters.new
@@ -30,7 +31,7 @@ class CharactersController < ApplicationController
   def edit
      @character = current_user.characters.find(params[:id])
   end
-  
+
   def update
     @character = current_user.characters.find(params[:id])
     if @character.update_attributes(character_params)
@@ -56,6 +57,9 @@ class CharactersController < ApplicationController
     redirect_to root_path
   end
 
+  def activate_character
+    current_user.patient.update_attributes(:patient, @character.id)
+  end
   private
     def character_params
       params.require(:character).permit(:name, :comment, :sex, :birthday,  :used)
@@ -66,8 +70,5 @@ class CharactersController < ApplicationController
       if current_user != Character.find(params[:id]).user
         redirect_to root_path
       end
-    end
-    def active_character
-      current_user.patient == @character
     end
 end

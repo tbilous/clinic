@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/show', as: 'user_root'
   resources :users
-  # match '/characters/:id',   to: 'characters#activate',         via: 'get'
   resources :characters, only: [:new, :create, :destroy, :update, :edit, :show]
   resources :contacts, only: [:new, :create, :destroy, :update, :edit, :show, :index]
-  
+  resources :anthropometries, only: [:new, :create, :destroy, :index]
+
   root  'static_pages#home'
 
   post 'characters/activate' => 'characters#activate'
@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   match '/index',       to: 'users#index',        via: 'get'
   match '/signup',      to: 'users#new',          via: 'get'
   match '/about',       to: 'static_pages#about', via: 'get'
-  
+
   get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
   app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
 }, as: :avatar
-  
+
   # scope "/:locale" do
   #   resources :static_pages
   # end

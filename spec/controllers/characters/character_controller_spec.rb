@@ -24,12 +24,12 @@ RSpec.describe CharactersController, type: :controller do
       specify { expect(response).to redirect_to(new_user_session_path) }
     end
   end
-  
+
   describe "for signed-in" do
-    before do 
+    before do
       sign_in @admin
     end
-  
+
     describe "POST new" do
       before do
         post 'new'
@@ -37,12 +37,23 @@ RSpec.describe CharactersController, type: :controller do
       it { expect(response).to render_template(:new) }
       it { expect(response).to_not redirect_to(new_user_session_path) }
     end
-    
+    describe 'Create new' do
+      it "creates character" do
+        character_params = FactoryGirl.attributes_for(:character)
+        expect { post :create, :character => character_params }.to change(Character, :count).by(1)
+      end
+      it 'make active' do
+        character_params = FactoryGirl.attributes_for(:character)
+        puts character_params
+        expect{ post :create, :character => character_params }.to change{ User.patient}.from(nil).to(Character.id)
+      end
+    end
+
     describe "and owner users" do
       let!(:character) { FactoryGirl.create(:character, user: @admin) }
-        
+
       describe "PUT 'update'" do
-        let(:attr) do 
+        let(:attr) do
           { :name => 'new name', :comment => 'new comment' }
         end
         before(:each) do
@@ -53,14 +64,14 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(character.name).to eql attr[:name] }
         it { expect(character.comment).to eql attr[:comment] }
       end
-        
+
       describe "DELETE destroy" do
-        it { 
+        it {
           # character
-          expect{ delete :destroy, id: character.id 
+          expect{ delete :destroy, id: character.id
         }.to change{Character.count}.by(-1) }
       end
-      
+
       describe "GET show" do
         before do
           get :show, id: character.id
@@ -78,9 +89,9 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(response).to_not render_template(:show) }
         it { expect(response).to redirect_to(root_path) }
       end
-      
+
       describe "PUT 'update'" do
-        let(:attr) do 
+        let(:attr) do
           { :name => 'new name', :comment => 'new comment' }
         end
         before(:each) do
@@ -91,11 +102,11 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(character.name).to_not eql attr[:name] }
         it { expect(character.comment).to_not eql attr[:comment] }
       end
-      
+
       describe "DELETE destroy" do
-        it { 
+        it {
           # character
-          expect{ delete :destroy, id: character.id }.to_not change{Character.count} 
+          expect{ delete :destroy, id: character.id }.to_not change{Character.count}
         }
       end
     end
