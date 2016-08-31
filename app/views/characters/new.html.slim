@@ -1,0 +1,13 @@
+- provide(:title, t('page.character.new'))
+.jumbotron.jumbotron__title
+  .container
+    h1
+      = yield(:title)
+.container
+  .row
+    = render 'characters/shared/form'
+  hr
+  = link_to :back, :class => "btn", :title => t('back') do
+    span.glyphicon.glyphicon-triangle-left
+  br
+  hr

@@ -1,0 +1,28 @@
+- provide(:title, t(:page_user_edit))
+.jumbotron.jumbotron__title
+  .container
+    h3
+      = t('page.user.edit') + ' ' + @user.name
+    h1
+      small
+        = yield(:title)
+.container
+  .row
+    .col-lg-6.col-lg-offset-3
+      .well.bs-component
+        = form_for(@user, :html => {:class => 'form-horizontal'}) do |f|
+          fieldset
+            .form-group
+              = f.label :name, :class => 'col-xs-3 control-label'
+              .col-xs-9
+                = f.text_field :name, :class => 'form-control'
+            .form-group
+              = f.label :password, :class => 'col-xs-3 control-label'
+              .col-xs-9
+                = f.password_field :password, :class => 'form-control'
+            .form-group
+              = f.label :password_confirmation,  :class => 'col-xs-3 control-label'
+              .col-xs-9
+                = f.password_field :password_confirmation, :class => 'form-control'
+            = f.submit t('edit.save'), class: "btn btn-large btn-primary pull-right"
+          = link_to t('devise.shared.links.back'), :back

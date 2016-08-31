@@ -1,0 +1,71 @@
+header.header
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"]
+          span.sr-only
+            | Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to image_tag("logo_opt.png", alt: "Medicines", class: "navbar-brand"), root_path, id: "logo"
+      #bs-example-navbar-collapse-2.collapse.navbar-collapse
+        = nav_bar do
+          li
+            = nav_link t(:page_home), root_path
+          li
+            a[href="#"]
+              | Link
+          li.dropdown
+            a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
+              | Dropdown 
+              span.caret
+            ul.dropdown-menu[role="menu"]
+              li
+                a[href="#"]
+                  | Action
+              li
+                a[href="#"]
+                  | Another action
+              li
+                a[href="#"]
+                  | Something else here
+              li.divider
+              li
+                a[href="#"]
+                  | Separated link
+              li.divider
+              li
+                a[href="#"]
+                  | One more separated link
+        form.navbar-form.navbar-left[role="search"]
+          .form-group
+            input.form-control[type="text" placeholder="Search"]
+          button.btn.btn-default[type="submit"]
+            | Submit
+        = nav_bar_right do
+          - if user_signed_in?
+            li
+              = nav_link (t('patients.active') + ': ' + active_patient.name), edit_character_path(active_patient.id)
+            - if current_user.admin?
+              li
+                = nav_link t('activerecord.model.user.names'), users_path
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                = t('page.user.title')
+                span.caret
+              ul.dropdown-menu
+                li
+                  = link_to  t('page.user.edit'), edit_user_registration_path
+                li
+                  = link_to t('page.user.view'), current_user
+                li.divider[role="separator"]
+                li
+                  = link_to t(:sign_out), destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to t(:sign_in), new_user_session_path
+            li
+              = link_to t(:sign_up), new_user_registration_path
+            li
+              = nav_link t(:page_about), about_path

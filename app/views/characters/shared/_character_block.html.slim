@@ -1,0 +1,33 @@
+- pcount = @characters.count
+- if pcount == 1
+  h2
+    = t('activerecord.model.character.one')
+- elsif pcount > 1
+  h2
+    = t('activerecord.model.character.few')
+- elsif pcount >= 5
+  h2
+    = t('activerecord.model.character.many')
+div
+  = t('patients.active') + ': ' + active_patient.name
+table.table.my-table.table-hover.home-characters-list
+  - @characters.each do |character|
+    |  <tr 
+    - if character.running? || active_character(character.id)
+      |  class="alert alert-success" 
+    |  > 
+    td
+      = character.name
+    td
+      = character.comment
+    td
+      = t('age') + ' ' + age(character)
+    td
+      = button_to "Some Button",  characters_activate_path(:id => character.id)
+    td
+      = link_to edit_character_path(character) do
+        span.glyphicon.glyphicon-pencil
+.row
+  .col-sm-6.col-xs-offset-3
+    = link_to t('patients.create'),  new_character_path, class: "class btn btn-md btn-info"
+hr
