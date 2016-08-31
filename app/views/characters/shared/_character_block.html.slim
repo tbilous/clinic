@@ -9,7 +9,8 @@
   h2
     = t('activerecord.model.character.many')
 div
-  = t('patients.active') + ': ' + active_patient.name
+  - if active_patient
+    = t('patients.active') + ': ' + active_patient.name
 table.table.my-table.table-hover.home-characters-list
   - @characters.each do |character|
     |  <tr 

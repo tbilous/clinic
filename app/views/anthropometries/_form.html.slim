@@ -1,9 +1,0 @@
-= form_for @anthropometry do |f|
-  - if @anthropometry.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@anthropometry.errors.count, "error")} prohibited this anthropometry from being saved:"
-      ul
-        - @anthropometry.errors.full_messages.each do |message|
-          li = message
-
-  .actions = f.submit

@@ -18,55 +18,59 @@
 @import "bootstrap";
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
-
 $footer-space: 150px;
 
 body {
-  margin-bottom: $footer-space;
-  padding-top: $navbar-height;
+    margin-bottom: $footer-space;
+    padding-top: $navbar-height;
 }
+
 .header {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-top: 1rem;
-  /* Set the fixed height of the footer here */
-  height: $footer-space;
-  background-color: $navbar-inverse-bg;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 1rem;
+    /* Set the fixed height of the footer here */
+    height: $footer-space;
+    background-color: $navbar-inverse-bg;
 }
 
 .danger-block {
-  position: relative;
-  .close {
-    position: absolute;
-    right: .5rem;
-    top: .5rem;
-  }
+    position: relative;
+
+    .close {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
 }
+
 .jumbotron {
-  &__title {
-    margin-top: -2rem;
-  }
+    &__title {
+        margin-top: -2rem;
+    }
 }
+
 .table.my-table {
-  td {
-    vertical-align: middle;
-  }
+    td {
+        vertical-align: middle;
+    }
 }
+
 .translation_missing {
-  font-weight: bold;
-  color: $brand-danger
+    font-weight: bold;
+    color: $brand-danger;
 }
 
 textarea {
-  resize: none;
+    resize: none;
 }
-
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
