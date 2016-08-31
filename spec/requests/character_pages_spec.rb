@@ -35,6 +35,7 @@ RSpec.describe "CharacterPages", type: :view do
           find('#character_birthday_3i').select(character.birthday.day.to_s)
           find('#character_sex_true').set(true)
         end
+# TODO Test character error
         it { expect { (find('.btn-sent').click) }.to change(Character, :count).by(1) }
         describe 'check result' do
           before { (find('.btn-sent').click) }
