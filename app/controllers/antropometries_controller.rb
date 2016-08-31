@@ -5,32 +5,33 @@ class AntropometriesController < ApplicationController
   before_action :require_permission, only: [:edit, :show, :update, :destroy]
   before_action :active_patient, only: [:new, :create, :destroy]
 
-  def new
-    @antropos = current_user && active_patient && current_patient.anthropometries.new
-  end
+  # def new
+  #   @antropos = current_user && active_patient && current_user.anthropometries.new
+  # end
 
   def index
-    @antropos = current_user && active_patient && current_patient.anthropometries.all
+    @antropos = current_user && active_patient && current_user.anthropometries.all
   end
 
-  def show
-    @antropos = current_user && active_patient && current_patient.anthropometries.find(params[:id])
-  end
+  # def show
+  #   @antropos = current_user && active_patient && current_user.anthropometries.find(params[:id])
+  # end
 
   def create
-    @antropos = current_patient.anthropometries.build(anthropometries_params)
+    @antropos = current_user.anthropometries.build(anthropometries_params)
     if @antropos.save
       flash[:success] = t('activerecord.successful.messages.character.created')
       redirect_to root_path
     else
-      render "new"
+      # render "new"
+      redirect_to root_path
       # redirect_to current_user.characters.new
     end
   end
 
 
   def destroy
-    @antropos = current_patient.anthropometries.find(params[:id])
+    @antropos = current_user.anthropometries.find(params[:id])
     @antropos.destroy if @antropos.present?
     flash[:success] = t('activerecord.successful.messages.character.deleted')
     redirect_to root_path
@@ -54,5 +55,4 @@ class AntropometriesController < ApplicationController
         redirect_to root_path
       end
     end
-
 end

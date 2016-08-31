@@ -49,10 +49,11 @@ FactoryGirl.define do
     longitude (25.927730)
   end
 end
+
 FactoryGirl.define do
   date = Time.now
   comment = "Lorem ipsum dolor sit amet"
-  factory :antropos  do
+  factory :adata, class: Anthropometry do
     date    date
     comment comment
     height  90

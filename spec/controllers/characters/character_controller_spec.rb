@@ -42,11 +42,11 @@ RSpec.describe CharactersController, type: :controller do
         character_params = FactoryGirl.attributes_for(:character)
         expect { post :create, :character => character_params }.to change(Character, :count).by(1)
       end
-      it 'make active' do
-        character_params = FactoryGirl.attributes_for(:character)
-        puts character_params
-        expect{ post :create, :character => character_params }.to change{ User.patient}.from(nil).to(Character.id)
-      end
+      # it 'make active' do
+      #   character_params = FactoryGirl.attributes_for(:character)
+      #   puts character_params
+      #   expect{ post :create, :character => character_params }.to change{ User.patient}.from(nil).to(Character.id)
+      # end
     end
 
     describe "and owner users" do
