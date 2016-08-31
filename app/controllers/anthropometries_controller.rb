@@ -1,4 +1,4 @@
-class AntropometriesController < ApplicationController
+class AnthropometriesController < ApplicationController
   include Devise::Controllers::Helpers
   # helper_method :current_user
   before_action :authenticate_user!

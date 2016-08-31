@@ -1,0 +1,2 @@
+module AnthropometriesHelper
+end

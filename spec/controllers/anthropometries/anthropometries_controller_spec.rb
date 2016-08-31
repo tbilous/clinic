@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AntropometriesController, type: :controller do
+RSpec.describe AnthropometriesController, type: :controller do
   before :each do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       @request.env["devise.mapping"] = Devise.mappings[:user]
