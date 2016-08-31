@@ -72,5 +72,20 @@ body {
 textarea {
     resize: none;
 }
+
+.display {
+  &__flex {
+    display: flex;
+    @media all and (max-width: $screen-sm-min) {
+      flex-direction: column;
+    }
+  }
+  &__block {
+    display: block;
+  }
+  &__inline-block {
+    display: inline-block;
+  }
+}
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";

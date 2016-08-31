@@ -1,14 +1,16 @@
 .col-sm-6.col-sm-offset-3
   = simple_form_for @anthropometry do |f|
     = f.error_notification
-    .form-inputs
-      = f.input :date
-      = f.input :comment
+    .form-inputs.display__flex
+      .text-nowrap
+        = f.input :date
       = f.input :height
       = f.input :weight
       = f.input :cranium
       = f.input :chest
       = f.hidden_field :character_id, input_html: { value: active_patient.id }
+    .form-inputs
+      = f.input :comment, as: :text, input_html: { rows: '4' }
     .form-actions
       = link_to root_path, :title => t('back'), class: "btn btn-info" do
         span.glyphicon.glyphicon-triangle-left

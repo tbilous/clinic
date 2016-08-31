@@ -50,6 +50,7 @@ class CharactersController < ApplicationController
     end
       redirect_to root_path
   end
+
   def destroy
     @character = current_user.characters.find(params[:id])
     @character.destroy if @character.present?
@@ -60,6 +61,7 @@ class CharactersController < ApplicationController
   def activate_character
     current_user.patient.update_attributes(:patient, @character.id)
   end
+
   private
     def character_params
       params.require(:character).permit(:name, :comment, :sex, :birthday,  :used)

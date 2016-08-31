@@ -4,8 +4,7 @@
     .form-inputs
       = f.input :name
       = f.input :comment
-      = f.input :birthday, as: :date, start_year: Date.today.year - 90,
-      -                               end_year: Date.today.year
+      = f.input :birthday, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year
       = f.input :sex, as: :radio_buttons, :collection => [:true, :false]
     .form-actions
       = link_to root_path, :title => t('back'), :class => "btn btn-info" do
