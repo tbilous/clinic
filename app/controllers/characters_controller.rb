@@ -20,11 +20,10 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(character_params)
     if @character.save
       flash[:success] = t('activerecord.successful.messages.character.created')
-      # redirect_to root_path
-      redirect_to url_for( :action => :activate)
+      activate_character
+      redirect_to root_path
     else
       render "new"
-      # redirect_to current_user.characters.new
     end
   end
 
@@ -59,7 +58,7 @@ class CharactersController < ApplicationController
   end
 
   def activate_character
-    current_user.patient.update_attributes(:patient, @character.id)
+    current_user.update_attribute(:patient, @character.id)
   end
 
   private
