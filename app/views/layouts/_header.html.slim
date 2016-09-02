@@ -18,7 +18,7 @@ header.header
               | Link
           li.dropdown
             a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
-              | Dropdown 
+              | Dropdown
               span.caret
             ul.dropdown-menu[role="menu"]
               li
@@ -47,7 +47,7 @@ header.header
           - if user_signed_in?
             - if active_patient
               li
-                = nav_link (t('patients.active') + ': ' + active_patient.name), edit_character_path(active_patient.id)
+                = nav_link (t('patients.active') + ': ' + active_patient.name), character_path(active_patient.id)
             - if current_user.admin?
               li
                 = nav_link t('activerecord.model.user.names'), users_path

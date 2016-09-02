@@ -14,6 +14,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = current_user && current_user.characters.find(params[:id])
+    @anthropometry = current_user && current_user.anthropometries.build
+    @anthropometries = current_user && @character.anthropometries.all
   end
 
   def create

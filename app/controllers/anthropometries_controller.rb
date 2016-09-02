@@ -18,10 +18,11 @@ class AnthropometriesController < ApplicationController
     end
 
     def create
-        @anthropometry = current_user.anthropometries.build(anthropometries_params)
+        @anthropometry = current_user && current_user.anthropometries.build(anthropometries_params)
         if @anthropometry.save
             flash[:success] = t('activerecord.successful.messages.character.created')
-            redirect_to root_path
+            # redirect_to root_path
+            redirect_to :back
         else
             # render "new"
             redirect_to root_path
@@ -52,6 +53,6 @@ class AnthropometriesController < ApplicationController
     end
 
     def require_permission
-        redirect_to root_path if current_user != Character.find(params[:id]).user
+        redirect_to root_path if current_user != Anthropometry.find(params[:id]).user
     end
 end

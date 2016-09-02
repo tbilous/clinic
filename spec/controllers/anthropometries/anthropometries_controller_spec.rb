@@ -28,48 +28,46 @@ RSpec.describe AnthropometriesController, type: :controller do
   end
 
   describe "for signed-in" do
-    # before do
-    #   sign_in @admin
-    # end
-    #
-    # describe "POST new" do
-    #   before do
-    #     post 'new'
-    #   end
-    #   it { expect(response).to render_template(:new) }
-    #   it { expect(response).to_not redirect_to(new_user_session_path) }
-    # end
+    before do
+      sign_in @admin
+    end
 
-    # describe "and owner users" do
-    #   let!(:character) { FactoryGirl.create(:character, user: @admin) }
-    #
-    #   describe "PUT 'update'" do
-    #     let(:attr) do
-    #       { :name => 'new name', :comment => 'new comment' }
-    #     end
-    #     before(:each) do
-    #       put :update, :id => character.id, :user => @admin.id, :character => attr
-    #       character.reload
-    #     end
-    #     it { expect(response).to redirect_to(root_path) }
-    #     it { expect(character.name).to eql attr[:name] }
-    #     it { expect(character.comment).to eql attr[:comment] }
-    #   end
-    #
-    #   describe "DELETE destroy" do
-    #     it {
-    #       # character
-    #       expect{ delete :destroy, id: character.id
-    #     }.to change{Character.count}.by(-1) }
-    #   end
-    #
-    #   describe "GET show" do
-    #     before do
-    #       get :show, id: character.id
-    #     end
-    #     it { expect(response).to render_template(:show) }
-    #   end
-    # end
+    describe "POST new" do
+      before do
+        post 'new'
+      end
+      it { expect(response).to render_template(:new) }
+      it { expect(response).to_not redirect_to(new_user_session_path) }
+    end
+
+    describe "and owner users" do
+
+
+      # describe "PUT 'update'" do
+      #   let(:attr) do
+      #     { :name => 'new name', :comment => 'new comment' }
+      #   end
+      #   before(:each) do
+      #     put :update, :id => character.id, :user => @admin.id, :character => attr
+      #     character.reload
+      #   end
+      #   it { expect(response).to redirect_to(root_path) }
+      #   it { expect(character.name).to eql attr[:name] }
+      #   it { expect(character.comment).to eql attr[:comment] }
+      # end
+      #
+      describe "DELETE destroy" do
+        let!(:anthropometry) { FactoryGirl.create(:adata, user: @admin, character: @character) }
+        it { expect{ delete :destroy, id: anthropometry.id }.to change{Anthropometry.count}.by(-1) }
+      end
+
+      describe 'Create new' do
+        it "creates anthropometry" do
+          adata_params = FactoryGirl.attributes_for(:adata, user: @admin, character: @character)
+          expect { post :create, :anthropometry => adata_params }.to change(Anthropometry, :count).by(1)
+        end
+      end
+    end
     # describe "and non-owner users" do
     #   let!(:character) { FactoryGirl.create(:character, user: @user) }
     #
