@@ -2,8 +2,8 @@ class AnthropometriesController < ApplicationController
     include Devise::Controllers::Helpers
     # helper_method :current_user
     before_action :authenticate_user!
-    before_action :require_permission, only: [:edit, :show, :update, :destroy]
-    before_action :active_patient, only: [:new, :create, :destroy]
+    before_action :require_permission, only: [:edit, :show, :destroy]
+    before_action :active_patient, only: [:new, :destroy]
 
     def new
       @anthropometry = current_user && active_patient && current_user.anthropometries.new

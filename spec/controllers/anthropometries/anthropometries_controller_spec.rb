@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe AnthropometriesController, type: :controller do
   before :each do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @request.env["devise.mapping"] = Devise.mappings[:user]
-      @admin = FactoryGirl.create :admin
-      @user = FactoryGirl.create :user
-      @character = FactoryGirl.create(:character, user: @admin)
-      # @antropos = FactoryGirl.create(:adata, user: @admin, character: @character)
-      # sign_in @admin
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @admin = FactoryGirl.create :admin
+    @user = FactoryGirl.create :user
+    @character = FactoryGirl.create(:character, user: @admin)
+    # @antropos = FactoryGirl.create(:adata, user: @admin, character: @character)
+    # sign_in @admin
   end
   # render_views}
 
@@ -58,7 +58,7 @@ RSpec.describe AnthropometriesController, type: :controller do
       #
       describe "DELETE destroy" do
         let!(:anthropometry) { FactoryGirl.create(:adata, user: @admin, character: @character) }
-        it { expect{ delete :destroy, id: anthropometry.id }.to change{Anthropometry.count}.by(-1) }
+        it { expect { delete :destroy, id: anthropometry.id }.to change { Anthropometry.count }.by(-1) }
       end
 
       describe 'Create new' do
