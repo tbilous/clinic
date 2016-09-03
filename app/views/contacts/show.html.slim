@@ -1,0 +1,33 @@
+- provide(:title, t('page.contact.view'))
+.container
+  .page-header
+    .row
+      .col-xs-5
+        h1
+          = @contact.name
+      .col-xs-7.text-right
+        = link_to edit_contact_path(@contact), :class => 'btn btn-primary' do
+          span.glyphicon.glyphicon-pencil
+  = render :partial => 'users/shared/error_messages'
+  .row
+    .col-sm-5.text-center
+      = contact_avatar(@contact, class: 'img-circle')
+    .col-sm-7
+      .well
+        h4
+          = t('activerecord.model.contact.name')
+        = @contact.name + ' | ' + @contact.comment
+        h4
+          = t('activerecord.model.contact.phone')
+        = @contact.phone
+        h4
+          | Email
+        = @contact.email
+        h4
+          = t('activerecord.model.contact.address')
+        = @contact.address
+  hr
+  = link_to contacts_path, :class => "btn", :title => t('back') do
+    span.glyphicon.glyphicon-triangle-left
+  br
+  hr

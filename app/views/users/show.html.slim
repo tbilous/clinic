@@ -1,0 +1,19 @@
+- provide(:title, t(:page_user))
+- if user_signed_in?
+  .jumbotron.jumbotron__title
+    .container
+      h1
+        = gravatar_for current_user
+        =@user.name
+.container
+  .well
+    ul.list-unstyled
+      li
+        = t("activerecord.model.user.name")+ ': ' + @user.name
+      li
+        | Email: 
+        = @user.email
+      li
+
+      li
+  = link_to t("edit.change"), edit_user_path(@user), class: 'btn btn-info'

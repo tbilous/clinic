@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       @characters = current_user.characters.all
     end
   end
- 
+
   def about
   end
 end

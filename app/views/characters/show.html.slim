@@ -1,0 +1,20 @@
+
+
+.container
+  .row
+    .col-xs-12
+      ul.list-unstyled
+        li
+          = @character.name
+
+  .row
+    h3
+      | Антропометрия
+
+    = render 'anthropometries/shared/form'
+    #anthropometries
+      - @anthropometries.each do |anthropomety|
+        = anthropometry.date
+= link_to 'Edit', edit_character_path(@character)
+|  |
+= link_to 'Back', characters_path

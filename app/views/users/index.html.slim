@@ -1,0 +1,32 @@
+- provide(:title, t('page.user.index'))
+.jumbotron.jumbotron__title
+  .container
+    h1
+      = yield(:title)
+.container
+  .notice
+    = render 'users/shared/error_messages'
+    = will_paginate
+    table.table
+      thead
+        tr
+          th
+            | #
+          th
+            = t('page.user.name')
+          th
+            | Email
+          th
+            = t('edit.delete')
+      tbody
+        - @users.each_with_index do |user, i|
+          tr
+            td
+              = i += 1
+            td
+              = link_to user.name, user
+            td
+              = link_to user.email, user
+            td
+              = link_to t('edit.delete'),  user, title: t('are_you_sure'),  method: :delete, data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }, class: 'btn btn-warning'
+    = will_paginate

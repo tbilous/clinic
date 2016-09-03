@@ -69,5 +69,5 @@ module CharactersHelper
     else
     end
   end
-  
+
 end

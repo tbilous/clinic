@@ -1,0 +1,36 @@
+- provide(:title, t('page.contact.index'))
+.container
+  .page-header
+    .row
+      .col-xs-5
+        h1
+          = yield(:title)
+      .col-xs-7.text-right
+        = link_to new_contact_path, title: 'new', class: 'btn btn-primary' do
+          span.glyphicon.glyphicon-plus
+    |  </div 
+    .list-group
+      - @contacts.each do |contact|
+        = link_to contact_path(contact), class: 'list-group-item' do
+          .media
+            .media-left.padding-3x.media-middle
+              = contact_avatar(contact, class: 'media-object img-circle', style: 'width:48px;height:48px;')
+            .media-body.media-middle.contact-name
+              span
+                strong
+                  = contact.name
+            .media-body.media-middle.contact-email.hidden-xs
+              span
+                = contact.comment
+            .media-body.media-middle.contact-phone.hidden-xs
+              span
+                = contact.phone
+            .media-body.media-middle.contact-email.hidden-xs
+              span
+                = contact.email
+      br
+      hr
+      = link_to root_path, class: "btn", title: t('back') do
+        span.glyphicon.glyphicon-triangle-left
+      br
+      hr

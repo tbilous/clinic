@@ -20,6 +20,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+# convert to slim
+gem 'slim'
+gem "slim-rails"
+
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bootswatch-rails'
 gem 'autoprefixer-rails'

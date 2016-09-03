@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :characters, only: [:new, :create, :destroy, :update, :edit, :show]
   resources :contacts, only: [:new, :create, :destroy, :update, :edit, :show, :index]
-  resources :anthropometries, only: [:create, :destroy, :index]
+  resources :anthropometries, only: [:create, :destroy, :index, :new]
 
   root  'static_pages#home'
 

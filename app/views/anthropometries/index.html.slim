@@ -1,0 +1,19 @@
+h1 Listing anthropometries
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @anthropometries.each do |anthropometry|
+      tr
+        td = link_to 'Show', anthropometry
+        td = link_to 'Edit', edit_anthropometry_path(anthropometry)
+        td = link_to 'Destroy', anthropometry, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Anthropometry', new_anthropometry_path
