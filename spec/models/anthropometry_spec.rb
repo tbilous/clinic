@@ -36,20 +36,6 @@ RSpec.describe Anthropometry, type: :model do
     it { should_not be_valid }
   end
 
-  describe 'should destroy associated users' do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:character) { FactoryGirl.create(:character, user: user) }
-    before { @adata.save }
-    it do
-      anthropometries = user.anthropometries.to_a
-      user.destroy
-      expect(anthropometries).not_to be_empty
-      anthropometries.each do |anthropometry|
-        expect(Anthropometry.where(id: anthropometry.id)).to be_empty
-      end
-    end
-  end
-
   describe 'should destroy associated characters' do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:character) { FactoryGirl.create(:character, user: user) }

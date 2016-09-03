@@ -60,6 +60,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'childprocess'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
   # gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true

@@ -2,7 +2,6 @@ class Character < ActiveRecord::Base
   include AASM
 
   aasm do
-
     state :sleeping, :initial => true
     state :running
 
@@ -16,6 +15,7 @@ class Character < ActiveRecord::Base
     end
 
   end
+
   belongs_to  :user
   has_many    :anthropometries, dependent: :destroy
   accepts_nested_attributes_for :anthropometries

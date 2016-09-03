@@ -4,12 +4,11 @@ RSpec.describe User, type: :model do
   before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
 
   subject { @user }
-  
+
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password) }
   it { should respond_to(:characters) }
-  
 
   describe "character associations" do
     before { @user.save }
@@ -22,7 +21,7 @@ RSpec.describe User, type: :model do
     let!(:newer_character) do
       # FactoryGirl.create(:character, user: @user, created_at: 1.hour.ago)
     end
-    
+
     it "should destroy associated characters" do
       characters = @user.characters.to_a
       @user.destroy

@@ -21,8 +21,7 @@ class AnthropometriesController < ApplicationController
         @anthropometry = current_user && current_user.anthropometries.build(anthropometries_params)
         if @anthropometry.save
             flash[:success] = t('activerecord.successful.messages.character.created')
-            # redirect_to root_path
-            redirect_to :back
+            redirect_to character_path(anthropometries_params[:character_id])
         else
             # render "new"
             redirect_to root_path
