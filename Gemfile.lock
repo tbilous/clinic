@@ -5,15 +5,6 @@ GIT
     spork (1.0.0rc4)
 
 GIT
-  remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: 36d21cec5da7f5b214925804f60e63c61c747023
-  branch: master
-  submodules: true
-  specs:
-    datetimepicker-rails (4.7.16)
-      momentjs-rails (>= 2.9.0)
-
-GIT
   remote: https://github.com/thewoolleyman/spring-commands-rspec.git
   revision: 567ef04de3df8ec5339dbe5aa84c1fe2467547c1
   specs:
@@ -162,8 +153,6 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    momentjs-rails (2.11.1)
-      railties (>= 3.1)
     multi_json (1.12.1)
     nenv (0.3.0)
     nokogiri (1.6.8)
@@ -183,6 +172,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     rack (1.6.4)
@@ -319,7 +311,6 @@ DEPENDENCIES
   childprocess
   coffee-rails (~> 4.1.0)
   database_cleaner
-  datetimepicker-rails!
   devise
   devise-i18n
   dragonfly (~> 1.0.11)
@@ -330,6 +321,7 @@ DEPENDENCIES
   jquery-rails
   pg (~> 0.15)
   poltergeist
+  pry-byebug
   pry-rails
   rails (= 4.2.6)
   rails-i18n (~> 4.0.0)

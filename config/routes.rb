@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   match '/signup',      to: 'users#new',          via: 'get'
   match '/about',       to: 'static_pages#about', via: 'get'
 
-  get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
+  get 'avatar/:size/:background/:text' => Dragonfly.app.endpoint { |params, app|
   app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
 }, as: :avatar
 

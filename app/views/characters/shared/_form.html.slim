@@ -7,7 +7,7 @@
       = f.input :birthday, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year
       = f.input :sex, as: :radio_buttons, :collection => [:true, :false]
     .form-actions
-      = link_to root_path, :title => t('back'), :class => "btn btn-info" do
+      = link_to root_path, title: t('back'), :class => 'btn btn-info' do
         span.glyphicon.glyphicon-triangle-left
-      = f.button :button, :title => t('edit.create'), :class => "btn-success btn-sent" do
+      = f.button :button, title: t('edit.create'), :class => 'btn-success btn-sent' do
         span.glyphicon.glyphicon-ok

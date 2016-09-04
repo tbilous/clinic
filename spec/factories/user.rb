@@ -51,8 +51,8 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  date = Time.now
-  comment = "Lorem ipsum dolor sit amet"
+  date = DateTime.now.to_date
+  comment = 'Lorem ipsum dolor sit amet'
   factory :adata, class: Anthropometry do
     date    date
     comment comment
