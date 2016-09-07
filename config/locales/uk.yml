@@ -15,7 +15,11 @@ uk:
       name:   "Ім`я"
     character:
       new: 'Новий Пацієнт'
-      edit: 'Редагувати Пацієнта'
+      edit: 'Редагувати данні Пацієнта'
+      title:  "Контакт"
+      view:   "Переглянути данні Пацієнта"
+      index:  "Список Пацієнтів"
+      name:   "Ім`я"
     contact:
       new:    "Новий Контакт"
       title:  "Контакт"
@@ -23,6 +27,8 @@ uk:
       view:   "Переглянути Контакт"
       index:  "Список контактів"
       name:   "Ім`я"
+    anthropometry:
+      title: 'Антропометрія'
   will_paginate:
     previous_label: "&#8592; Попередній"
     next_label: "Слідуючий &#8594;"
@@ -90,6 +96,7 @@ uk:
       user:
         name: "Користувач"
         names: 'Користувачі'
+
 
     errors:
       messages:
