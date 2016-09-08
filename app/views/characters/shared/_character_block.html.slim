@@ -8,15 +8,12 @@
 - elsif pcount >= 5
   h2
     = t('activerecord.model.character.many')
-div
-  - if active_patient
-    = t('patients.active') + ': ' + active_patient.name
 table.table.my-table.table-hover.home-characters-list
   - @characters.each do |character|
-    |  <tr 
+    |  <tr
     - if character.running? || active_character(character.id)
-      |  class="alert alert-success" 
-    |  > 
+      |  class="alert alert-success"
+    |  >
     td
       = character.name
     td
@@ -24,11 +21,11 @@ table.table.my-table.table-hover.home-characters-list
     td
       = t('age') + ' ' + age(character)
     td
-      = button_to "Some Button",  characters_activate_path(:id => character.id)
+      = button_to "Some Button",  characters_activate_path(:id => character.id), class: 'activate-patient'
     td
       = link_to edit_character_path(character) do
         span.glyphicon.glyphicon-pencil
 .row
   .col-sm-6.col-xs-offset-3
-    = link_to t('patients.create'),  new_character_path, class: "class btn btn-md btn-info"
+    = link_to t('patient.create'),  new_character_path, class: "class btn btn-md btn-info"
 hr

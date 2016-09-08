@@ -8,7 +8,7 @@
     = f.input :weight
     = f.input :cranium
     = f.input :chest
-    = f.hidden_field :user_id, input_html: { value: current_user.id }
+    = f.hidden_field :character_id, input_html: { value: @character.id }
   .form-inputs
     = f.input :comment, as: :text, input_html: { rows: '4' }
   .form-actions

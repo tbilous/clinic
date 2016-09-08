@@ -36,6 +36,9 @@ en:
     character:
       new: 'New patient'
       edit: 'Edit patient'
+      view: 'Patient`s Profile'
+    anthropometry:
+      title: 'Antropometry'
   label:
     user:
       name: 'Your Name'
@@ -53,7 +56,7 @@ en:
     save: "Save"
     delete_succes: "User was deleted succesfull"
     delete_active: "Here do not allow for delete yourself"
-  patients:
+  patient:
     active: 'Main patient'
     choose: "Choose"
     name: 'Name'
