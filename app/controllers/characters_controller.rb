@@ -25,7 +25,7 @@ class CharactersController < ApplicationController
       activate_character
       redirect_to root_path
     else
-      render "new"
+      render 'new'
     end
   end
 

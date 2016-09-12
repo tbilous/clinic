@@ -1,5 +1,5 @@
 class Anthropometry < ActiveRecord::Base
-  belongs_to :user
+
   belongs_to :character
 
   validates_presence_of :date, :character_id

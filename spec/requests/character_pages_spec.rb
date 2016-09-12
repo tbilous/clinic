@@ -15,10 +15,10 @@ RSpec.describe "CharacterPages", type: :view do
     before { login(@user) }
     it 'should not view empty list characters' do
       expect(page).to_not have_css('.home-characters-list')
-      expect(page).to have_link(t('patients.create'), href: new_character_path)
+      expect(page).to have_link(t('patient.create'), href: new_character_path)
     end
     describe 'create character' do
-      before { click_on(t('patients.create')) }
+      before { click_on(t('patient.create')) }
       it { expect(page).to have_content(t('page.character.new')) }
       describe 'wrong validations' do
         before { (find('.btn-sent').click) }
@@ -54,7 +54,7 @@ RSpec.describe "CharacterPages", type: :view do
     end
     it 'should view non-empty list characters' do
       expect(page).to have_css('.home-characters-list')
-      expect(page).to have_link(t('patients.create'), href: new_character_path)
+      expect(page).to have_link(t('patient.create'), href: new_character_path)
       expect(page).to have_link('', href: edit_character_path(character))
     end
     describe 'edit character' do

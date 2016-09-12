@@ -36,17 +36,21 @@ RSpec.describe "AnthropometryPage", type: :view do
       # end
       describe 'visit Active Patient page' do
         before { click_link(t('patient.active')) }
-        it { expect(page).to have_content active_patient.name }
+        it { expect(page).to have_content character.name }
         describe 'create anthropometry' do
           before do
+            adata_params = FactoryGirl.attributes_for(:adata, user_id: @user, character_id: character.id)
             fill_in 'anthropometry_comment', with: character.comment
             find('#anthropometry_date_1i').select(DateTime.now.year.to_s)
             find('#anthropometry_date_2i').select(Date::MONTHNAMES[DateTime.now.month])
             find('#anthropometry_date_3i').select(DateTime.now.day.to_s)
+            fill_in 'anthropometry_name', with: adata_params.height
+            fill_in 'character_comment', with: adata_params.weight
+            fill_in 'character_comment', with: adata_params.cranium
+            fill_in 'character_comment', with: adata_params.chest
           end
-          # find('#character_sex_true').set(true)
         end
-        # it { expect { (find('.btn-sent').click) }.to change(Character, :count).by(1) }
+        it { expect { (find('.btn-sent').click) }.to change(Anthropometry, :count).by(1) }
         describe 'check result' do
           # before { (find('.btn-sent').click) }
           # it { expect(page).to have_css('.home-characters-list') }

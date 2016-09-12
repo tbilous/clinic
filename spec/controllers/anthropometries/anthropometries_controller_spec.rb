@@ -12,59 +12,50 @@ RSpec.describe AnthropometriesController, type: :controller do
   end
   # render_views}
 
-  describe "for non-signed-in users" do
-    describe "submitting to the create action" do
-      before do
-        post 'new'
-      end
-      specify { expect(response).to redirect_to(new_user_session_path) }
-    end
+  describe 'for non-signed-in users' do
+    # describe "submitting to the create action" do
+    #   before do
+    #     post 'new'
+    #   end
+    #   specify { expect(response).to redirect_to(new_user_session_path) }
+    # end
 
-    describe "submitting to the destroy action" do
-      let(:adata) { FactoryGirl.create(:adata, user: @admin, character: @character) }
+    describe 'submitting to the destroy action' do
+      let!(:adata) { FactoryGirl.create(:adata, user_id: @character.user_id, character: @character) }
       before { delete :destroy, id: adata.id }
       specify { expect(response).to redirect_to(new_user_session_path) }
     end
   end
+  describe 'for signed-in non owner user' do
+    before do
+      sign_in @user
+    end
+    describe 'should not to destroy anthropometry' do
+      let!(:adata) { FactoryGirl.create(:adata, user_id: @character.user_id, character: @character) }
+      # binding.pry
+      before { delete :destroy, id: adata.id }
+      specify { expect(response).to redirect_to(root_path) }
+    end
+  end
 
-  describe "for signed-in" do
+  describe 'for signed-in' do
     before do
       sign_in @admin
     end
+    describe 'and owner users' do
 
-    describe "POST new" do
-      before do
-        post 'new'
-      end
-      it { expect(response).to render_template(:new) }
-      it { expect(response).to_not redirect_to(new_user_session_path) }
-    end
-
-    describe "and owner users" do
-
-
-      # describe "PUT 'update'" do
-      #   let(:attr) do
-      #     { :name => 'new name', :comment => 'new comment' }
-      #   end
-      #   before(:each) do
-      #     put :update, :id => character.id, :user => @admin.id, :character => attr
-      #     character.reload
-      #   end
-      #   it { expect(response).to redirect_to(root_path) }
-      #   it { expect(character.name).to eql attr[:name] }
-      #   it { expect(character.comment).to eql attr[:comment] }
-      # end
-      #
-      describe "DELETE destroy" do
-        let!(:anthropometry) { FactoryGirl.create(:adata, user: @admin, character: @character) }
+      describe 'DELETE destroy' do
+        let!(:anthropometry) { FactoryGirl.create(:adata, user_id: @admin.id, character: @character) }
         it { expect { delete :destroy, id: anthropometry.id }.to change { Anthropometry.count }.by(-1) }
       end
 
       describe 'Create new' do
-        it "creates anthropometry" do
+        before do
+          @admin.update_attribute(:patient, @character.id)
+        end
+        it 'creates anthropometry' do
           # puts("\nWTF #{@admin.inspect}\n")
-          adata_params = FactoryGirl.attributes_for(:adata, user_id: @admin.id, character_id: @character.id)
+          adata_params = FactoryGirl.attributes_for(:adata, user_id: @admin.id, character: @character)
           # binding.pry
           expect { post :create, :anthropometry => adata_params }.to change(Anthropometry, :count).by(1)
         end
@@ -79,19 +70,6 @@ RSpec.describe AnthropometriesController, type: :controller do
     #     end
     #     it { expect(response).to_not render_template(:show) }
     #     it { expect(response).to redirect_to(root_path) }
-    #   end
-    #
-    #   describe "PUT 'update'" do
-    #     let(:attr) do
-    #       { :name => 'new name', :comment => 'new comment' }
-    #     end
-    #     before(:each) do
-    #       put :update, :id => character.id, :user => @user.id, :character => attr
-    #       character.reload
-    #     end
-    #     it { expect(response).to redirect_to(root_path) }
-    #     it { expect(character.name).to_not eql attr[:name] }
-    #     it { expect(character.comment).to_not eql attr[:comment] }
     #   end
     #
     #   describe "DELETE destroy" do

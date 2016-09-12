@@ -33,7 +33,7 @@ RSpec.describe UsersController, type: :controller do
     end
     describe 'submitting to the destroy action' do
       let!(:character) { FactoryGirl.create(:character, user: @admin) }
-      let!(:anthropometry) { FactoryGirl.create(:adata, user: @admin, character_id: character.id) }
+      let!(:anthropometry) { FactoryGirl.create(:adata, user_id: @admin.id, character_id: character.id) }
 
       it { expect { delete :destroy, id: @user.id }.to change { User.count }.by(-1) }
     end

@@ -23,9 +23,10 @@
   .row
     .col-sm-4
       = render 'anthropometries/shared/form'
+    .col-sm-8
       #anthropometries
         - @anthropometries.each do |anthropomety|
-          = anthropometry.date
+          = anthropomety.date
 = link_to 'Edit', edit_character_path(@character)
 |  |
 = link_to 'Back', characters_path
