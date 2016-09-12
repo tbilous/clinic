@@ -81,6 +81,13 @@ en:
           created: "Patient was added"
           deleted: 'Patient was deleted'
           updated: "Patient was changed"
+        contact:
+          created: "Contact added"
+          deleted: 'Contact deleted'
+          updated: "Contact updatetd"
+        anthropometry:
+          created: "Anthropometry data was added"
+          deleted: 'Anthropometry data deleted'
     model:
       character:
         one: 'Patient'

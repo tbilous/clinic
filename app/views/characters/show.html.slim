@@ -6,20 +6,17 @@
         h1
           = @character.name
       .col-xs-7.text-right
-        = link_to edit_contact_path(@character), :class => 'btn btn-primary' do
+        = link_to edit_character_path(@character), :class => 'btn btn-primary' do
           span.glyphicon.glyphicon-pencil
   = render :partial => 'users/shared/error_messages'
-
 .container
   .row
     .col-xs-12
       ul.list-unstyled
         li
           = @character.name
-
   h3
     = t('page.anthropometry.title')
-    = current_user.id
   .row
     .col-sm-4
       = render 'anthropometries/shared/form'
@@ -27,6 +24,8 @@
       #anthropometries
         - @anthropometries.each do |anthropomety|
           = anthropomety.date
-= link_to 'Edit', edit_character_path(@character)
-|  |
-= link_to 'Back', characters_path
+hr
+= link_to root_path, :class => 'btn', :title => t('back') do
+  span.glyphicon.glyphicon-triangle-left
+br
+hr

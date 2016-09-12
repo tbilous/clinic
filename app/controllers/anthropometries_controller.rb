@@ -10,29 +10,28 @@ class AnthropometriesController < ApplicationController
     # end
 
     def index
-        @anthropometry = current_user && active_patient && current_patient.anthropometries.all
+        @anthropometry = current_user &&  current_patient.anthropometries.all
     end
 
-    # def show
-    #     @anthropometry = current_user && active_patient && current_user.anthropometries.find(params[:id])
-    # end
 
     def create
+        # puts ">>>>>>>>>>>>>>> #{params[:id].inspect}"
+
         @anthropometry = current_patient.anthropometries.build(anthropometries_params)
         @anthropometry.user_id = current_user.id if current_user
         if @anthropometry.save
-            flash[:success] = t('activerecord.successful.messages.character.created')
+            flash[:success] = t('activerecord.successful.messages.anthropometry.created')
             redirect_to character_path(@anthropometry.character_id)
         else
-            redirect_to character_path(@anthropometry.character_id)
+            redirect_to root_path
         end
     end
 
     def destroy
-        @anthropometry = current_patient.anthropometries.find(params[:id])
+        @anthropometry = anthropometries.find(params[:id])
         @state_before = @anthropometry.character_id
         @anthropometry.destroy if @anthropometry.present?
-        flash[:success] = t('activerecord.successful.messages.character.deleted')
+        flash[:success] = t('activerecord.successful.messages.anthropometry.deleted')
         redirect_to character_path(@state_before)
     end
 
@@ -42,9 +41,6 @@ class AnthropometriesController < ApplicationController
         @current_patient ||= Character.find(current_user.patient)
     end
 
-    def patient
-        Character.find_by_id(params[:character_id])
-    end
 
     private
         def anthropometries_params

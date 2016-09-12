@@ -12,7 +12,7 @@ table.table.my-table.table-hover.home-characters-list
   - @characters.each do |character|
     |  <tr
     - if character.running? || active_character(character.id)
-      |  class="alert alert-success"
+      |  class="alert alert-success active-character"
     |  >
     td
       = character.name
@@ -21,11 +21,13 @@ table.table.my-table.table-hover.home-characters-list
     td
       = t('age') + ' ' + age(character)
     td
-      = button_to "Some Button",  characters_activate_path(:id => character.id), class: 'activate-patient'
+      label.btn.activate-patient(for="choose-#{character.id}" title=t('patient.choose'))
+        span.glyphicon.glyphicon-heart
+      = button_to 'Some Button',  characters_activate_path(id: character.id), class: 'hidden', id: "choose-#{character.id}"
     td
       = link_to edit_character_path(character) do
         span.glyphicon.glyphicon-pencil
 .row
   .col-sm-6.col-xs-offset-3
-    = link_to t('patient.create'),  new_character_path, class: "class btn btn-md btn-info"
+    = link_to t('patient.create'), new_character_path, class: 'class btn btn-md btn-info'
 hr

@@ -80,6 +80,9 @@ uk:
           created: "Контакт додано"
           deleted: 'Контакт видалено'
           updated: "Дані Контакта оновлено"
+        anthropometry:
+          created: "Антропометричний запис додано"
+          deleted: 'Антропометричний запис видалено'
     model:
       character:
         one: 'Пацієнт'

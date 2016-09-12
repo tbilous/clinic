@@ -1,8 +1,15 @@
 - provide(:title, t('page.character.edit'))
-.jumbotron.jumbotron__title
-  .container
-    h1
-      = yield(:title) + ' ' + @character.name
+/.jumbotron.jumbotron__title
+/  .container
+/    h1
+/      = yield(:title) + ' ' + @character.name
+.container
+  .page-header
+    .row
+      .col-xs-5
+        h1
+          = @character.name
+  = render :partial => 'users/shared/error_messages'
 .container
   .row
     = render 'characters/shared/form_edit'
