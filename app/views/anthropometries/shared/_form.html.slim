@@ -2,7 +2,7 @@
   = f.error_notification
   .form-inputs.display__flex
     .text-nowrap
-      = f.input :date
+      = f.input :date, selected: DateTime.now.to_date
   .form-inputs
     = f.input :height
     = f.input :weight

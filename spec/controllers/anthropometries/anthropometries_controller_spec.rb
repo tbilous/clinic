@@ -34,7 +34,7 @@ RSpec.describe AnthropometriesController, type: :controller do
       let!(:adata) { FactoryGirl.create(:adata, user_id: @character.user_id, character: @character) }
       # binding.pry
       before { delete :destroy, id: adata.id }
-      specify { expect(response).to redirect_to(root_path) }
+      specify { expect(response).to character_path(root_path) }
     end
   end
 
@@ -43,7 +43,6 @@ RSpec.describe AnthropometriesController, type: :controller do
       sign_in @admin
     end
     describe 'and owner users' do
-
       describe 'DELETE destroy' do
         let!(:anthropometry) { FactoryGirl.create(:adata, user_id: @admin.id, character: @character) }
         it { expect { delete :destroy, id: anthropometry.id }.to change { Anthropometry.count }.by(-1) }
