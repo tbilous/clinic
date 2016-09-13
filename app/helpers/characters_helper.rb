@@ -70,4 +70,9 @@ module CharactersHelper
     end
   end
 
+  def activate_character(id)
+    current_user.update_attribute(:patient, id)
+  end
+
+
 end

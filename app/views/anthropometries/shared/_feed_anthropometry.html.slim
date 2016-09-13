@@ -1,5 +1,4 @@
 h1 Listing anthropometries
-
 table.table
   thead
     tr
@@ -15,12 +14,12 @@ table.table
     - @anthropometries.each do |anthropometry|
       tr
         td = anthropometry.date
+        td = anthropometry.comment
         td = anthropometry.weight
         td = anthropometry.height
         td = anthropometry.cranium
         td = anthropometry.chest
         td = link_to 'Destroy', anthropometry, data: { confirm: 'Are you sure?' }, method: :delete
-
 br
 
 //= link_to 'New Anthropometry', new_anthropometry_path

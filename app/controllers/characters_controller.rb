@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
   include Devise::Controllers::Helpers
   # helper_method :current_user
   before_action :authenticate_user!
-  before_action :require_permission, only: [:edit, :show, :update, :destroy]
+  before_action :require_permission, only: [:edit, :show, :update, :destroy, :activate]
 
   def new
     @character = current_user && current_user.characters.new
@@ -22,7 +22,7 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(character_params)
     if @character.save
       flash[:success] = t('activerecord.successful.messages.character.created')
-      activate_character
+      activate_character(@character.id)
       redirect_to root_path
     else
       render 'new'
@@ -42,8 +42,13 @@ class CharactersController < ApplicationController
       render 'edit'
     end
   end
+  def activate_character(id)
+    current_user.update_attribute(:patient, id)
+  end
+
 
   def activate
+    # puts ">>>>>>>>>>>>>>> #{params[:id].inspect}"
     @character = current_user.characters.find(params[:id])
     if current_user.patient != @character.id
       current_user.update_attribute(:patient, @character.id)
@@ -57,10 +62,6 @@ class CharactersController < ApplicationController
     @character.destroy if @character.present?
     flash[:success] = t('activerecord.successful.messages.character.deleted')
     redirect_to root_path
-  end
-
-  def activate_character
-    current_user.update_attribute(:patient, @character.id)
   end
 
   private

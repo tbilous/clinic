@@ -18,36 +18,43 @@ RSpec.describe "AnthropometryPage", type: :view do
     describe 'should have character' do
       before do
         visit root_path
-        find('.activate-patient').click
+        Capybara.ignore_hidden_elements = false
+        click_button 'Some Button'
+        Capybara.ignore_hidden_elements = true
       end
-      it { puts page.body }
       it { expect(page).to have_content character.name }
-      it { expect(page).to have_link( character.name, href: character_path(character)) }
-      # describe 'visit Active Patient page' do
-      #   before { click_link( href: character_path(character)) }
-      #   # it { puts page.body }
-      #   describe 'create anthropometry' do
-      #     before do
-      #       adata_params = FactoryGirl.attributes_for(:adata, user_id: character.user_id, character_id: character.id)
-      #       fill_in 'anthropometry_comment', with: character.comment
-      #       find('#anthropometry_date_1i').select(DateTime.now.year.to_s)
-      #       find('#anthropometry_date_2i').select(Date::MONTHNAMES[DateTime.now.month])
-      #       find('#anthropometry_date_3i').select(DateTime.now.day.to_s)
-      #       fill_in 'anthropometry_name', with: adata_params.height
-      #       fill_in 'character_comment', with: adata_params.weight
-      #       fill_in 'character_comment', with: adata_params.cranium
-      #       fill_in 'character_comment', with: adata_params.chest
-      #     end
-      #   end
-      #   it { expect { (find('.btn-sent').click) }.to change(Anthropometry, :count).by(1) }
-      #   describe 'check result' do
-      #     # before { (find('.btn-sent').click) }
-      #     # it { expect(page).to have_css('.home-characters-list') }
-      #     # it { expect(page).to have_content character.name }
-      #     # it { expect(page).to have_content character.comment }
-      #     # it { expect(page).to have_css '.glyphicon-pencil' }
-      #   end
-      # end
+      it { expect(page).to have_link(character.name) }
+    end
+    describe 'visit Active Patient page' do
+      # before { click_link('character.name') }
+      before do
+        visit root_path
+        Capybara.ignore_hidden_elements = false
+        click_button 'Some Button'
+        Capybara.ignore_hidden_elements = true
+        click_link(character.name, href: character_path(character.id))
+      end
+      describe 'create anthropometry' do
+        let!(:anthropometry) { FactoryGirl.build(:adata, user_id: character.user_id, character_id: character.id) }
+        before do
+          # binding.pry
+          # puts("\nWTF #{anthropometry.inspect}\n")
+          find('#anthropometry_date_1i').select(DateTime.now.year.to_s)
+          find('#anthropometry_date_2i').select(Date::MONTHNAMES[DateTime.now.month])
+          find('#anthropometry_date_3i').select(DateTime.now.day.to_s)
+          fill_in 'anthropometry_height', with: anthropometry.height
+          fill_in 'anthropometry_weight', with: anthropometry.weight
+          fill_in 'anthropometry_cranium', with: anthropometry.cranium
+          fill_in 'anthropometry_chest', with: anthropometry.chest
+          fill_in 'anthropometry_comment', with: anthropometry.comment
+          find('.btn-sent').click
+        end
+        # it { expect { (find('.btn-sent').click) }.to change(Anthropometry, :count).by(1) }
+        it { expect(page).to have_content('Listing anthropometries') }
+        it { expect(page).to have_content(anthropometry.cranium) }
+        it { expect(page).to have_content(anthropometry.comment) }
+        it { expect(page).to have_content(t('activerecord.successful.messages.anthropometry.created')) }
+      end
     end
   end
   # describe 'in the Character pages with characters' do
