@@ -2,7 +2,7 @@ class AnthropometriesController < ApplicationController
     include Devise::Controllers::Helpers
     # helper_method :current_user
     before_action :authenticate_user!
-    before_action :require_permission, only: [:edit, :show, :destroy]
+    before_action :require_permission, only: [:destroy]
     # before_action :active_patient, only: [:new, :destroy]
 
     # def new
@@ -28,7 +28,7 @@ class AnthropometriesController < ApplicationController
     end
 
     def destroy
-        @anthropometry = anthropometries.find(params[:id])
+        @anthropometry = Anthropometry.find(params[:id])
         @state_before = @anthropometry.character_id
         @anthropometry.destroy if @anthropometry.present?
         flash[:success] = t('activerecord.successful.messages.anthropometry.deleted')
@@ -41,6 +41,10 @@ class AnthropometriesController < ApplicationController
         @current_patient ||= Character.find(current_user.patient)
     end
 
+    def anthropometry_user
+      Anthropometry.find_by_id(params[:id]).user_id
+    end
+
 
     private
         def anthropometries_params
@@ -48,6 +52,10 @@ class AnthropometriesController < ApplicationController
         end
 
         def require_permission
-            redirect_to root_path if current_user != Anthropometry.find(params[:id]).user_id
+            # puts ">>>>>>>>>>>>>>> #{anthropometry_user.inspect}"
+            # puts ">>>>>>>>>>>>>>> #{User.find(anthropometry_user).inspect}"
+            # puts ">>>>>>>>>>>>>>> #{User.find(current_user.id).inspect}"
+            redirect_to root_path if current_user.id != anthropometry_user
+            # redirect_to root_path if current_user != user.id
         end
 end
