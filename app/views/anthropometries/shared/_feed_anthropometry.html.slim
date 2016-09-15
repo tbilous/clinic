@@ -1,4 +1,6 @@
-h1 Listing anthropometries
+h2
+  = t('page.anthropometry.list')
+= will_paginate @anthropometries
 table.table
   thead
     tr
@@ -14,12 +16,16 @@ table.table
     - @anthropometries.each do |anthropometry|
       tr
         td = anthropometry.date
-        td = anthropometry.comment
         td = anthropometry.weight
         td = anthropometry.height
         td = anthropometry.cranium
         td = anthropometry.chest
-        td = link_to 'Destroy', anthropometry, data: { confirm: 'Are you sure?' }, method: :delete
+        td
+          = link_to anthropometry, class: 'remove-anthropometry', method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } do
+            span.glyphicon.glyphicon-trash.text-danger
+      tr
+        td = anthropometry.comment
+= will_paginate
 br
 
 //= link_to 'New Anthropometry', new_anthropometry_path

@@ -39,6 +39,7 @@ en:
       view: 'Patient`s Profile'
     anthropometry:
       title: 'Antropometry'
+      list: 'Journal of anthropometry'
   label:
     user:
       name: 'Your Name'

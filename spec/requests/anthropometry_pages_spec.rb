@@ -50,10 +50,18 @@ RSpec.describe "AnthropometryPage", type: :view do
           find('.btn-sent').click
         end
         # it { expect { (find('.btn-sent').click) }.to change(Anthropometry, :count).by(1) }
-        it { expect(page).to have_content('Listing anthropometries') }
         it { expect(page).to have_content(anthropometry.cranium) }
         it { expect(page).to have_content(anthropometry.comment) }
         it { expect(page).to have_content(t('activerecord.successful.messages.anthropometry.created')) }
+        it { expect(page).to have_content(t('page.anthropometry.list')) }
+        it { expect(page).to have_css('.remove-anthropometry') }
+        describe 'click delete record'  do
+          before do
+            find('.remove-anthropometry').click
+          end
+          # it { expect(page).to have_content t('are_you_sure') }
+          it { expect(page).to have_content t('activerecord.successful.messages.anthropometry.deleted') }
+        end
       end
     end
   end

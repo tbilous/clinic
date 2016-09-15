@@ -29,6 +29,7 @@ uk:
       name:   "Ім`я"
     anthropometry:
       title: 'Антропометрія'
+      list: 'Журнал антропометрії'
   will_paginate:
     previous_label: "&#8592; Попередній"
     next_label: "Слідуючий &#8594;"

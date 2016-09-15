@@ -15,10 +15,10 @@
       ul.list-unstyled
         li
           = @character.name
-  h3
-    = t('page.anthropometry.title')
   .row
     .col-sm-4
+      h3
+        = t('page.anthropometry.title')
       = render 'anthropometries/shared/form'
     .col-sm-8
       #anthropometries
