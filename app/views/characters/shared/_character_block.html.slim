@@ -16,9 +16,9 @@ table.table.my-table.table-hover.home-characters-list
     |  >
     td
       = character.name
-    td
+    td.hidden-xs
       = character.comment
-    td
+    td.hidden-xs
       = t('age') + ' ' + age(character)
     td
       label.btn.activate-patient(for="choose-#{character.id}" title=t('patient.choose'))
@@ -28,6 +28,6 @@ table.table.my-table.table-hover.home-characters-list
       = link_to edit_character_path(character) do
         span.glyphicon.glyphicon-pencil
 .row
-  .col-sm-6.col-xs-offset-3
+  .col-sm-6.col-sm-offset-3
     = link_to t('patient.create'), new_character_path, class: 'class btn btn-md btn-info'
 hr

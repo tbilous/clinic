@@ -1,16 +1,18 @@
 doctype html
-html
-  head
-    title
-      = t(:site_name) + ' ' + yield(:title)
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-    - if Rails.env.test?
-      style[type="text/css"]
-        |  .modal.fade, .fade { -webkit-transition: opacity 0.01s; -moz-transition: opacity 0.01s; -ms-transition: opacity 0.01s; -o-transition: opacity 0.01s; transition: opacity 0.01s; } 
-  body
-    = render 'layouts/header'
-    main
-      = yield
-    = render 'layouts/footer'
+|  <html lang="
+= I18n.locale
+| " >
+head
+  meta[charset="utf-8"]
+  meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+  meta[name="viewport" content="width=device-width, initial-scale=1"]
+  title
+    = t(:site_name) + ' ' + yield(:title)
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+body
+  = render 'layouts/header'
+  main#main.main
+    = yield
+  = render 'layouts/footer'
