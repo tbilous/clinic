@@ -5,10 +5,11 @@ class Contact < ActiveRecord::Base
 
   belongs_to :user
   default_scope -> { order('name') }
-
+  # self.per_page = 10
   def self.search(search)
     where(['phone LIKE ? OR LOWER(name) LIKE ? OR LOWER(email) LIKE ? OR LOWER(comment) LIKE ? OR LOWER(address) LIKE ?', "%#{search}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%"])
   end
+  # scope :search, lambda {|search| where(["search LIKE :term", {:term => "%#{search}%"}]) }
 
   validates :name, length: {maximum: 60}, presence: true
   validates :phone, length: {maximum: 25}, presence: true

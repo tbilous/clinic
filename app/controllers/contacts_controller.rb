@@ -10,10 +10,10 @@ class ContactsController < ApplicationController
   def index 
     if current_user.contacts.count != 0
       if params[:search]
-        @contacts = current_user && Contact.search(params[:search]).paginate(:page => params[:page], :per_page => 15).order('name DESC')
+        @contacts = current_user && Contact.search(params[:search]).paginate(:page => params[:page]).order('name DESC')
         @users = User
       else
-        @contacts = current_user && current_user.contacts.all
+        @contacts = current_user && current_user.contacts.all.paginate(:page => params[:page]).order('name DESC')
       end
     else
       redirect_to url_for( :action => :new)
@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
       redirect_to contacts_path
     else
       # render 'new'
-      render "new"
+      render 'new'
     end
   end
 

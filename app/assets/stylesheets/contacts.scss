@@ -17,3 +17,11 @@
   display: flex;
   align-items: center;
 }
+div, ul {
+  &.pagination {
+    margin-top: 0;
+  }
+}
+.pagination {
+  margin-top: 0;
+}
