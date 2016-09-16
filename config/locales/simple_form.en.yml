@@ -2,25 +2,34 @@ en:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
-  options:
-    character:
-      sex:
-        "true": "Male"
-        "false": "Female"
-    required:
-      text: 'required'
-      mark: '*'
-      # You can uncomment the line below if you need to overwrite the whole required html.
-      # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
-    error_notification:
-      default_message: "Please review the problems below"
+    options:
+      character:
+        sex:
+          "true": "Male"
+          "false": "Female"
+      required:
+        text: 'required'
+        mark: '*'
+        # You can uncomment the line below if you need to overwrite the whole required html.
+        # When using html, text and mark won't be used.
+        # html: '<abbr title="required">*</abbr>'
+      error_notification:
+        default_message: "Please review the problems below"
     labels:
       character:
         name: 'Patient'
         comment: 'Additional info'
         birthday: 'Day of Birthday'
         sex: 'Sex'
+        active: 'Active'
+        usd: 'Used'
+      anthropometry:
+        comment: 'Comment'
+        date: 'Date'
+        cranium: 'Radius head(cm)'
+        chest: 'Radius chest(cm)'
+        height: 'Height(cm)'
+        weight: 'Weight(kg)'
     # Examples
     # labels:
     #   defaults:

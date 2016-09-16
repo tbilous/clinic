@@ -8,11 +8,13 @@
     .row
       .col-xs-5
         h1
-          = @character.name
+          = yield(:title) + ' ' + @character.name
+          / = @character.name
   = render :partial => 'users/shared/error_messages'
 .container
   .row
-    = render 'characters/shared/form_edit'
+    .col-sm-6.col-sm-offset-3
+      = render 'characters/shared/form_edit'
   hr
   = link_to :back, :class => "btn", :title => t('back') do
     span.glyphicon.glyphicon-triangle-left

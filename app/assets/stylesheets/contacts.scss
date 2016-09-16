@@ -1,7 +1,19 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootswatch/cerulean/variables";
 .form-group.contact_photo {
   padding: 10px 0;
   text-align: center;
+}
+.contact-comment {
+  margin-top: 1em;
+  border-top: 1px solid $gray-lighter;
+  color: $brand-info;
+  padding-top: 5px;
+  display: inline-block;
+}
+.contact-media {
+  display: flex;
+  align-items: center;
 }

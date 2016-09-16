@@ -1,30 +1,33 @@
 h2
   = t('page.anthropometry.list')
 = will_paginate @anthropometries
-table.table
-  thead
-    tr
-      th
-        | Name
-      th
-      th
-      th
-      th
-      th
-
-  tbody
-    - @anthropometries.each do |anthropometry|
+.table-responsive
+  table.table
+    thead
       tr
-        td = anthropometry.date
-        td = anthropometry.weight
-        td = anthropometry.height
-        td = anthropometry.cranium
-        td = anthropometry.chest
-        td
-          = link_to anthropometry, class: 'remove-anthropometry', method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } do
-            span.glyphicon.glyphicon-trash.text-danger
-      tr
-        td = anthropometry.comment
+        th
+          = t('simple_form.labels.anthropometry.date')
+        th
+          = t('simple_form.labels.anthropometry.weight')
+        th
+          = t('simple_form.labels.anthropometry.height')
+        th
+          = t('simple_form.labels.anthropometry.cranium')
+        th
+          = t('simple_form.labels.anthropometry.chest')
+    tbody
+      - @anthropometries.each do |anthropometry|
+        tr
+          td = anthropometry.date
+          td = anthropometry.weight
+          td = anthropometry.height
+          td = anthropometry.cranium
+          td = anthropometry.chest
+          td
+            = link_to anthropometry, class: 'remove-anthropometry', method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') } do
+              span.glyphicon.glyphicon-trash.text-danger
+        tr
+          td = anthropometry.comment
 = will_paginate
 br
 

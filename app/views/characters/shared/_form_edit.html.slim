@@ -1,15 +1,14 @@
-.col-sm-6.col-sm-offset-3
-  = simple_form_for(@character) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :usd
-      = f.input :name
-      = f.input :comment
-      = f.input :birthday
-      = f.input :sex, as: :radio_buttons, :collection => [:true, :false]
-    .form-actions
-      = link_to root_path, :title => t('back'), :class => "btn btn-info" do
-        span.glyphicon.glyphicon-triangle-left
-      = f.button :button, :title => t('edit.save'), :class => "btn-success" do
-        span.glyphicon.glyphicon-ok
-      = link_to t('edit.delete'), @character, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }
+= simple_form_for(@character) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :usd
+    = f.input :name
+    = f.input :comment
+    = f.input :birthday
+    = f.input :sex, as: :radio_buttons, :collection => [:true, :false]
+  .form-actions
+    = link_to root_path, :title => t('back'), :class => "btn btn-info" do
+      span.glyphicon.glyphicon-triangle-left
+    = f.button :button, :title => t('edit.save'), :class => "btn-success" do
+      span.glyphicon.glyphicon-ok
+    = link_to t('edit.delete'), @character, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }
