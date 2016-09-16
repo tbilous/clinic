@@ -87,5 +87,8 @@ textarea {
     display: inline-block;
   }
 }
+.page-header {
+  margin-bottom: 2em;
+}
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";

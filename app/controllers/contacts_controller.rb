@@ -9,7 +9,12 @@ class ContactsController < ApplicationController
   
   def index 
     if current_user.contacts.count != 0
-      @contacts = current_user && current_user.contacts.all
+      if params[:search]
+        @contacts = current_user && Contact.search(params[:search]).paginate(:page => params[:page], :per_page => 15).order('name DESC')
+        @users = User
+      else
+        @contacts = current_user && current_user.contacts.all
+      end
     else
       redirect_to url_for( :action => :new)
     end

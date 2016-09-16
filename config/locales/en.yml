@@ -43,6 +43,9 @@ en:
   label:
     user:
       name: 'Your Name'
+  search:
+    placeholder: 'Search'
+    negative: 'There are no containing the: '
   back: 'Back'
   top: 'Top'
   appointments: "Appointments"

@@ -34,6 +34,9 @@ uk:
     previous_label: "&#8592; Попередній"
     next_label: "Слідуючий &#8594;"
     page_gap: "&hellip;"
+  search:
+    placeholder: 'Пошук'
+    negative: 'Не знайдено нічого схожого на: '
   back: 'Назад'
   top: 'Вгору'
   appointments: "Призначення"

@@ -1,0 +1,18 @@
+= will_paginate
+.list-group
+  - @contacts.each do |contact|
+    = link_to contact_path(contact), class: 'list-group-item' do
+      .media.contact-media
+        .media-left.padding-3x.media-middle
+          = contact_avatar(contact, class: 'media-object img-circle', style: 'width:32px;height:32px;')
+        .media-body.media-middle.contact-name
+          span
+            strong = contact.name
+        .media-body.media-middle.contact-phone
+          span = contact.phone
+        .media-body.media-middle.contact-phone.hidden-xs
+          span = contact.email
+        .media-body.media-middle.contact-address.hidden-xs
+          span = contact.address
+      span.contact-comment = contact.comment
+= will_paginate
