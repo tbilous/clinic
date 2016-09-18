@@ -4,11 +4,11 @@
     = f.input :usd
     = f.input :name
     = f.input :comment
-    = f.input :birthday
+    = f.input :birthday, start_year: Date.today.year - 110, end_year: Date.today.year
     = f.input :sex, as: :radio_buttons, :collection => [:true, :false]
   .form-actions
-    = link_to root_path, :title => t('back'), :class => "btn btn-info" do
+    = link_to root_path, :title => t('back'), :class => 'btn btn-info' do
       span.glyphicon.glyphicon-triangle-left
-    = f.button :button, :title => t('edit.save'), :class => "btn-success" do
+    = f.button :button, :title => t('edit.save'), :class => 'btn-success' do
       span.glyphicon.glyphicon-ok
-    = link_to t('edit.delete'), @character, :class => "btn btn-danger", method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }
+    = link_to t('edit.delete'), @character, :class => 'btn btn-danger', method: :delete, title: t('are_you_sure'), data: { confirm: t('are_you_sure'), commit: t('modal.commit'), cancel: t('modal.cancel') }
