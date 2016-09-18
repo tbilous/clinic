@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828171900) do
+ActiveRecord::Schema.define(version: 20160917122822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,52 @@ ActiveRecord::Schema.define(version: 20160828171900) do
   end
 
   add_index "contacts", ["user_id", "created_at"], name: "index_contacts_on_user_id_and_created_at", using: :btree
+
+  create_table "pharm_groups", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pharm_groups", ["user_id"], name: "index_pharm_groups_on_user_id", using: :btree
+
+  create_table "pharm_owners", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pharm_owners", ["user_id"], name: "index_pharm_owners_on_user_id", using: :btree
+
+  create_table "pharm_types", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pharm_types", ["user_id"], name: "index_pharm_types_on_user_id", using: :btree
+
+  create_table "pharms", force: :cascade do |t|
+    t.integer  "user_id",       null: false
+    t.string   "name",          null: false
+    t.text     "comment",       null: false
+    t.string   "attention"
+    t.float    "dose",          null: false
+    t.float    "volume",        null: false
+    t.integer  "type_id",       null: false
+    t.integer  "pharmowner_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "pharms", ["user_id", "pharmowner_id"], name: "index_pharms_on_user_id_and_pharmowner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

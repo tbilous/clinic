@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  resources :pharms
+
+  get 'pharm_owners/create'
+
+  get 'pharm_owners/destroy'
+
+  get 'pharm_types/create'
+
+  get 'pharm_types/destroy'
+
+  get 'pharm_groups/create'
+
+  get 'pharm_groups/destroy'
 
   devise_for :admins
   devise_for :users

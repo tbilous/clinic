@@ -1,0 +1,2 @@
+module PharmTypesHelper
+end

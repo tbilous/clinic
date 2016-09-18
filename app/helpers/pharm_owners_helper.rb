@@ -1,0 +1,2 @@
+module PharmOwnersHelper
+end

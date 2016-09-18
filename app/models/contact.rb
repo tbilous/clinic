@@ -7,7 +7,12 @@ class Contact < ActiveRecord::Base
   default_scope -> { order('name') }
   # self.per_page = 10
   def self.search(search)
-    where(['phone LIKE ? OR LOWER(name) LIKE ? OR LOWER(email) LIKE ? OR LOWER(comment) LIKE ? OR LOWER(address) LIKE ?', "%#{search}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%"])
+    # where(['phone LIKE ? OR LOWER(name) LIKE ? OR LOWER(email) LIKE ? OR LOWER(comment) LIKE ? OR LOWER(address) LIKE ?', "%#{search}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%"])
+    where(['phone ilike :search',
+           'LOWER(name) ilike :search',
+           'LOWER(email) ilike :search',
+           'LOWER(comment) ilike :search',
+           'LOWER(address) ilike :search'].join(' OR '), {search: "%#{search}%" })
   end
   # scope :search, lambda {|search| where(["search LIKE :term", {:term => "%#{search}%"}]) }
 
