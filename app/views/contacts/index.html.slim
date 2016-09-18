@@ -14,7 +14,7 @@
         = render 'layouts/shared/search_form'
     .col-md-9.col-sm-8
       - if @contacts.present?
-        = render 'contacts/shared/contacts'
+        = render 'contacts/shared/contacts_list'
       - else
         = render 'layouts/shared/search_error'
 

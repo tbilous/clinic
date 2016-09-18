@@ -13,10 +13,7 @@
   padding-top: 5px;
   display: inline-block;
 }
-.contact-media {
-  display: flex;
-  align-items: center;
-}
+
 div, ul {
   &.pagination {
     margin-top: 0;
@@ -24,4 +21,12 @@ div, ul {
 }
 .pagination {
   margin-top: 0;
+}
+.list-group-item__contact {
+  display: inline-block;
+  padding-top: 5px;
+  overflow: hidden;
+}
+#search-form {
+  margin-bottom: 1em;
 }
