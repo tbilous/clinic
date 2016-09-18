@@ -12,7 +12,7 @@ RSpec.describe 'ContactPage', type: :view do
     # sign_in @admin
   end
 
-  describe 'visit contacts page' do
+  describe 'if have contacts' do
     before do
       login(@user)
     end
@@ -42,5 +42,13 @@ RSpec.describe 'ContactPage', type: :view do
         it { should have_selector('h1', text: t('page.contact.new')) }
       end
     end
+  end
+
+  describe 'if not have contacts' do
+    before do
+      login(@user)
+      click_link( t(:contacts), href: contacts_path)
+    end
+    it { should have_selector('h1', text: t('page.contact.new')) }
   end
 end
