@@ -37,8 +37,17 @@ en:
       new: 'New patient'
       edit: 'Edit patient'
       view: 'Patient`s Profile'
+      title:  "Patient"
+      index:  "All Patients"
+    contact:
+      new:    "New contact"
+      title:  "Contact name"
+      edit:   "Edit contact"
+      view:   "View contact"
+      index:  "All contacts"
+      name:   "Name"
     anthropometry:
-      title: 'Antropometry'
+      title: 'Anthropometry'
       list: 'Journal of anthropometry'
   label:
     user:
@@ -97,6 +106,14 @@ en:
         one: 'Patient'
         few: 'Patients'
         many: 'Patients'
+      contact:
+        one: 'Contact'
+        few: 'Contacts'
+        many: 'Contacts'
+        name: 'Name'
+        address: 'Address'
+        phone: 'Phone'
+        comment: 'Comment'
       user:
         name: "User"
         names: 'Users'

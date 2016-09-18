@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "AnthropometryPage", type: :view do
+RSpec.describe 'AnthropometryPage', type: :view do
   subject { page }
   include Devise::Test::ControllerHelpers
   before :each do

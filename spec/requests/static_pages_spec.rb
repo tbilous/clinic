@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe "Static pages" do
+describe 'Static pages' do
   subject { page }
   let(:heading)    { t(:site_name) }
   
-  describe "About page" do
+  describe 'About page' do
     before { visit about_path }
     let(:page_title) { t(:page_about) }
     
@@ -12,8 +12,8 @@ describe "Static pages" do
     it { should have_title(heading) }
   end
     # Test routes links
-  describe "Right links" do
-    it "should have the right links on the layout" do
+  describe 'Right links' do
+    it 'should have the right links on the layout' do
       visit root_path
       page.find("#logo")
       expect(page).to have_title(heading)
