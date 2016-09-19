@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Pharm, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @pharm = user.pharms.build(user_id: user.id, name: 'Example Item', comment: 'Item instruction', attention: 'Pharm attention',  dose: 1.1, volume: 1.1, pharmowner_id: 1, type_id: 1 ) }
+  before { @pharm = user.pharms.build(user_id: user.id, name: 'Example Item', comment: 'Item instruction', attention: 'Pharm attention',  dose: 1.1, volume: 1.1, pharm_owner_id: 1, type_id: 1 ) }
 
   subject { @pharm }
 
@@ -14,7 +14,7 @@ RSpec.describe Pharm, type: :model do
   it { should respond_to(:dose) }
   it { should respond_to(:volume) }
   it { should respond_to(:type_id) }
-  it { should respond_to(:pharmowner_id) }
+  it { should respond_to(:pharm_owner_id) }
 
   it { should be_valid }
 
@@ -59,7 +59,7 @@ RSpec.describe Pharm, type: :model do
     it { should_not be_valid }
   end
   describe 'with blank type' do
-    before { @pharm.pharmowner_id  = nil  }
+    before { @pharm.pharm_owner_id  = nil  }
     it { should_not be_valid }
   end
 

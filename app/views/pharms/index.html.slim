@@ -1,2 +1,26 @@
-h1 Pharms#index
-p Find me in app/views/pharms/index.html.slim
+- provide(:title, t('page.contact.index'))
+.container
+  .page-header
+    .row
+      .col-xs-5
+        h1
+          = yield(:title)
+      .col-xs-7.text-right
+        = link_to new_contact_path, title: 'new', class: 'btn btn-primary' do
+          span.glyphicon.glyphicon-plus
+  .row
+    .col-md-3.col-sm-4
+      = form_tag(contacts_path, :method => 'get', id: 'search-form') do
+        = render 'layouts/shared/search_form'
+    .col-md-9.col-sm-8
+      - if @contacts.present?
+        = render 'pharms/shared/pharms_list'
+      - else
+        = render 'layouts/shared/search_error'
+
+  br
+  hr
+  = link_to root_path, class: 'btn', title: t('back') do
+    span.glyphicon.glyphicon-triangle-left
+  br
+  hr
