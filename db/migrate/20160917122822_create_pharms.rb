@@ -10,12 +10,12 @@ class CreatePharms < ActiveRecord::Migration
       t.float     :dose, null: false
       t.float     :volume, null: false
 
-      t.integer   :type_id, null: false
-      t.integer   :pharmowner_id, null: false
+      t.integer   :pharm_type_id
+      t.integer   :pharm_owner_id
 
       t.timestamps null: false
     end
 
-    add_index :pharms, [:user_id, :pharmowner_id]
+    add_index :pharms, [:user_id]
   end
 end

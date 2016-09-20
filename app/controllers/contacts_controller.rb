@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
   def update
     @contact = current_user.contacts.find(params[:id])
     if @contact.update_attributes(contacts_params)
-      flash[:success] = t("activerecord.successful.messages.contact.updated")
+      flash[:success] = t('activerecord.successful.messages.contact.updated')
       render 'show'
     else
       render 'edit'
@@ -63,12 +63,8 @@ class ContactsController < ApplicationController
 
 
     def require_permission
-      # if current_user.contacts.count != 0
         if current_user != Contact.find(params[:id]).user
           redirect_to root_path
         end
-      # else
-        # flash[:error] = "List empty"
-      # end
     end
 end

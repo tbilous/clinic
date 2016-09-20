@@ -4,7 +4,7 @@
       .well
         = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-vertical'}) do |f|
           = devise_error_messages!
-          = render "users/shared/error_messages"
+          = render 'users/shared/error_messages'
           fieldset
             legend
             h2
@@ -18,11 +18,16 @@
               div
                 = f.password_field :password, autocomplete: "off", class: 'form-control'
             - if devise_mapping.rememberable?
-              .checkbox.text-right
+              .form-group class=("[ ]")
                 = f.check_box :remember_me
-                = f.label :remember_me
+                .btn-group class=("[ ]")
+                  label.btn.btn-primary class=("[ ]") for="user_remember_me"
+                    span.glyphicon.glyphicon-plus class=("[ ]")
+                    span.glyphicon.glyphicon-minus class=("[ ]")
+                  label.btn.btn-default.active class=("[ ]") for="user_remember_me"
+                  span = t('activerecord.attributes.user.remember_me')
             .actions
-              = f.submit t('.sign_in'), class: "btn btn-large btn-primary pull-right"
+              = f.submit t('.sign_in'), class: 'btn btn-large btn-primary pull-right'
             fieldset
 
         = render "devise/shared/links"

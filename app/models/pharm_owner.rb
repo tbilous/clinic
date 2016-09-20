@@ -1,6 +1,6 @@
 class PharmOwner < ActiveRecord::Base
   belongs_to :user
-  has_many :pharms
+  has_many :pharms, dependent: :nullify
 
   default_scope -> { order('name') }
 

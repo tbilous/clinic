@@ -4,7 +4,7 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
-    @owners = PharmOwner.where(id: current_user.id).all
+    # @owners = PharmOwner.where(id: current_user.id).all
   end
 
   def create
@@ -26,7 +26,7 @@ class PharmsController < ApplicationController
         @pharms = current_user && current_user.pharms.all.paginate(:page => params[:page]).order('name DESC')
       end
     else
-      render 'new'
+      redirect_to url_for( :action => :new)
     end
   end
 

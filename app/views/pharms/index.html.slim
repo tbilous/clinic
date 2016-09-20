@@ -13,7 +13,7 @@
       = form_tag(contacts_path, :method => 'get', id: 'search-form') do
         = render 'layouts/shared/search_form'
     .col-md-9.col-sm-8
-      - if @contacts.present?
+      - if @farms.present?
         = render 'pharms/shared/pharms_list'
       - else
         = render 'layouts/shared/search_error'

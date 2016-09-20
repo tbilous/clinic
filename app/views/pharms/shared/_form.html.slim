@@ -1,14 +1,24 @@
-p = @owners.name
 = simple_form_for(@pharm) do |f|
   = f.error_notification
   .form-inputs
     = f.input :name
     = f.input :dose
     = f.input :volume
+    = f.association :pharm_type, :include_blank => 'your text here'
     = f.input :comment, input_html: {:rows => 5}
-    = f.association :pharm_owner
+    .form-group
+      label.select.required.control-label
+        abbr title="обов`язково"
+          |*
+        |  bla-bla-bla
+      .input-group
+        = f.association :pharm_owner, :include_blank => 'your text here', :wrapper => false, label: false
+        .input-group-btn
+          a.btn.btn-prymary type="button"
+            span.glyphicon.glyphicon-plus
   .form-actions
     = link_to pharms_path, :title => t('back'), :class => 'btn btn-info' do
       span.glyphicon.glyphicon-triangle-left
+
     = f.button :button, :title => t('edit.create'), :class => 'btn-success btn-sent' do
       span.glyphicon.glyphicon-ok
