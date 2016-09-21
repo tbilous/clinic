@@ -29,6 +29,15 @@ uk:
         chest: 'Окружність грудей(см)'
         height: 'Ріст(см)'
         weight: 'Вага(кг)'
+      pharm:
+        name: 'Назва'
+        comment: 'Коментар'
+        group: 'Группа'
+        type: 'Тип прийому'
+        owner: 'Виробник'
+        warning: 'Увага!'
+        dose: 'Доза'
+        volume: 'Об`єм'
     options:
       character:
         sex:

@@ -4,13 +4,12 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
-    # @owners = PharmOwner.where(id: current_user.id).all
   end
 
   def create
     @pharm = current_user.pharms.build(pharms_params)
     if @pharm.save
-      flash[:success] = t('activerecord.successful.messages.contact.created')
+      flash[:success] = t('activerecord.successful.messages.pharm.created')
       redirect_to pharms_path
     else
       render 'new'
@@ -21,7 +20,7 @@ class PharmsController < ApplicationController
     if current_user.pharms.count != 0
       if params[:search]
         @pharms = current_user && Pharm.search(params[:search]).paginate(:page => params[:page]).order('name DESC')
-        @users = User
+        # @users = User
       else
         @pharms = current_user && current_user.pharms.all.paginate(:page => params[:page]).order('name DESC')
       end
@@ -31,9 +30,11 @@ class PharmsController < ApplicationController
   end
 
   def show
+    @pharm = current_user && current_user.pharms.find(params[:id])
   end
 
   def edit
+    @pharm = current_user.pharms.find(params[:id])
   end
 
   def update
@@ -41,6 +42,10 @@ class PharmsController < ApplicationController
 
 
   def destroy
+    @pharm = current_user.pharms.find(params[:id])
+    @pharm.destroy if @pharm.present?
+    flash[:success] = t('activerecord.successful.messages.pharm.deleted')
+    render 'index'
   end
 
   private

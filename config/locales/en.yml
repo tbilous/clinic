@@ -49,6 +49,13 @@ en:
     anthropometry:
       title: 'Anthropometry'
       list: 'Journal of anthropometry'
+    pharm:
+      new:    'New Medication'
+      title:  "Medication"
+      edit:   "Edit Medication"
+      view:   "View Medication"
+      index:  "Medications list"
+      name:   "Name"
   label:
     user:
       name: 'Your Name'
@@ -58,7 +65,7 @@ en:
   back: 'Back'
   top: 'Top'
   appointments: "Appointments"
-  pfarmacy: "Medicines and pharmacy"
+  pharmacy: "Medicines and pharmacy"
   contacts: "Contacts"
   edit:
     delete: "Delete"
@@ -101,6 +108,9 @@ en:
         anthropometry:
           created: "Anthropometry data was added"
           deleted: 'Anthropometry data deleted'
+        pharm:
+          created: "Medication added"
+          deleted: 'Medication deleted'
     model:
       character:
         one: 'Patient'
@@ -117,3 +127,7 @@ en:
       user:
         name: "User"
         names: 'Users'
+      pharm:
+        name: "Medicament"
+        comment: "Comment"
+        attention: "Attention"

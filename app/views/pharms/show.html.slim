@@ -1,2 +1,31 @@
-h1 Pharms#show
-p Find me in app/views/pharms/show.html.slim
+- provide(:title, t('page.pharm.view'))
+.container
+  .page-header
+    .row
+      .col-xs-5
+        h1
+          = @pharm.name
+      .col-xs-7.text-right
+        = link_to edit_pharm_path(@pharm), :class => 'btn btn-primary' do
+          span.glyphicon.glyphicon-pencil
+  = render :partial => 'users/shared/error_messages'
+  .row
+    .col-sm-5.text-center
+
+    .col-sm-7
+      .well
+        h4
+          = t('activerecord.model.pharm.name')
+        = @pharm.name
+  h4
+    = t('activerecord.model.pharm.comment')
+  = @pharm.comment
+  - if @pharm.attention.present?
+    h4
+      = t('activerecord.model.pharm.attention')
+    = @pharm.attention
+  hr
+  = link_to contacts_path, :class => 'btn', :title => t('back') do
+    span.glyphicon.glyphicon-triangle-left
+  br
+  hr

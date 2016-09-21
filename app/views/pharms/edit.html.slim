@@ -1,2 +1,13 @@
-h1 Pharms#edit
-p Find me in app/views/pharms/edit.html.slim
+- provide(:title, t('page.pharm.edit'))
+.container
+  .page-header
+    h1
+      = yield(:title) + ': ' + @pharm.name
+  .row
+    .col-sm-6.col-sm-offset-3
+      = render '/pharms/shared/form_edit'
+  hr
+  = link_to contact_path(@pharm), :class => 'btn', :title => t('back') do
+    span.glyphicon.glyphicon-triangle-left
+  br
+  hr

@@ -27,6 +27,13 @@ uk:
       view:   "Переглянути Контакт"
       index:  "Список контактів"
       name:   "Ім`я"
+    pharm:
+      new:    'Новий препарат'
+      title:  "Препарат"
+      edit:   "Редагувати Препарат"
+      view:   "Переглянути Препарат"
+      index:  "Список препаратів"
+      name:   "Назва"
     anthropometry:
       title: 'Антропометрія'
       list: 'Журнал антропометрії'
@@ -40,7 +47,7 @@ uk:
   back: 'Назад'
   top: 'Вгору'
   appointments: "Призначення"
-  pfarmacy:     "Ліки та аптека"
+  pharmacy:     "Ліки та аптека"
   contacts:     "Контакти"
   edit:
     delete: "Видалити"
@@ -87,6 +94,9 @@ uk:
         anthropometry:
           created: "Антропометричний запис додано"
           deleted: 'Антропометричний запис видалено'
+        pharm:
+          created: "Препарат додано"
+          deleted: 'Препарат видалено'
     model:
       character:
         one: 'Пацієнт'
@@ -103,8 +113,10 @@ uk:
       user:
         name: "Користувач"
         names: 'Користувачі'
-
-
+      pharm:
+        name: "Препарат"
+        comment: "Коментар"
+        attention: "Увага"
     errors:
       messages:
         record_invalid: 'Виникли помилки: %{errors}'

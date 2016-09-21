@@ -30,6 +30,13 @@ en:
         chest: 'Radius chest(cm)'
         height: 'Height(cm)'
         weight: 'Weight(kg)'
+      pharm:
+        name: 'Name'
+        comment: 'Comment'
+        group: 'Group'
+        type: 'Typ of use'
+        owner: 'Owner'
+        warning: 'Warning'
     # Examples
     # labels:
     #   defaults:
