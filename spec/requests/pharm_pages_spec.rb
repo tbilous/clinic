@@ -21,9 +21,6 @@ RSpec.describe 'PharmPage', type: :view do
       before do
         click_link( t('pharmacy'), href: pharms_path)
       end
-      # it { binding.pry }
-      # it { puts page.body }
-
       it { expect(page).to have_content pharm.name }
       it { expect(page).to have_link( '', href: new_pharm_path)}
       it { expect(page).to have_link( '', href: pharm_path(pharm.id))}

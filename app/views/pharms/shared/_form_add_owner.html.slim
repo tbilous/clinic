@@ -1,0 +1,8 @@
+= simple_form_for(@pharm_owner) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :comment
+  .form-actions
+    = f.button :button, :title => t('edit.create'), :class => 'btn-success btn-sent' do
+      span.glyphicon.glyphicon-ok

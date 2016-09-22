@@ -4,15 +4,15 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
-    @pharm_owner = current_user.pharm_owners.build(pharm_owner_params)
-    @pharm_type = current_user.pharm_types.build(pharm_type_params)
+    @pharm_owner = current_user.pharm_owners.build(params[:id])
+    @pharm_type = current_user.pharm_types.build(params[:id])
   end
 
   def create
     @pharm = current_user.pharms.build(pharms_params)
     if @pharm.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
-      redirect_to pharms_path
+      render 'new'
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class PharmsController < ApplicationController
         @pharms = current_user && current_user.pharms.all.paginate(:page => params[:page]).order('name DESC')
       end
     else
-      redirect_to url_for( :action => :new)
+      redirect_to url_for(:action => :new)
     end
   end
 
@@ -51,21 +51,13 @@ class PharmsController < ApplicationController
   end
 
   private
-  def pharm_owner_params
-    params.require(:pharm_owner).permit(:user_id, :name, :comment)
-  end
-
-  def pharm_type_params
-    params.require(:pharm_owner).permit(:user_id, :name, :comment)
-  end
-
   def pharms_params
-      params.require(:pharm).permit(:name, :comment, :attention, :dose, :volume, :type_id, :pharm_owner_id )
-    end
+    params.require(:pharm).permit(:name, :comment, :attention, :dose, :volume, :pharm_type_id, :pharm_owner_id)
+  end
 
-    def require_permission
-      if current_user != Pharm.find(params[:id]).user
-        redirect_to root_path
-      end
+  def require_permission
+    if current_user != Pharm.find(params[:id]).user
+      redirect_to root_path
     end
+  end
 end

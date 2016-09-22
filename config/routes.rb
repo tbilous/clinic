@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
   resources :pharms
-
-  get 'pharm_owners/create'
-
-  get 'pharm_owners/destroy'
+  resources :pharm_owners, only: [:new, :create, :destroy, :show]
 
   get 'pharm_types/create'
 

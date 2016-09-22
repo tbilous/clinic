@@ -36,13 +36,6 @@ RSpec.describe "CharacterPages", type: :view do
           find('#character_sex_true').set(true)
         end
         it { expect { (find('.btn-sent').click) }.to change(Character, :count).by(1) }
-        describe 'check result' do
-          before { (find('.btn-sent').click) }
-          # it { expect(page).to have_css('.home-characters-list') }
-          # it { expect(page).to have_content character.name }
-          # it { expect(page).to have_content character.comment }
-          # it { expect(page).to have_css '.glyphicon-pencil' }
-        end
       end
     end
   end

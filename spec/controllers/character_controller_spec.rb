@@ -6,31 +6,29 @@ RSpec.describe CharactersController, type: :controller do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @admin = FactoryGirl.create :admin
       @user = FactoryGirl.create :user
-      # sign_in @admin
   end
-  # render_views}
 
-  describe "for non-signed-in users" do
-    describe "submitting to the create action" do
+  describe 'for non-signed-in users' do
+    describe 'submitting to the create action' do
       before do
         post 'new'
       end
       specify { expect(response).to redirect_to(new_user_session_path) }
     end
 
-    describe "submitting to the destroy action" do
+    describe 'submitting to the destroy action' do
       let(:character) { FactoryGirl.create(:character, user: @admin) }
       before { delete :destroy, id: character.id }
       specify { expect(response).to redirect_to(new_user_session_path) }
     end
   end
 
-  describe "for signed-in" do
+  describe 'for signed-in' do
     before do
       sign_in @admin
     end
 
-    describe "POST new" do
+    describe 'POST new' do
       before do
         post 'new'
       end
@@ -38,21 +36,16 @@ RSpec.describe CharactersController, type: :controller do
       it { expect(response).to_not redirect_to(new_user_session_path) }
     end
     describe 'Create new' do
-      it "creates character" do
+      it 'creates character' do
         character_params = FactoryGirl.attributes_for(:character)
         expect { post :create, :character => character_params }.to change(Character, :count).by(1)
       end
-      # it 'make active' do
-      #   character_params = FactoryGirl.attributes_for(:character)
-      #   puts character_params
-      #   expect{ post :create, :character => character_params }.to change{ User.patient}.from(nil).to(Character.id)
-      # end
     end
 
-    describe "and owner users" do
+    describe 'and owner users' do
       let!(:character) { FactoryGirl.create(:character, user: @admin) }
 
-      describe "PUT 'update'" do
+      describe 'PUT update' do
         let(:attr) do
           { :name => 'new name', :comment => 'new comment' }
         end
@@ -65,24 +58,24 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(character.comment).to eql attr[:comment] }
       end
 
-      describe "DELETE destroy" do
+      describe 'DELETE destroy' do
         it {
           # character
           expect{ delete :destroy, id: character.id
         }.to change{Character.count}.by(-1) }
       end
 
-      describe "GET show" do
+      describe 'GET show' do
         before do
           get :show, id: character.id
         end
         it { expect(response).to render_template(:show) }
       end
     end
-    describe "and non-owner users" do
+    describe 'and non-owner users' do
       let!(:character) { FactoryGirl.create(:character, user: @user) }
 
-      describe "GET show" do
+      describe 'GET show' do
         before do
           get :show, id: character.id, user: @user.id
         end
@@ -90,7 +83,7 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(response).to redirect_to(root_path) }
       end
 
-      describe "PUT 'update'" do
+      describe 'PUT update' do
         let(:attr) do
           { :name => 'new name', :comment => 'new comment' }
         end
@@ -103,7 +96,7 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(character.comment).to_not eql attr[:comment] }
       end
 
-      describe "DELETE destroy" do
+      describe 'DELETE destroy' do
         it {
           # character
           expect{ delete :destroy, id: character.id }.to_not change{Character.count}
