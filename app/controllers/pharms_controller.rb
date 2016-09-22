@@ -4,6 +4,8 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
+    @pharm_owner = current_user.pharm_owners.build(pharm_owner_params)
+    @pharm_type = current_user.pharm_types.build(pharm_type_params)
   end
 
   def create
@@ -49,7 +51,15 @@ class PharmsController < ApplicationController
   end
 
   private
-    def pharms_params
+  def pharm_owner_params
+    params.require(:pharm_owner).permit(:user_id, :name, :comment)
+  end
+
+  def pharm_type_params
+    params.require(:pharm_owner).permit(:user_id, :name, :comment)
+  end
+
+  def pharms_params
       params.require(:pharm).permit(:name, :comment, :attention, :dose, :volume, :type_id, :pharm_owner_id )
     end
 

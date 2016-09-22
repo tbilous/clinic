@@ -3,7 +3,6 @@ class AnthropometriesController < ApplicationController
     # helper_method :current_user
     before_action :authenticate_user!
     before_action :require_permission, only: [:destroy]
-    # before_action :active_patient, only: [:new, :destroy]
 
     # def new
     #   @anthropometry = current_user && active_patient && current_user.anthropometries.new
@@ -15,8 +14,6 @@ class AnthropometriesController < ApplicationController
 
 
     def create
-        # puts ">>>>>>>>>>>>>>> #{params[:id].inspect}"
-
         @anthropometry = current_patient.anthropometries.build(anthropometries_params)
         @anthropometry.user_id = current_user.id if current_user
         if @anthropometry.save
@@ -53,8 +50,6 @@ class AnthropometriesController < ApplicationController
 
         def require_permission
             # puts ">>>>>>>>>>>>>>> #{anthropometry_user.inspect}"
-            # puts ">>>>>>>>>>>>>>> #{User.find(anthropometry_user).inspect}"
-            # puts ">>>>>>>>>>>>>>> #{User.find(current_user.id).inspect}"
             redirect_to root_path if current_user.id != anthropometry_user
             # redirect_to root_path if current_user != user.id
         end
