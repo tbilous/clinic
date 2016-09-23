@@ -7,8 +7,9 @@
   .row
     .col-sm-6
       = render 'pharms/shared/form'
-    .col-sm-6
+    .col-sm-4.col-sm-offset-2
       = render 'pharms/shared/form_add_owner'
+      = render 'pharms/shared/form_add_type'
   hr
   = link_to contacts_path, class: 'btn', title: t('back') do
     span.glyphicon.glyphicon-triangle-left

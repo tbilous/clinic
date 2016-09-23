@@ -4,8 +4,8 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
-    @pharm_owner = current_user.pharm_owners.build(params[:id])
-    @pharm_type = current_user.pharm_types.build(params[:id])
+    @pharm_owner = current_user.pharm_owners.build
+    @pharm_type = current_user.pharm_types.build
   end
 
   def create

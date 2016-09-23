@@ -25,6 +25,7 @@ class PharmOwnersController < ApplicationController
 
   private
   def pharm_owner_params
+    # TODO 'А хуй його знає що з ним'
     params.require(:pharm_owner).permit(:name, :comment)
   end
   def require_permission

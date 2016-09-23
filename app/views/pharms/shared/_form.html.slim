@@ -17,7 +17,7 @@
           .input-group
             = f.association :pharm_type, :include_blank => 'your text here', :wrapper => false, label: false
             .input-group-btn
-              a.btn.btn-primary type="button"
+              a.btn.btn-primary#typeAddBtn type="button"
                 span.glyphicon.glyphicon-plus
       .col-sm-6
         .form-group
@@ -28,7 +28,7 @@
           .input-group
             = f.association :pharm_owner, :include_blank => 'your text here', :wrapper => false, label: false
             .input-group-btn
-              a.btn.btn-primary type="button"
+              a.btn.btn-primary#ownerAddBtn(type="button")
                 span.glyphicon.glyphicon-plus
     = f.input :comment, input_html: {:rows => 5}
   .form-actions

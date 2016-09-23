@@ -1,10 +1,11 @@
-#ownerAddForm
-  h2 Add Owner
-  = simple_form_for(@pharm_owner) do |f|
+#typeAddForm
+  h2 Add Type
+  = simple_form_for(@pharm_type) do |f|
     = f.error_notification
     .form-inputs
       = f.input :name
       = f.input :comment
+      = f.input :slug
     .form-actions
       = f.button :button, :title => t('edit.create'), :class => 'btn-success btn-sent' do
         span.glyphicon.glyphicon-ok
