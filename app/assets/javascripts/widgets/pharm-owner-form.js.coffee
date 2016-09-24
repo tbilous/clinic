@@ -26,4 +26,4 @@ class PharmOwnerForm
       @rebuildOptions()
 
 $(document).ready ->
-  new PharmOwnerForm(button) for button in $('.script-pharm-owner-form')
+  new PharmOwnerForm(form) for form in $('.script-pharm-owner-form')
