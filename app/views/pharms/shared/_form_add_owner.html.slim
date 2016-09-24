@@ -1,18 +1,11 @@
-#addOwnerModal.modal.fade role="dialog"
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close data-dismiss="modal" type="button"  &times;
-        h4.modal-title Add Owner
-      .modal-body
-        #ownerAddForm
-          = simple_form_for(current_user.pharm_owners.build) do |f|
-            = f.error_notification
-            .form-inputs
-              = f.input :name
-              = f.input :comment
-            .form-actions
-              a.btn.btn-info data-dismiss="modal" type="button"
-                span.glyphicon.glyphicon-triangle-left
-              = f.button :button, :title => t('edit.create'), :class => 'btn-success btn-success' do
-                span.glyphicon.glyphicon-ok
+#ownerAddForm.hidden
+  = simple_form_for(current_user.pharm_owners.build) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :name
+      = f.input :comment
+    .form-actions
+      a.btn.btn-info data-dismiss="modal" type="button"
+        span.glyphicon.glyphicon-triangle-left
+      = f.button :button, :title => t('edit.create'), :class => 'btn-success btn-success' do
+        span.glyphicon.glyphicon-ok
