@@ -20,7 +20,6 @@ class PharmOwnerForm
     evt.preventDefault()
 
     # Сериализируем и отправим форму.
-    # По завершении дадим знать что пора перегрузить списки контактов и адресов.
     $(@form(), @el).ajaxSubmit (data) =>
       @el.html(data)
       @rebuildOptions()
