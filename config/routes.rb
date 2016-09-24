@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :pharms
-  resources :pharm_owners, only: [:create, :destroy]
-  resources :pharm_types, only: [:create, :destroy]
+  resources :pharm_owners, only: [:index, :new, :create, :destroy]
+  resources :pharm_types, only: [:index, :new, :create, :destroy]
 
   get 'pharm_groups/create'
 

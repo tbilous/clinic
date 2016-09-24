@@ -9,7 +9,7 @@ class AnthropometriesController < ApplicationController
     # end
 
     def index
-        @anthropometry = current_user &&  current_patient.anthropometries.all
+      @anthropometry = current_user && current_patient.anthropometries.all
     end
 
 

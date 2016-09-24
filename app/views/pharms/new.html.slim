@@ -8,8 +8,11 @@
     .col-sm-6
       = render 'pharms/shared/form'
     .col-sm-4.col-sm-offset-2
-      = render 'pharms/shared/form_add_owner'
-      = render 'pharms/shared/form_add_type'
+      #ownerAddForm.script-pharm-owner-form.hidden data-target="select#pharm_pharm_owner_id"
+        = render 'pharms/shared/form_add_owner'
+        
+      #typeAddForm.hidden
+        = render 'pharms/shared/form_add_type'
   hr
   = link_to pharms_path, class: 'btn', title: t('back') do
     span.glyphicon.glyphicon-triangle-left
