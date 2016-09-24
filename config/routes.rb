@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   resources :pharms
-  resources :pharm_owners, only: [:new, :create, :destroy]
-  # TODO 'Рендер форми валиться без роута на index чому?'
-  resources :pharm_types, only: [:new, :create, :destroy]
+  resources :pharm_owners, only: [:create, :destroy]
+  resources :pharm_types, only: [:create, :destroy]
 
   get 'pharm_groups/create'
 

@@ -38,6 +38,7 @@ uk:
         warning: 'Увага!'
         dose: 'Доза'
         volume: 'Об`єм'
+        attention: 'Увага!'
     options:
       character:
         sex:

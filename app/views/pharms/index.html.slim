@@ -8,6 +8,7 @@
       .col-xs-7.text-right
         = link_to new_pharm_path, title: 'new', class: 'btn btn-primary' do
           span.glyphicon.glyphicon-plus
+    = render :partial => 'users/shared/error_messages'
   .row
     .col-md-3.col-sm-4
       = form_tag(pharms_path, :method => 'get', id: 'search-form') do

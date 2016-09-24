@@ -5,13 +5,12 @@ class PharmTypesController < ApplicationController
     @pharm_types = PharmType.all
   end
   def create
-    @pharm_type = current_user.pharm_types.build(pharm_type_params)
-    @pharm = current_user && current_user.pharms.new
+    @pharm_type = current_user.pharm_types.build(secure_params)
     if @pharm_type.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
-      redirect_to @pharm
+      redirect_to new_pharm_path
     else
-      render new_pharm_path
+      redirect_to new_pharm_path
     end
   end
 
@@ -24,7 +23,7 @@ class PharmTypesController < ApplicationController
 
 
   private
-  def pharm_type_params
+  def secure_params
     # TODO 'Та сама хуйня що з овнером'
     params.require(:pharm_type).permit(:name, :comment, :slug)
   end

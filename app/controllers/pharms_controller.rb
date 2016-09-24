@@ -4,15 +4,15 @@ class PharmsController < ApplicationController
 
   def new
     @pharm = current_user && current_user.pharms.new
-    @pharm_owner = current_user.pharm_owners.build
-    @pharm_type = current_user.pharm_types.build
+    # @pharm_owner = current_user.pharm_owners.build
+    # @pharm_type = current_user.pharm_types.build
   end
 
   def create
     @pharm = current_user.pharms.build(pharms_params)
     if @pharm.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
-      render 'new'
+      render 'index'
     else
       render 'new'
     end
@@ -22,7 +22,6 @@ class PharmsController < ApplicationController
     if current_user.pharms.count != 0
       if params[:search]
         @pharms = current_user && Pharm.search(params[:search]).paginate(:page => params[:page]).order('name DESC')
-        # @users = User
       else
         @pharms = current_user && current_user.pharms.all.paginate(:page => params[:page]).order('name DESC')
       end

@@ -9,9 +9,9 @@ class PharmOwnersController < ApplicationController
     @pharm = current_user && current_user.pharms.new
     if @pharm_owner.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
-      redirect_to @pharm
+      redirect_to new_pharm_path
     else
-      render new_pharm_path
+      redirect_to new_pharm_path
     end
   end
 
