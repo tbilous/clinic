@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require data-confirm-modal
+//= require jquery.form
 //= require_tree .
