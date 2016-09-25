@@ -8,12 +8,11 @@ class PharmOwnersController < ApplicationController
   end
 
   def new
-    @pharm_owner = current_user.pharm_owners.build(pharm_owner_params)
+    @pharm_owner = current_user.pharm_owners.build(secure_params)
   end
 
   def create
-    @pharm_owner = current_user.pharm_owners.build(pharm_owner_params)
-    @pharm = current_user && current_user.pharms.new
+    @pharm_owner = current_user.pharm_owners.build(secure_params)
     if @pharm_owner.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
       @pharm_owner = current_user.pharm_owners.build({})
@@ -33,15 +32,14 @@ class PharmOwnersController < ApplicationController
   def current_user_pharm_owners
     trash = ["created_at", "updated_at", "user_id"]
     @pharm_owners ||=
-      PharmOwner.where(user_id: current_user.try(:id))
+      PharmOwner.where(user_id: current_user.try(:id)).order('id DESC')
                 .map{ |po| po.attributes.except(*trash) }
   end
   helper_method :current_user_pharm_owners
 
   private
 
-  def pharm_owner_params
-    # TODO 'А хуй його знає що з ним'
+  def secure_params
     params.fetch(:pharm_owner, {}).permit(:name, :comment)
   end
 

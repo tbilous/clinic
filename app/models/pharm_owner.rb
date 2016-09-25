@@ -2,7 +2,7 @@ class PharmOwner < ActiveRecord::Base
   belongs_to :user
   has_many :pharms, dependent: :nullify
 
-  default_scope -> { order('name') }
+  # default_scope -> { order('name') }
 
   validates_length_of :comment, in: 3..500
   validates_length_of :name,  in: 3..80
