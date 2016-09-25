@@ -1,0 +1,13 @@
+= will_paginate
+.list-group
+  - @pharms.each do |pharm|
+    = link_to pharms_path(pharm), class: 'list-group-item' do
+      span.row.display__block
+        strong = pharm.name
+        span.col-xs-5.col-sm-2.text-right
+          span.contact-phone.list-group-item__contact = pharm.dose
+        span.col-sm-3.hidden-xs
+          span.contact-email.list-group-item__contact = pharm.volume
+        span.col-sm-3.hidden-xs
+      span.contact-comment = pharm.comment
+= will_paginate
