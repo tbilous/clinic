@@ -34,5 +34,8 @@ class PharmOwnerForm
       @rebuildOptions()
       @clearOptions()
 
-$(document).ready ->
+hookInstances = ->
   new PharmOwnerForm(form) for form in $('.script-pharm-owner-form')
+
+$(document).ready(hookInstances)
+$(document).on('turbolinks:load', hookInstances)

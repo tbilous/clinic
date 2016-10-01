@@ -12,5 +12,8 @@ class ItemToggle
     # console.log(@item)
     @focus.focus()
 
-$(document).ready ->
+hookInstances = ->
   new ItemToggle(button) for button in $('.script-item-toggle')
+
+$(document).ready(hookInstances)
+$(document).on('turbolinks:load', hookInstances)
