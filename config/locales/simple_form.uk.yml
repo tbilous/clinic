@@ -33,12 +33,18 @@ uk:
         name: 'Назва'
         comment: 'Коментар'
         group: 'Группа'
-        type: 'Тип прийому'
+        type: 'Спосіб прийому'
         owner: 'Виробник'
         warning: 'Увага!'
         dose: 'Доза'
         volume: 'Об`єм'
         attention: 'Увага!'
+      pharm_type:
+        name: 'Назва'
+        comment: 'Коментар'
+      pharm_owner:
+        name: 'Назва'
+        comment: 'Коментар'
     options:
       character:
         sex:

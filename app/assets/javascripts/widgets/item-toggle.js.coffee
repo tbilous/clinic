@@ -15,5 +15,12 @@ class ItemToggle
 hookInstances = ->
   new ItemToggle(button) for button in $('.script-item-toggle')
 
+ready = ->
+  new ItemToggle(button) for button in $('.script-item-toggle')
+
+
 $(document).ready(hookInstances)
 $(document).on('turbolinks:load', hookInstances)
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

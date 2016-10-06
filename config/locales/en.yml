@@ -56,6 +56,10 @@ en:
       view:   "View Medication"
       index:  "Medications list"
       name:   "Name"
+    pharm_type:
+      new: 'New type of use medication'
+    pharm_owner:
+      new: 'New producer'
   label:
     user:
       name: 'Your Name'

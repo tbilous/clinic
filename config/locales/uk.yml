@@ -37,6 +37,10 @@ uk:
     anthropometry:
       title: 'Антропометрія'
       list: 'Журнал антропометрії'
+    pharm_type:
+      new: 'Новий спосіб прийому ліків'
+    pharm_owner:
+      new: 'Новий виробник'
   will_paginate:
     previous_label: "&#8592;"
     next_label: "&#8594;"
