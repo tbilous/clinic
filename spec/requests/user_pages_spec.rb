@@ -11,20 +11,19 @@ describe 'Spec for Sign Up' do
   describe 'Create user' do
     let(:user) { FactoryGirl.create(:user) }
     it 'should create new user account' do
-        # puts user.email
-        fill_in 'user_name', with: user.name
-        fill_in 'user_email', with: 'lksacldsak@dhvbsjd.com'
-        fill_in 'user_password', with: user.password
-        fill_in 'user_password_confirmation', with: user.password
-        click_button t(:sign_up)
-        expect(page).to have_content t('users.registrations.signed_up')
-        expect(page).to_not have_css('.alert-error')
-        expect(page).to_not have_css('.alert-warning')
-        expect(page).to_not have_link(t(:sign_in), href: new_user_session_path)
-        expect(page).to_not have_link(t(:sign_up), href: new_user_registration_path)
-        expect(page).to have_link(t(:sign_out), href: destroy_user_session_path)
-        # puts page.find('.alert').text
-      end
+      # puts user.email
+      fill_in 'user_name', with: user.name
+      fill_in 'user_email', with: 'lksacldsak@dhvbsjd.com'
+      fill_in 'user_password', with: user.password
+      fill_in 'user_password_confirmation', with: user.password
+      click_button t(:sign_up)
+      expect(page).to have_content t('users.registrations.signed_up')
+      expect(page).to_not have_css('.alert-error')
+      expect(page).to_not have_css('.alert-warning')
+      expect(page).to_not have_link(t(:sign_in), href: new_user_session_path)
+      expect(page).to_not have_link(t(:sign_up), href: new_user_registration_path)
+      expect(page).to have_link(t(:sign_out), href: destroy_user_session_path)
+    end
   end
 end
 
@@ -91,7 +90,7 @@ end
 describe 'Index page' do
   describe 'admim should list all users' do
     before(:all) { 30.times { FactoryGirl.create(:user) } }
-    after(:all)  { User.delete_all }
+    after(:all) { User.delete_all }
     let(:admin) { FactoryGirl.create(:admin) }
     before do
       login_as admin, scope: :user

@@ -68,10 +68,7 @@ RSpec.describe ContactsController, type: :controller do
       end
 
       describe 'DELETE destroy' do
-        it do
-          expect do
-          delete :destroy, id: contact.id
-        end.to change { Contact.count }.by(-1) end
+        it { expect { delete :destroy, id: contact.id }.to change(Contact, :count).by(-1) }
       end
 
       describe 'GET show' do

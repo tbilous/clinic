@@ -6,7 +6,12 @@ RSpec.describe Anthropometry, type: :model do
   let(:character) { user.characters.create(FactoryGirl.attributes_for(:character)) }
   let(:anthropometries_params) { FactoryGirl.attributes_for(:adata, user_id: character.user_id) }
 
-  before { @adata = user.anthropometries.build(comment: 'Example A-data', date: Time.now, user_id: character.user_id, character_id: character, height: 92, weight: 12.5) }
+  before do
+    @adata = user.anthropometries.build(comment: 'Example A-data',
+                                        date: Time.now,
+                                        user_id: character.user_id,
+                                        character_id: character, height: 92, weight: 12.5)
+  end
 
   subject { @adata }
 

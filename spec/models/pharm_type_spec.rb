@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.describe PharmType, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @item_type = user.pharm_types.build(user_id: user.id, name: 'Example Item Type name', slug: 'slug', comment: 'Type comment') }
+  before do
+    @item_type = user.pharm_types.build(user_id: user.id,
+                                        name: 'Example Item Type name',
+                                        slug: 'slug',
+                                        comment: 'Type comment')
+  end
 
   subject { @item_type }
 

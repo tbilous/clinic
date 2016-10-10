@@ -91,7 +91,9 @@ en:
     cancel: "No!"
   age: 'Age'
   years:
-    many: 'Years'
+    many: 'years'
+    one: "year"
+    few: "years"
   sign_up: "Sign Up"
   sign_in: "Sign In"
   sign_out: "Sign Out"
@@ -135,3 +137,7 @@ en:
         name: "Medicament"
         comment: "Comment"
         attention: "Attention"
+  days:
+    one: "day"
+    few: "days"
+    many: "days"

@@ -1,3 +1,4 @@
+# :nodoc:
 module ContactsHelper
   def contact_avatar(contact, options = {})
     if contact.photo.nil?

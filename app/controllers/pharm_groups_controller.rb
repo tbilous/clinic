@@ -1,3 +1,4 @@
+# :nodoc: all
 class PharmGroupsController < ApplicationController
   def create
   end

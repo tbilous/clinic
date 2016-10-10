@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe PharmOwner, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @ph_owner = user.pharm_owners.build(user_id: user.id, name: 'Example Pharm Owner', comment: 'Pharm Owner Comment') }
+  before do
+    @ph_owner = user.pharm_owners.build(user_id: user.id,
+                                        name: 'Example Pharm Owner',
+                                        comment: 'Pharm Owner Comment')
+  end
 
   subject { @ph_owner }
 

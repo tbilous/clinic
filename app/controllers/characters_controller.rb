@@ -1,3 +1,4 @@
+# :nodoc: all
 class CharactersController < ApplicationController
   include Devise::Controllers::Helpers
   # helper_method :current_user
@@ -17,7 +18,8 @@ class CharactersController < ApplicationController
     @characters = Character.all.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     @anthropometry = @character.anthropometries.build
     # @anthropometries = @character.anthropometries.all
-    @anthropometries = @character.anthropometries.all.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    @anthropometries = @character.anthropometries.all.paginate(page: params[:page], per_page: 10)
+                           .order('created_at DESC')
   end
 
   def create

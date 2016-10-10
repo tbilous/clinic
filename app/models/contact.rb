@@ -1,3 +1,4 @@
+#:nodoc: all
 class Contact < ActiveRecord::Base
   extend Dragonfly::Model
   include Avatarable

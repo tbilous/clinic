@@ -5,7 +5,13 @@ RSpec.describe Character, type: :model do
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
 
-  before { @character = user.characters.build(name: 'Example Character', comment: 'My son', birthday: Time.new(1973, 10, 15), sex: true, user_id: user.id) }
+  before do
+    @character = user.characters.build(name: 'Example Character',
+                                       comment: 'My son',
+                                       birthday: Time.new(1973, 10, 15),
+                                       sex: true,
+                                       user_id: user.id)
+  end
 
   subject { @character }
 

@@ -1,3 +1,4 @@
+#:nodoc: all
 module Avatarable
   extend ActiveSupport::Concern
 

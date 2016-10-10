@@ -1,3 +1,4 @@
+# :nodoc: all
 class PharmTypesController < ApplicationController
   before_action :authenticate_user!
   before_action :require_permission, only: [:destroy]

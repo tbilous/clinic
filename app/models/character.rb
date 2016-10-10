@@ -1,3 +1,4 @@
+#:nodoc: all
 class Character < ActiveRecord::Base
   include AASM
 

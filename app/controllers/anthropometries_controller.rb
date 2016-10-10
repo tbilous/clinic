@@ -1,3 +1,4 @@
+# :nodoc: all
 class AnthropometriesController < ApplicationController
   include Devise::Controllers::Helpers
   # helper_method :current_user

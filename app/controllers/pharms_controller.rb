@@ -1,3 +1,4 @@
+# :nodoc: all
 class PharmsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :show, :update, :destroy]

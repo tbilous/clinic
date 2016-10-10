@@ -1,3 +1,4 @@
+#:nodoc: all
 class Pharm < ActiveRecord::Base
   belongs_to :user
   belongs_to :pharm_owner

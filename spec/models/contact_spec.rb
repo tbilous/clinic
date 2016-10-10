@@ -5,7 +5,17 @@ RSpec.describe Contact, type: :model do
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
 
-  before { @contact = user.contacts.build(name: 'Example Contact', comment: 'My contact', phone: '1231231212', address: 'Nezalezgnosti ave', email: 'contact@contact.com', latitude: '', longitude: '', photo: '', user_id: user.id) }
+  before do
+    @contact = user.contacts.build(name: 'Example Contact',
+                                   comment: 'My contact',
+                                   phone: '1231231212',
+                                   address: 'Nezalezgnosti ave',
+                                   email: 'contact@contact.com',
+                                   latitude: '',
+                                   longitude: '',
+                                   photo: '',
+                                   user_id: user.id)
+  end
 
   subject { @contact }
 

@@ -1,3 +1,4 @@
+#:nodoc: all
 class Anthropometry < ActiveRecord::Base
   belongs_to :character
 

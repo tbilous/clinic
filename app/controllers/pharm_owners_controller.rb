@@ -1,3 +1,4 @@
+# :nodoc: all
 class PharmOwnersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_permission, only: [:destroy]
@@ -16,9 +17,9 @@ class PharmOwnersController < ApplicationController
     if @pharm_owner.save
       flash[:success] = t('activerecord.successful.messages.pharm.created')
       @pharm_owner = current_user.pharm_owners.build({})
-      render :new
+      render 'new'
     else
-      render :new
+      render 'pharms/index'
     end
   end
 

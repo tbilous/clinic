@@ -58,12 +58,8 @@ RSpec.describe CharactersController, type: :controller do
         it { expect(character.comment).to eql attr[:comment] }
       end
 
-      describe 'DELETE destroy' do
-        it do
-          # character
-          expect do
-          delete :destroy, id: character.id
-        end.to change { Character.count }.by(-1) end
+      it 'DELETE destroy' do
+        expect { delete :destroy, id: character.id }.to change(Character, :count).by(-1)
       end
 
       describe 'GET show' do

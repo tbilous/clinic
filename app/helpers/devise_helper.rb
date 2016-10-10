@@ -1,3 +1,5 @@
+#:nodoc: all
+module DeviseHelper
 # def devise_error_messages!
 #    return "" unless devise_error_messages?
 #
@@ -19,9 +21,7 @@
 #  def devise_error_messages?
 #    !resource.errors.empty?
 #  end
-
-module DeviseHelper
-  def devise_error_messages!
+def devise_error_messages!
     return '' if resource.errors.empty?
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     sentence = I18n.t('errors.messages.not_saved',
@@ -44,7 +44,6 @@ module DeviseHelper
   end
 
   def devise_error_messages?
-    #  !resource.errors.empty?
     flash_messages
   end
 end

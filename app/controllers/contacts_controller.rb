@@ -1,3 +1,4 @@
+# :nodoc: all
 class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :show, :update, :destroy]
@@ -29,7 +30,6 @@ class ContactsController < ApplicationController
       flash[:success] = t('activerecord.successful.messages.contact.created')
       redirect_to contacts_path
     else
-      # render 'new'
       render 'new'
     end
   end

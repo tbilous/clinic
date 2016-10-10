@@ -1,3 +1,4 @@
+#:nodoc: all
 class PharmOwner < ActiveRecord::Base
   belongs_to :user
   has_many :pharms, dependent: :nullify

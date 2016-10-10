@@ -13,8 +13,16 @@ AllCops:
     - '.bundle/**/*'
     - 'config/initializers/**'
     - 'config/environments/**'
+    - 'config/application.rb'
+    - 'app/helpers/devise_helper.rb'
 
 Metrics/LineLength:
   Max: 120
+Style/Documentation:
+  Enabled: false
 Style/DocumentationMethod:
-  RequireForNonPublicMethods: true
+  RequireForNonPublicMethods: false
+  Enabled: false
+Lint/UnusedMethodArgument:
+  AllowUnusedKeywordArguments: true
+  IgnoreEmptyMethods: true

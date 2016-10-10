@@ -3,48 +3,36 @@ module CharactersHelper
     now_day = Date.today
     difference = now_day.year - character.birthday.year
 
-    def days_calc(n)
-      label = if n == 1
-                t('days.one')
-              elsif n > 1 && n < 0
-                t('days.few')
-              else
-                t('days.many')
-              end
-      n.to_s + ' ' + label
-    end
-
-    def months_calc(n)
-      label = if n == 1
-                t('months.one')
-              elsif n > 1 && n < 5
-                t('months.few')
-              else
-                t('months.many')
-              end
-      n.to_s + ' ' + label
-    end
-
-    def years_calc(n)
-      label = if n == 1
+    if difference >= 1
+      label = if difference == 1
                 t('years.one')
-              elsif n > 1 && n < 5
+              elsif difference > 1 && difference < 5
                 t('years.few')
               else
                 t('years.many')
               end
-      n.to_s + ' ' + label
-    end
-
-    if difference >= 1
-      years_calc(difference)
+      difference.to_s + ' ' + label
     elsif difference < 1
       months = (now_day.year * 12 + now_day.month) - (character.birthday.year * 12 + character.birthday.month)
       if months >= 1
-        months_calc(months)
+        label = if months == 1
+                  t('years.one')
+                elsif months > 1 && months < 5
+                  t('years.few')
+                else
+                  t('years.many')
+                end
+        months.to_s + ' ' + label
       else
         days = (now_day.to_date - character.birthday.to_date).to_i
-        days_calc(days, day)
+        label = if days == 1
+                  t('days.one')
+                elsif days > 1 && days < 0
+                  t('days.few')
+                else
+                  t('days.many')
+                end
+        days.to_s + ' ' + label
       end
     else
       0
