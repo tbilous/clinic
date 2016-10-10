@@ -3,15 +3,14 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   include Devise::Test::ControllerHelpers
   before :each do
-      @request.env['devise.mapping'] = Devise.mappings[:admin]
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      @admin = FactoryGirl.create :admin
-      @user = FactoryGirl.create :user
-      # sign_in @admin
+    @request.env['devise.mapping'] = Devise.mappings[:admin]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    @admin = FactoryGirl.create :admin
+    @user = FactoryGirl.create :user
+    # sign_in @admin
   end
 
   # describe UsersController do
-
 
   #   it "should have a current_user" do
   #     login_admin

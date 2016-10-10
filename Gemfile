@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # convert to slim
 gem 'slim'
-gem "slim-rails"
+gem 'slim-rails'
 
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bootswatch-rails'

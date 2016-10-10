@@ -55,7 +55,7 @@ RSpec.describe 'AnthropometryPage', type: :view do
         it { expect(page).to have_content(t('activerecord.successful.messages.anthropometry.created')) }
         it { expect(page).to have_content(t('page.anthropometry.list')) }
         it { expect(page).to have_css('.remove-anthropometry') }
-        describe 'click delete record'  do
+        describe 'click delete record' do
           before do
             find('.remove-anthropometry').click
           end

@@ -5,7 +5,6 @@ FactoryGirl.define do
   name = 'Taras Bilous'
   password = 'foobar'
 
-
   factory :user do
     name name
     email
@@ -13,7 +12,7 @@ FactoryGirl.define do
     password_confirmation password
   end
 
- # Admin
+  # Admin
   factory :admin, class: User do
     name name
     email
@@ -39,14 +38,14 @@ FactoryGirl.define do
   name = 'Taras Bilous'
   comment = 'Lorem ipsum dolor sit amet'
   email = 'contact@email.com'
-  factory :contact  do
+  factory :contact do
     name    name
     comment comment
     phone '1231231212'
     email   email
     address 'Chernivrsi, Nezalezhnosti str'
-    latitude (48.268707)
-    longitude (25.927730)
+    latitude 48.268707
+    longitude 25.927730
   end
 end
 

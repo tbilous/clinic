@@ -2,18 +2,16 @@ class Character < ActiveRecord::Base
   include AASM
 
   aasm do
-    state :sleeping, :initial => true
+    state :sleeping, initial: true
     state :running
 
     event :run do
-      transitions :from => :sleeping, :to => :running
+      transitions from: :sleeping, to: :running
     end
-
 
     event :sleep do
-      transitions :from => :running,  :to => :sleeping
+      transitions from: :running,  to: :sleeping
     end
-
   end
 
   belongs_to  :user

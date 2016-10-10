@@ -3,14 +3,13 @@ require 'rails_helper'
 RSpec.describe PharmOwner, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @ph_owner = user.pharm_owners.build(user_id: user.id, name: 'Example Pharm Owner', comment: 'Pharm Owner Comment' ) }
+  before { @ph_owner = user.pharm_owners.build(user_id: user.id, name: 'Example Pharm Owner', comment: 'Pharm Owner Comment') }
 
   subject { @ph_owner }
 
   it { should respond_to(:user_id) }
   it { should respond_to(:name) }
   it { should respond_to(:comment) }
-
 
   it { should be_valid }
 
@@ -30,7 +29,6 @@ RSpec.describe PharmOwner, type: :model do
     before { @ph_owner.comment = 'a' * 501 }
     it { should_not be_valid }
   end
-
 
   it 'should destroy associated contacts' do
     ph_owner = user.pharm_owners.to_a

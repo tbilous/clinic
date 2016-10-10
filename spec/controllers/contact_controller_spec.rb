@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
   before :each do
-      @request.env['devise.mapping'] = Devise.mappings[:admin]
-      @request.env['devise.mapping'] = Devise.mappings[:user]
-      @admin = FactoryGirl.create :admin
-      @user = FactoryGirl.create :user
-      # sign_in @admin
+    @request.env['devise.mapping'] = Devise.mappings[:admin]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    @admin = FactoryGirl.create :admin
+    @user = FactoryGirl.create :user
+    # sign_in @admin
   end
   # render_views
 
@@ -24,12 +24,12 @@ RSpec.describe ContactsController, type: :controller do
       specify { expect(response).to redirect_to(new_user_session_path) }
     end
   end
-  
+
   describe 'for signed-in' do
-    before do 
+    before do
       sign_in @admin
     end
-  
+
     describe 'POST new' do
       before do
         post 'new'
@@ -43,36 +43,37 @@ RSpec.describe ContactsController, type: :controller do
         expect(response).to redirect_to(new_contact_path)
       end
     end
-    
+
     describe 'and owner users' do
       let!(:contact) { FactoryGirl.create(:contact, user: @admin) }
-        
+
       describe 'PUT update' do
-        let(:attr) do 
-          {name: 'new name', comment: 'new comment'}
+        let(:attr) do
+          { name: 'new name', comment: 'new comment' }
         end
         before(:each) do
-          put :update, :id => contact.id, :user => @admin.id, :contact => attr
+          put :update, id: contact.id, user: @admin.id, contact: attr
           contact.reload
         end
         it { expect(response).to render_template(:show) }
         it { expect(contact.name).to eql attr[:name] }
         it { expect(contact.comment).to eql attr[:comment] }
       end
-      
+
       describe 'GET index' do
         it 'renders the index template' do
           get :index
           expect(response).to render_template('index')
         end
       end
-        
+
       describe 'DELETE destroy' do
-        it { 
-          expect{ delete :destroy, id: contact.id 
-        }.to change{Contact.count}.by(-1) }
+        it do
+          expect do
+          delete :destroy, id: contact.id
+        end.to change { Contact.count }.by(-1) end
       end
-      
+
       describe 'GET show' do
         before do
           get :show, id: contact.id
@@ -90,24 +91,24 @@ RSpec.describe ContactsController, type: :controller do
         it { expect(response).to_not render_template(:show) }
         it { expect(response).to redirect_to(root_path) }
       end
-      
+
       describe 'PUT update' do
-        let(:attr) do 
-          { :name => 'new name', :comment => 'new comment' }
+        let(:attr) do
+          { name: 'new name', comment: 'new comment' }
         end
         before(:each) do
-          put :update, :id => contact.id, :user => @user.id, :contact => attr
+          put :update, id: contact.id, user: @user.id, contact: attr
           contact.reload
         end
         it { expect(response).to redirect_to(root_path) }
         it { expect(contact.name).to_not eql attr[:name] }
         it { expect(contact.comment).to_not eql attr[:comment] }
       end
-      
+
       describe 'DELETE destroy' do
-        it { 
-          expect{ delete :destroy, id: contact.id }.to_not change{Contact.count} 
-        }
+        it do
+          expect { delete :destroy, id: contact.id }.to_not change { Contact.count }
+        end
       end
     end
   end

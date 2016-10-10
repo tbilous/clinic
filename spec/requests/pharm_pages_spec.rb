@@ -19,26 +19,26 @@ RSpec.describe 'PharmPage', type: :view do
     describe 'should have pharms' do
       let!(:pharm) { FactoryGirl.create(:pharm, user: @user, pharm_owner: @pharm_owner, pharm_type: @pharm_type) }
       before do
-        click_link( t('pharmacy'), href: pharms_path)
+        click_link(t('pharmacy'), href: pharms_path)
       end
       it { expect(page).to have_content pharm.name }
-      it { expect(page).to have_link( '', href: new_pharm_path)}
-      it { expect(page).to have_link( '', href: pharm_path(pharm.id))}
+      it { expect(page).to have_link('', href: new_pharm_path) }
+      it { expect(page).to have_link('', href: pharm_path(pharm.id)) }
       describe 'link to view pharm' do
         before do
-          click_link( '', href: pharm_path(pharm.id))
+          click_link('', href: pharm_path(pharm.id))
         end
         it { expect(page).to have_content pharm.name }
-        it { expect(page).to have_link( '', href: edit_pharm_path(pharm.id))}
+        it { expect(page).to have_link('', href: edit_pharm_path(pharm.id)) }
         describe 'edit pharm' do
           before do
-            click_link( '', href: edit_pharm_path(pharm.id))
+            click_link('', href: edit_pharm_path(pharm.id))
           end
           it { should have_selector('h1', text: pharm.name) }
         end
       end
       describe 'link to new pharm' do
-        before { click_link( '', href: new_pharm_path) }
+        before { click_link('', href: new_pharm_path) }
         it { should have_selector('h1', text: t('page.pharm.new')) }
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe 'PharmPage', type: :view do
   describe 'if not have pharmacy' do
     before do
       login(@user)
-      click_link( t('pharmacy'), href: pharms_path)
+      click_link(t('pharmacy'), href: pharms_path)
     end
     it { should have_selector('h1', text: t('page.pharm.new')) }
   end

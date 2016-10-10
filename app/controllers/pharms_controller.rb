@@ -19,14 +19,14 @@ class PharmsController < ApplicationController
   end
 
   def index
-    if current_user.pharms.count != 0
+    if current_user.pharms.count.nonzero?
       if params[:search]
-        @pharms = current_user && Pharm.search(params[:search]).paginate(:page => params[:page]).order('name DESC')
+        @pharms = current_user && Pharm.search(params[:search]).paginate(page: params[:page]).order('name DESC')
       else
-        @pharms = current_user && current_user.pharms.all.paginate(:page => params[:page]).order('name DESC')
+        @pharms = current_user && current_user.pharms.all.paginate(page: params[:page]).order('name DESC')
       end
     else
-      redirect_to url_for(:action => :new)
+      redirect_to url_for(action: :new)
     end
   end
 
@@ -41,7 +41,6 @@ class PharmsController < ApplicationController
   def update
   end
 
-
   def destroy
     @pharm = current_user.pharms.find(params[:id])
     @pharm.destroy if @pharm.present?
@@ -50,13 +49,12 @@ class PharmsController < ApplicationController
   end
 
   private
+
   def pharms_params
     params.require(:pharm).permit(:name, :comment, :attention, :dose, :volume, :pharm_type_id, :pharm_owner_id)
   end
 
   def require_permission
-    if current_user != Pharm.find(params[:id]).user
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user != Pharm.find(params[:id]).user
   end
 end

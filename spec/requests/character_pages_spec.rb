@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "CharacterPages", type: :view do
+RSpec.describe 'CharacterPages', type: :view do
   subject { page }
   include Devise::Test::ControllerHelpers
   before :each do
@@ -21,7 +21,7 @@ RSpec.describe "CharacterPages", type: :view do
       before { click_on(t('patient.create')) }
       it { expect(page).to have_content(t('page.character.new')) }
       describe 'wrong validations' do
-        before { (find('.btn-sent').click) }
+        before { find('.btn-sent').click }
         it { expect(page).to have_css('.alert.alert-danger') }
         it { expect(response).to render_template('new') }
       end
@@ -35,7 +35,7 @@ RSpec.describe "CharacterPages", type: :view do
           find('#character_birthday_3i').select(character.birthday.day.to_s)
           find('#character_sex_true').set(true)
         end
-        it { expect { (find('.btn-sent').click) }.to change(Character, :count).by(1) }
+        it { expect { find('.btn-sent').click }.to change(Character, :count).by(1) }
       end
     end
   end
@@ -60,13 +60,13 @@ RSpec.describe "CharacterPages", type: :view do
     let!(:character) { FactoryGirl.create(:character, user: @user) }
     before do
       login(@user)
-      page.click_link('', :href => edit_character_path(character))
+      page.click_link('', href: edit_character_path(character))
     end
     describe 'should have content' do
       it { expect(page).to have_content character.name }
       it { expect(page).to have_title t('page.character.edit') }
     end
-    it :js => true do
+    it js: true do
       expect { click_link t('edit.delete') }.to change(Character, :count).by(-1)
       expect(page).to have_css('.alert-success')
     end

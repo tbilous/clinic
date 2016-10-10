@@ -1,8 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    if user_signed_in?
-      @characters = current_user.characters.all
-    end
+    @characters = current_user.characters.all if user_signed_in?
   end
 
   def about

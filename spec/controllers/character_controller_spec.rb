@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe CharactersController, type: :controller do
   before :each do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @request.env["devise.mapping"] = Devise.mappings[:user]
-      @admin = FactoryGirl.create :admin
-      @user = FactoryGirl.create :user
+    @request.env['devise.mapping'] = Devise.mappings[:admin]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    @admin = FactoryGirl.create :admin
+    @user = FactoryGirl.create :user
   end
 
   describe 'for non-signed-in users' do
@@ -38,7 +38,7 @@ RSpec.describe CharactersController, type: :controller do
     describe 'Create new' do
       it 'creates character' do
         character_params = FactoryGirl.attributes_for(:character)
-        expect { post :create, :character => character_params }.to change(Character, :count).by(1)
+        expect { post :create, character: character_params }.to change(Character, :count).by(1)
       end
     end
 
@@ -47,10 +47,10 @@ RSpec.describe CharactersController, type: :controller do
 
       describe 'PUT update' do
         let(:attr) do
-          { :name => 'new name', :comment => 'new comment' }
+          { name: 'new name', comment: 'new comment' }
         end
         before(:each) do
-          put :update, :id => character.id, :user => @admin.id, :character => attr
+          put :update, id: character.id, user: @admin.id, character: attr
           character.reload
         end
         it { expect(response).to redirect_to(root_path) }
@@ -59,10 +59,11 @@ RSpec.describe CharactersController, type: :controller do
       end
 
       describe 'DELETE destroy' do
-        it {
+        it do
           # character
-          expect{ delete :destroy, id: character.id
-        }.to change{Character.count}.by(-1) }
+          expect do
+          delete :destroy, id: character.id
+        end.to change { Character.count }.by(-1) end
       end
 
       describe 'GET show' do
@@ -85,10 +86,10 @@ RSpec.describe CharactersController, type: :controller do
 
       describe 'PUT update' do
         let(:attr) do
-          { :name => 'new name', :comment => 'new comment' }
+          { name: 'new name', comment: 'new comment' }
         end
         before(:each) do
-          put :update, :id => character.id, :user => @user.id, :character => attr
+          put :update, id: character.id, user: @user.id, character: attr
           character.reload
         end
         it { expect(response).to redirect_to(root_path) }
@@ -97,10 +98,10 @@ RSpec.describe CharactersController, type: :controller do
       end
 
       describe 'DELETE destroy' do
-        it {
+        it do
           # character
-          expect{ delete :destroy, id: character.id }.to_not change{Character.count}
-        }
+          expect { delete :destroy, id: character.id }.to_not change { Character.count }
+        end
       end
     end
   end

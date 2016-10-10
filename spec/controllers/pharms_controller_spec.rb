@@ -40,7 +40,7 @@ RSpec.describe PharmsController, type: :controller do
       describe 'CREATE' do
         it 'creates pharm' do
           pharm_params = FactoryGirl.attributes_for(:pharm, user: @admin, pharm_owner_id: @pharm_owner.id, pharm_type_id: @pharm_type.id)
-          expect { post :create, :pharm => pharm_params }.to change(Pharm, :count).by(1)
+          expect { post :create, pharm: pharm_params }.to change(Pharm, :count).by(1)
         end
       end
     end

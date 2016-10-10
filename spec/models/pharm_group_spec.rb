@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PharmGroup, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @pharm_group = user.pharm_groups.build(user_id: user.id, name: 'Example Item', comment: 'Item instruction' ) }
+  before { @pharm_group = user.pharm_groups.build(user_id: user.id, name: 'Example Item', comment: 'Item instruction') }
 
   subject { @pharm_group }
 
@@ -29,7 +29,6 @@ RSpec.describe PharmGroup, type: :model do
     before { subject.comment = 'a' * 501 }
     it { should_not be_valid }
   end
-
 
   it 'should destroy associated contacts' do
     groups = user.pharm_groups.to_a

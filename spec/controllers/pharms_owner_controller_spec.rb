@@ -38,7 +38,7 @@ RSpec.describe PharmOwnersController, type: :controller do
       it 'creates pharm' do
         pharm_params = FactoryGirl.attributes_for(:pharm_owner, user: @admin.id)
         # binding.pry
-        expect { post :create, :pharm_owner => pharm_params }.to change(PharmOwner, :count).by(1)
+        expect { post :create, pharm_owner: pharm_params }.to change(PharmOwner, :count).by(1)
       end
     end
   end

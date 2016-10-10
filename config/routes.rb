@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :pharms
   resources :pharm_owners, only: [:index, :new, :create, :destroy]
   resources :pharm_types, only: [:index, :new, :create, :destroy]
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create, :destroy, :update, :edit, :show, :index]
   resources :anthropometries, only: [:create, :destroy, :index]
 
-  root  'static_pages#home'
+  root 'static_pages#home'
 
   post 'characters/activate' => 'characters#activate'
 
@@ -27,7 +26,7 @@ Rails.application.routes.draw do
   match '/about',       to: 'static_pages#about', via: 'get'
 
   get 'avatar/:size/:background/:text' => Dragonfly.app.endpoint { |params, app|
-  app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
+  app.generate(:initial_avatar, URI.unescape(params[:text]), size: params[:size], background_color: params[:background])
 }, as: :avatar
 
   # scope "/:locale" do

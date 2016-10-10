@@ -7,6 +7,4 @@ class PharmType < ActiveRecord::Base
   validates_length_of :name, in: 3..65
   validates_length_of :slug, in: 3..12
   validates_presence_of :user_id, :name, :slug
-
-
 end

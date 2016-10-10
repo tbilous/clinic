@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  
   # subject { described_class.new }
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
-  
+
   before { @contact = user.contacts.build(name: 'Example Contact', comment: 'My contact', phone: '1231231212', address: 'Nezalezgnosti ave', email: 'contact@contact.com', latitude: '', longitude: '', photo: '', user_id: user.id) }
 
   subject { @contact }
-  
+
   it { should respond_to(:name) }
   it { should respond_to(:comment) }
   it { should respond_to(:address) }
@@ -19,9 +18,9 @@ RSpec.describe Contact, type: :model do
   it { should respond_to(:longitude) }
   it { should respond_to(:photo) }
   it { should respond_to(:user_id) }
-  
+
   it { should be_valid }
-  
+
   describe 'when user_id is not present' do
     before { @contact.user_id = nil }
     it { should_not be_valid }
@@ -50,7 +49,7 @@ RSpec.describe Contact, type: :model do
     before { @contact.email = 'a' * 61 }
     it { should_not be_valid }
   end
-  
+
   it 'should destroy associated contacts' do
     contacts = user.contacts.to_a
     user.destroy

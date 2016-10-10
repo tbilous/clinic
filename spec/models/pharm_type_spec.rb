@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PharmType, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before { @item_type = user.pharm_types.build(user_id: user.id, name: 'Example Item Type name', slug: 'slug', comment: 'Type comment'  ) }
+  before { @item_type = user.pharm_types.build(user_id: user.id, name: 'Example Item Type name', slug: 'slug', comment: 'Type comment') }
 
   subject { @item_type }
 
@@ -27,7 +27,7 @@ RSpec.describe PharmType, type: :model do
     it { should_not be_valid }
   end
   describe 'with blank slug' do
-    before { @item_type.slug  = nil  }
+    before { @item_type.slug = nil }
     it { should_not be_valid }
   end
   describe 'with slug that is too long' do

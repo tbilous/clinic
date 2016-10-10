@@ -4,35 +4,35 @@ module CharactersHelper
     difference = now_day.year - character.birthday.year
 
     def days_calc(n)
-      if n == 1
-        label = t('days.one')
-      elsif n > 1 && n < 0
-        label = t('days.few')
-      else
-        label = t('days.many')
-      end
+      label = if n == 1
+                t('days.one')
+              elsif n > 1 && n < 0
+                t('days.few')
+              else
+                t('days.many')
+              end
       n.to_s + ' ' + label
     end
 
     def months_calc(n)
-      if n == 1
-        label = t('months.one')
-      elsif n > 1 && n < 5
-        label = t('months.few')
-      else
-        label = t('months.many')
-      end
+      label = if n == 1
+                t('months.one')
+              elsif n > 1 && n < 5
+                t('months.few')
+              else
+                t('months.many')
+              end
       n.to_s + ' ' + label
     end
 
     def years_calc(n)
-      if n == 1
-        label = t('years.one')
-      elsif n > 1 && n < 5
-        label = t('years.few')
-      else
-        label = t('years.many')
-      end
+      label = if n == 1
+                t('years.one')
+              elsif n > 1 && n < 5
+                t('years.few')
+              else
+                t('years.many')
+              end
       n.to_s + ' ' + label
     end
 
@@ -58,6 +58,7 @@ module CharactersHelper
   def active_characters(list)
     list.where(:active == true).count > 0
   end
+
   def active_character(id)
     current_user.patient == id
   end
@@ -66,13 +67,10 @@ module CharactersHelper
     if current_user && current_user.patient?
       patient = Character.find_by_id(current_user.patient)
       patient
-    else
     end
   end
 
   def activate_character(id)
     current_user.update_attribute(:patient, id)
   end
-
-
 end

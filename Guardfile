@@ -15,8 +15,8 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-guard :spork, :cucumber_env => { 'RAILS_ENV' => 'test' }, 
-              :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard :spork, cucumber_env: { 'RAILS_ENV' => 'test' },
+              rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')

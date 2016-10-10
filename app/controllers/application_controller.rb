@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
- 
+
   # def set_locale
   #   I18n.locale = params[:locale] || I18n.default_locale
   # end
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     # else
     #   I18n.locale = "en"
     # end
-    I18n.locale = (extract_locale_from_accept_language_header == "uk" ? "uk" : "en" )
+    I18n.locale = (extract_locale_from_accept_language_header == 'uk' ? 'uk' : 'en')
     # logger.debug "* Locale set to '#{I18n.locale}'"
   end
   # def after_sign_in_path_for(resource)
@@ -27,11 +27,11 @@ class ApplicationController < ActionController::Base
   #   scope_path = :"#{scope}_root_path"
   #   respond_to?(scope_path, true) ? send(scope_path) : root_path
   # end
-  
+
   def after_sign_in_path_for(resource)
     root_path
   end
- 
+
   def after_sign_out_path_for(resource_or_scope)
     root_path
     # request.referrer
@@ -40,10 +40,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def extract_locale_from_accept_language_header
-      # request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
-      request.env['HTTP_ACCEPT_LANGUAGE'].to_s.scan(/^[a-z]{2}/).first
-    end
+
+  def extract_locale_from_accept_language_header
+    # request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    request.env['HTTP_ACCEPT_LANGUAGE'].to_s.scan(/^[a-z]{2}/).first
+  end
 
   protected
 

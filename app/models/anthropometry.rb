@@ -1,5 +1,4 @@
 class Anthropometry < ActiveRecord::Base
-
   belongs_to :character
 
   validates_presence_of :date, :character_id
@@ -12,6 +11,7 @@ class Anthropometry < ActiveRecord::Base
   def character
     Character.where(id: character_id)
   end
+
   def user
     User.where(id: character.user_id)
   end

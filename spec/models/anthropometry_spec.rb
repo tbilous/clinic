@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Anthropometry, type: :model do
-
   # subject { described_class.new }
   let(:user) { FactoryGirl.create(:user) }
   let(:character) { user.characters.create(FactoryGirl.attributes_for(:character)) }
@@ -19,7 +18,6 @@ RSpec.describe Anthropometry, type: :model do
   it { should respond_to(:chest) }
   it { should respond_to(:user_id) }
   it { should respond_to(:character_id) }
-
 
   describe 'when user_id is not present' do
     before do

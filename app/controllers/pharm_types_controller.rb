@@ -30,21 +30,20 @@ class PharmTypesController < ApplicationController
   end
 
   def current_user_pharm_types
-    trash = ["created_at", "updated_at", "user_id"]
+    trash = %w(created_at updated_at user_id)
     @pharm_owners ||=
       PharmType.where(user_id: current_user.try(:id)).order('id DESC')
-                .map{ |po| po.attributes.except(*trash) }
+               .map { |po| po.attributes.except(*trash) }
   end
   helper_method :current_user_pharm_types
 
   private
+
   def secure_params
     params.require(:pharm_type).permit(:name, :comment, :slug)
   end
 
   def require_permission
-    if current_user != PharmType.find(params[:id]).user
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user != PharmType.find(params[:id]).user
   end
 end

@@ -14,10 +14,10 @@ class CharactersController < ApplicationController
 
   def show
     @character = current_user && current_user.characters.find(params[:id])
-    @characters = Character.all.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @characters = Character.all.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     @anthropometry = @character.anthropometries.build
     # @anthropometries = @character.anthropometries.all
-    @anthropometries = @character.anthropometries.all.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @anthropometries = @character.anthropometries.all.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   def create
@@ -32,7 +32,7 @@ class CharactersController < ApplicationController
   end
 
   def edit
-     @character = current_user.characters.find(params[:id])
+    @character = current_user.characters.find(params[:id])
   end
 
   def update
@@ -44,19 +44,19 @@ class CharactersController < ApplicationController
       render 'edit'
     end
   end
+
   def activate_character(id)
     current_user.update_attribute(:patient, id)
   end
-
 
   def activate
     # puts ">>>>>>>>>>>>>>> #{params[:id].inspect}"
     @character = current_user.characters.find(params[:id])
     if current_user.patient != @character.id
       current_user.update_attribute(:patient, @character.id)
-       flash[:success] = @character.name
+      flash[:success] = @character.name
     end
-      redirect_to root_path
+    redirect_to root_path
   end
 
   def destroy
@@ -67,14 +67,12 @@ class CharactersController < ApplicationController
   end
 
   private
-    def character_params
-      params.require(:character).permit(:name, :comment, :sex, :birthday,  :used)
-    end
 
+  def character_params
+    params.require(:character).permit(:name, :comment, :sex, :birthday, :used)
+  end
 
-    def require_permission
-      if current_user != Character.find(params[:id]).user
-        redirect_to root_path
-      end
-    end
+  def require_permission
+    redirect_to root_path if current_user != Character.find(params[:id]).user
+  end
 end

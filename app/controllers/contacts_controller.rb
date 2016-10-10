@@ -1,29 +1,28 @@
 class ContactsController < ApplicationController
-  
   before_action :authenticate_user!
   before_action :require_permission, only: [:edit, :show, :update, :destroy]
-  
+
   def new
     @contact = current_user && current_user.contacts.new
   end
-  
-  def index 
-    if current_user.contacts.count != 0
+
+  def index
+    if current_user.contacts.count.nonzero?
       if params[:search]
-        @contacts = current_user && Contact.search(params[:search]).paginate(:page => params[:page]).order('name DESC')
+        @contacts = current_user && Contact.search(params[:search]).paginate(page: params[:page]).order('name DESC')
         @users = User
       else
-        @contacts = current_user && current_user.contacts.all.paginate(:page => params[:page]).order('name DESC')
+        @contacts = current_user && current_user.contacts.all.paginate(page: params[:page]).order('name DESC')
       end
     else
-      redirect_to url_for( :action => :new)
+      redirect_to url_for(action: :new)
     end
   end
-    
+
   def show
     @contact = current_user && current_user.contacts.find(params[:id])
   end
-  
+
   def create
     @contact = current_user.contacts.build(contacts_params)
     if @contact.save
@@ -36,9 +35,9 @@ class ContactsController < ApplicationController
   end
 
   def edit
-     @contact = current_user.contacts.find(params[:id])
+    @contact = current_user.contacts.find(params[:id])
   end
-  
+
   def update
     @contact = current_user.contacts.find(params[:id])
     if @contact.update_attributes(contacts_params)
@@ -48,23 +47,21 @@ class ContactsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @contact = current_user.contacts.find(params[:id])
     @contact.destroy if @contact.present?
     flash[:success] = t('activerecord.successful.messages.contact.deleted')
     redirect_to root_path
   end
-  
+
   private
-    def contacts_params
-      params.require(:contact).permit(:name, :comment, :address, :phone, :email, :photo, :latitude, :longitude)
-    end
 
+  def contacts_params
+    params.require(:contact).permit(:name, :comment, :address, :phone, :email, :photo, :latitude, :longitude)
+  end
 
-    def require_permission
-        if current_user != Contact.find(params[:id]).user
-          redirect_to root_path
-        end
-    end
+  def require_permission
+    redirect_to root_path if current_user != Contact.find(params[:id]).user
+  end
 end

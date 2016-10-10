@@ -30,10 +30,10 @@ class PharmOwnersController < ApplicationController
   end
 
   def current_user_pharm_owners
-    trash = ["created_at", "updated_at", "user_id"]
+    trash = %w(created_at updated_at user_id)
     @pharm_owners ||=
       PharmOwner.where(user_id: current_user.try(:id)).order('id DESC')
-                .map{ |po| po.attributes.except(*trash) }
+                .map { |po| po.attributes.except(*trash) }
   end
   helper_method :current_user_pharm_owners
 
@@ -44,8 +44,6 @@ class PharmOwnersController < ApplicationController
   end
 
   def require_permission
-    if current_user != PharmOwner.find(params[:id]).user
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user != PharmOwner.find(params[:id]).user
   end
 end

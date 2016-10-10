@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before { @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+  before { @user = User.new(name: 'Example User', email: 'user@example.com', password: 'foobar', password_confirmation: 'foobar') }
 
   subject { @user }
 
@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password) }
   it { should respond_to(:characters) }
 
-  describe "character associations" do
+  describe 'character associations' do
     before { @user.save }
     let!(:character) do
       FactoryGirl.create(:character, user: @user)
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
       # FactoryGirl.create(:character, user: @user, created_at: 1.hour.ago)
     end
 
-    it "should destroy associated characters" do
+    it 'should destroy associated characters' do
       characters = @user.characters.to_a
       @user.destroy
       expect(characters).not_to be_empty

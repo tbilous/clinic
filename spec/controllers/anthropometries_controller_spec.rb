@@ -42,7 +42,7 @@ RSpec.describe AnthropometriesController, type: :controller do
         end
         it 'creates anthropometry' do
           adata_params = FactoryGirl.attributes_for(:adata, user_id: @admin.id, character: @character)
-          expect { post :create, :anthropometry => adata_params }.to change(Anthropometry, :count).by(1)
+          expect { post :create, anthropometry: adata_params }.to change(Anthropometry, :count).by(1)
         end
       end
     end
