@@ -26,7 +26,7 @@ class PharmOwnersController < ApplicationController
     @pharm_owner = current_user.pharm_owners.find(params[:id])
     @pharm_owner.destroy if @pharm_owner.present?
     flash[:success] = t('activerecord.successful.messages.pharm.deleted')
-    render 'index'
+    render 'pharms/index'
   end
 
   def current_user_pharm_owners
